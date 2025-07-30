@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2msdhun6wpxe"
-path="res://.godot/imported/red_monster1.png-72b4e8af82451d7814745079836176e6.ctex"
+uid="uid://hsptuq4o38o1"
+path="res://.godot/imported/golem_tomb1.png-ecc6605e34e65f76fd7393097d2d4f68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/red_monster1.png"
-dest_files=["res://.godot/imported/red_monster1.png-72b4e8af82451d7814745079836176e6.ctex"]
+source_file="res://Assets/golem_tomb1.png"
+dest_files=["res://.godot/imported/golem_tomb1.png-ecc6605e34e65f76fd7393097d2d4f68.ctex"]
 
 [params]
 
