@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmrev0ysdlehi"]
+
+[ext_resource type="Texture2D" uid="uid://dycw7ktfjacg2" path="res://Assets/player_spawner1.png" id="1_mgh3u"]
+[ext_resource type="Script" uid="uid://d31a6vy47q1g3" path="res://ScenesScripts/player_spawner.gd" id="1_nkvqa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkvqa"]
+size = Vector2(64, 64)
+
+[node name="Player_spawner" type="CharacterBody2D"]
+script = ExtResource("1_nkvqa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_nkvqa")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_mgh3u")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmk5k17owdtip"]
+
+[ext_resource type="Script" uid="uid://byewtq551gnja" path="res://ScenesScripts/victory_flag.gd" id="1_03jwc"]
+[ext_resource type="Texture2D" uid="uid://57ud2eouy7fl" path="res://Assets/flag1.png" id="1_4ayi2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03jwc"]
+size = Vector2(48, 64)
+
+[node name="VictoryFlag" type="CharacterBody2D"]
+script = ExtResource("1_03jwc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(40, 32)
+shape = SubResource("RectangleShape2D_03jwc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("1_4ayi2")
