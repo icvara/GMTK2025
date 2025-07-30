@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmk5k17owdtip"]
 
-[ext_resource type="Script" uid="uid://byewtq551gnja" path="res://ScenesScripts/victory_flag.gd" id="1_03jwc"]
+[ext_resource type="Script" uid="uid://byewtq551gnja" path="res://OLD_ScenesScripts_KYUN/victory_flag.gd" id="1_03jwc"]
 [ext_resource type="Texture2D" uid="uid://57ud2eouy7fl" path="res://Assets/flag1.png" id="1_4ayi2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_03jwc"]
