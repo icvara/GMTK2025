@@ -51,7 +51,13 @@ func _process(delta: float) -> void:
 		record_movement[time_frame]=[velocity,"jump"]
 		time_frame += 1
 
- 
+	if Input.is_action_just_pressed("jump"):
+		print("jumped") 
+		print(is_on_floor())
+
+	var collision_info = move_and_collide(velocity * delta)
+	if collision_info:
+		velocity = velocity.bounce(collision_info.get_normal())
 	
 	move_and_slide()
 	
