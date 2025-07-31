@@ -10,10 +10,11 @@ extends CharacterBody2D
 var record_movement = {}
 var time_frame = 0
 var alive = true
-
+var past_id = 1
 
 func _ready() -> void:
 	time_frame = 0
+	$Label.text = str(past_id)
 
 func _process(delta: float) -> void:
 	if alive:
@@ -43,4 +44,6 @@ func Transform_in_rock():
 
 func Kill():
 	alive = false
+	modulate = Color(1,1,1,0.2)
+
 	

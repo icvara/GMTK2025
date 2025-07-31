@@ -14,6 +14,9 @@ var time_frame = 0
 var starting_position = Vector2(0,0)
 var past_player_list = []
 var past_record_list = []
+var max_record = 5
+var last_record_id = 0
+
 
 signal reset_loop
 
@@ -29,18 +32,28 @@ var alive = true
 func _ready() -> void:
 	time_frame = 0
 	starting_position = position
+	#init record list capped at X
+	for r in range(0,max_record):
+		past_record_list.append({})
 
 
 func init_loop():
 	time_frame = 0
 	position = starting_position
-	if record_movement.size()>0:
-		past_record_list.append(record_movement)
+	add_new_record()
 	reset_loop.emit()
 	Spawn_ALL_Past_Players()
 	record_movement = {}
 
 
+func add_new_record():		
+	if record_movement.size()>0:
+		past_record_list[last_record_id]=record_movement
+	
+	if last_record_id == max_record-1:
+		last_record_id = 0
+	else:
+		last_record_id += 1
 
 func _process(delta: float) -> void:
 	
@@ -91,16 +104,20 @@ func Spawn_ALL_Past_Players():
 	for p in past_player_list:
 		p.queue_free()
 	past_player_list = []
+	var i = 0
 	for record in past_record_list:
-		Spawn_Past_Player(record)
+		Spawn_Past_Player(record,i)
+		i+=1
 	
 
 
-func Spawn_Past_Player(record):
+func Spawn_Past_Player(record,i):
 	if record.size()>0:
 		var new_past_player = past_1.instantiate()
 		new_past_player.record_movement = record
 		new_past_player.position = starting_position
+		new_past_player.modulate = Color(1,1,1,0.7)
+		new_past_player.past_id = i
 		get_parent().add_child(new_past_player)
 		past_player_list.append(new_past_player)
 	#currently reinit the save to not have one ghost running trough 5 save 

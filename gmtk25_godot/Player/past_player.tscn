@@ -12,7 +12,6 @@ collision_layer = 2
 script = ExtResource("1_65lp3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.329412, 0.329412, 0.329412, 0.419608)
 texture = ExtResource("2_wuc3v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -21,3 +20,11 @@ shape = SubResource("RectangleShape2D_4ntmi")
 [node name="Sprite2D_block" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("3_wuc3v")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -11.0
+offset_top = -30.0
+offset_right = 29.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 40
+text = "1"
