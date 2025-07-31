@@ -17,6 +17,8 @@ var past_player_list = []
 #movement
 var direction = Vector2(0,0)
 
+signal reset_loop
+
 func _ready() -> void:
 	time_frame = 0
 	starting_position = position
@@ -27,6 +29,7 @@ func init_loop():
 	position = starting_position
 	if record_movement.size()>0:
 		Spawn_Past_Player()
+	reset_loop.emit()
 
 func _process(delta: float) -> void:
 	

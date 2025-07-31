@@ -11,7 +11,7 @@ var direction = Vector2(-1,0)
 var target : Node2D
 
 func Enter():
-	print("enter_idle")
+	target = null
 	if get_parent().get_parent():
 		brain_owner = 	get_parent().get_parent()
 	choose_direction_and_time()

@@ -4,16 +4,22 @@ extends CharacterBody2D
 @export var moving_speed = 1000
 @export var jump_speed = 1500
 @export var gravity = 4000
+#@export var player: Node2D
 
-
+var starting_position = Vector2(0,0)
 
 func _ready() -> void:
-	pass
+	starting_position = position
+	var player = get_parent().get_node("Player")
+	player.reset_loop.connect(on_reset_loop)
 
-func _process(delta: float) -> void:
 	
-		
-	velocity.y += gravity *delta
 
+func _process(delta: float) -> void:	
+	velocity.y += gravity *delta
 	move_and_slide()
 	
+
+func on_reset_loop():
+	position = starting_position
+	$Brain.on_child_transition($Brain.current_state, $Brain.initial_state.name)
