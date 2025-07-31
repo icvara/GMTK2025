@@ -13,7 +13,12 @@ config_version=5
 config/name="GMTK25_godot"
 run/main_scene="uid://bunfx6tl2smu1"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+run/max_fps=60
 config/icon="res://icon.svg"
+
+[display]
+
+window/vsync/vsync_mode=0
 
 [input]
 
