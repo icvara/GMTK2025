@@ -12,7 +12,11 @@ var time_frame = 0
 var alive = true
 var past_id = 1
 
+var max_time = 5
+var starting_position = Vector2(0,0)
+
 func _ready() -> void:
+	$Timer.start(max_time)
 	time_frame = 0
 	$Label.text = str(past_id)
 	await get_tree().create_timer(1.).timeout	
@@ -49,3 +53,11 @@ func Kill():
 	modulate = Color(1,1,1,0.2)
 
 	
+func init_past_loop():
+	time_frame = 0
+	$Timer.start(max_time)
+	position = starting_position
+
+
+func _on_timer_timeout() -> void:
+	init_past_loop()

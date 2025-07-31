@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 @export_group("Past_player")
 @export var past_1 :PackedScene
+@export var time_past = 5.0
 
 #varibale for the record_golem
 var record_movement = {}
@@ -16,7 +17,7 @@ var past_player_list = []
 var past_record_list = []
 var max_record = 5
 var last_record_id = 0
-
+var start_recording = false
 
 signal reset_loop
 
@@ -31,6 +32,9 @@ var alive = true
 
 func _ready() -> void:
 	$Label.text = str(last_record_id)
+	$ProgressBar.max_value = time_past
+	$ProgressBar.value = time_past
+
 	time_frame = 0
 	starting_position = position
 	#init record list capped at X
@@ -39,11 +43,16 @@ func _ready() -> void:
 
 
 func init_loop():
+	start_recording = false
 	time_frame = 0
-	#position = starting_position
+	$ProgressBar.hide()
+	$ProgressBar.value = time_past
+	position = starting_position
 	add_new_record()
 	reset_loop.emit()
-	Spawn_ALL_Past_Players()
+	#Spawn_ALL_Past_Players()
+	Spawn_Past_Player(record_movement,0)
+
 	record_movement = {}
 
 
@@ -69,8 +78,9 @@ func _process(delta: float) -> void:
 	
 	velocity.x = moving_speed*direction.x
 	#RECORD PART
-	record_movement[time_frame]=[velocity,"move"]
-	time_frame += 1
+	if start_recording:
+		record_movement[time_frame]=[velocity,"move"]
+		time_frame += 1
 
 	#JUMP
 	#if is_on_floor()==false:
@@ -79,8 +89,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = -jump_speed
 		#RECORD PART
-		record_movement[time_frame]=[velocity,"jump"]
-		time_frame += 1
+		if start_recording:
+			record_movement[time_frame]=[velocity,"jump"]
+			time_frame += 1
 
 	#if Input.is_action_just_pressed("jump"):
 		#print("jumped") 
@@ -92,10 +103,14 @@ func _process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("retry"):
+	if Input.is_action_just_pressed("retry") and !start_recording:
 		#position = starting_position
-		record_movement[time_frame]=[velocity,"rock"]
-		init_loop()
+		$Timer.start(1.0)
+		$ProgressBar.show() 
+		starting_position = position
+		start_recording = true
+		#record_movement[time_frame]=[velocity,"rock"]
+		#init_loop()
 		
 	'for c in range(0,5):
 		if Input.is_action_just_pressed("save"+str(c)):
@@ -120,6 +135,15 @@ func Spawn_Past_Player(record,i):
 		new_past_player.position = self.position
 		new_past_player.modulate = Color(1,1,1,0.7)
 		new_past_player.past_id = i
+		new_past_player.starting_position = starting_position
+		new_past_player.max_time = time_past
 		get_parent().add_child(new_past_player)
 		past_player_list.append(new_past_player)
 	#currently reinit the save to not have one ghost running trough 5 save 
+
+
+func _on_timer_timeout() -> void:
+	$ProgressBar.value -= 1
+	if $ProgressBar.value <= 0:
+		$Timer.stop()
+		init_loop()

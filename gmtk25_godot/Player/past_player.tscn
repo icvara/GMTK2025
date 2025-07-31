@@ -28,3 +28,7 @@ offset_right = 29.0
 offset_bottom = 25.0
 theme_override_font_sizes/font_size = 40
 text = "1"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
