@@ -1,0 +1,603 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj07k5rg2htx0"]
+
+[ext_resource type="PackedScene" uid="uid://bdfduupmv7u0x" path="res://bouncing_ball.tscn" id="1_fcg2j"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fcg2j"]
+friction = 10.0
+rough = true
+bounce = 0.7
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcg2j"]
+size = Vector2(1247, 79)
+
+[node name="mainworld" type="Node2D"]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-1120, 524)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(43, 600)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="bouncing_ball" parent="." instance=ExtResource("1_fcg2j")]
+position = Vector2(165, 325)
+
+[node name="Camera2D" type="Camera2D" parent="bouncing_ball"]
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(-1128, 444)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3"]
+position = Vector2(6, -82)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2"]
+position = Vector2(2374, 165)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2"]
+position = Vector2(-9, -78)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2"]
+position = Vector2(1244, 212)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3"]
+position = Vector2(1210, 150)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3"]
+position = Vector2(1223, -140)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-4, -143)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(320, -148)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(917, -148)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(1228, 10)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(1228, 137)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(499, 638)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(1472, -970)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-1, 166)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(1, 168)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-25, 176)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-6, 171)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-211, 158)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(227, -996)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3"]
+position = Vector2(-7, -86)
+physics_material_override = SubResource("PhysicsMaterial_fcg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2"]
+position = Vector2(125.5, 29.5)
+shape = SubResource("RectangleShape2D_fcg2j")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/StaticBody2D2/StaticBody2D2/StaticBody2D2/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D3/StaticBody2D2/CollisionShape2D"]
+offset_left = -623.0
+offset_top = -40.0
+offset_right = 625.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
