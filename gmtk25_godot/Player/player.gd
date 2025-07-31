@@ -40,7 +40,7 @@ func _ready() -> void:
 
 func init_loop():
 	time_frame = 0
-	position = starting_position
+	#position = starting_position
 	add_new_record()
 	reset_loop.emit()
 	Spawn_ALL_Past_Players()
@@ -93,7 +93,7 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	
 	if Input.is_action_just_pressed("retry"):
-		position = starting_position
+		#position = starting_position
 		record_movement[time_frame]=[velocity,"rock"]
 		init_loop()
 		
@@ -117,7 +117,7 @@ func Spawn_Past_Player(record,i):
 	if record.size()>0:
 		var new_past_player = past_1.instantiate()
 		new_past_player.record_movement = record
-		new_past_player.position = starting_position
+		new_past_player.position = self.position
 		new_past_player.modulate = Color(1,1,1,0.7)
 		new_past_player.past_id = i
 		get_parent().add_child(new_past_player)
