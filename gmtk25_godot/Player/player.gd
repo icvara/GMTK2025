@@ -30,6 +30,7 @@ var alive = true
 
 
 func _ready() -> void:
+	$Label.text = str(last_record_id)
 	time_frame = 0
 	starting_position = position
 	#init record list capped at X
@@ -54,6 +55,7 @@ func add_new_record():
 		last_record_id = 0
 	else:
 		last_record_id += 1
+	$Label.text = str(last_record_id)
 
 func _process(delta: float) -> void:
 	
