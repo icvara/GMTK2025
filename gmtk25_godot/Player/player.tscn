@@ -7,7 +7,7 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_btcbx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_btcbx"]
-radius = 32.0624
+radius = 30.0167
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2

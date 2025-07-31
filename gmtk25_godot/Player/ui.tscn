@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://bdfg8dygjc5d1"]
+[gd_scene load_steps=2 format=3 uid="uid://bdfg8dygjc5d1"]
+
+[ext_resource type="Script" uid="uid://dbdd6886i2xoc" path="res://Player/ui.gd" id="1_4qruw"]
 
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("1_4qruw")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
@@ -9,3 +12,11 @@ text = "Temp_Tuto
 A,D or Arrows : Move
 SPACE, W or UP : JUMP
 R: Retry/Die"
+
+[node name="FPS" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
