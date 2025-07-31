@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://dau5u83mc8kow"]
+
+[ext_resource type="Texture2D" uid="uid://duklvvegjtnh4" path="res://Assets/Shapeboss_1.png" id="1_cp8ca"]
+[ext_resource type="Script" uid="uid://cixl3foptptsv" path="res://enemies/brain/brain_manager.gd" id="3_u3m5m"]
+[ext_resource type="Script" uid="uid://6v58lk4l4hdr" path="res://enemies/brain/node_list/idle.gd" id="4_fc4ok"]
+[ext_resource type="Script" uid="uid://cb3lam7tgsq7w" path="res://enemies/brain/node_list/going_to.gd" id="5_o7fks"]
+[ext_resource type="Script" uid="uid://cs0866s26scb" path="res://enemies/brain/node_list/attack1.gd" id="6_p273x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4n4up"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjp7y"]
+size = Vector2(41, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_583k3"]
+size = Vector2(26, 20)
+
+[node name="Shape_boss" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4n4up")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(30, 88)
+texture = ExtResource("1_cp8ca")
+offset = Vector2(-30, -88)
+
+[node name="Brain" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_u3m5m")
+initial_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="Brain"]
+script = ExtResource("4_fc4ok")
+walk_time_min = 1.0
+metadata/_custom_type_script = "uid://6v58lk4l4hdr"
+
+[node name="going_to" type="Node" parent="Brain"]
+script = ExtResource("5_o7fks")
+metadata/_custom_type_script = "uid://cb3lam7tgsq7w"
+
+[node name="attack1" type="Node" parent="Brain" node_paths=PackedStringArray("attack_area")]
+script = ExtResource("6_p273x")
+attack_area = NodePath("../../attack_area")
+metadata/_custom_type_script = "uid://cs0866s26scb"
+
+[node name="attack_area" type="Area2D" parent="."]
+visible = false
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
+position = Vector2(-31.5, 4)
+shape = SubResource("RectangleShape2D_kjp7y")
+disabled = true
+
+[node name="ColorRect" type="ColorRect" parent="attack_area"]
+offset_left = -52.0
+offset_top = -24.0
+offset_right = -12.0
+offset_bottom = 31.0
+color = Color(0.956253, 0.454159, 0.274714, 1)
+
+[node name="damage_area" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_area"]
+position = Vector2(3, -20)
+shape = SubResource("RectangleShape2D_583k3")
+
+[connection signal="body_entered" from="attack_area" to="Brain/attack1" method="_on_attack_area_body_entered"]
+[connection signal="body_entered" from="damage_area" to="." method="_on_damage_area_body_entered"]
