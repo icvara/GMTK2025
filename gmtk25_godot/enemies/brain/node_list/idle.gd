@@ -11,6 +11,7 @@ var direction = Vector2(-1,0)
 var target : Node2D
 
 func Enter():
+	print("enter_idle")
 	if get_parent().get_parent():
 		brain_owner = 	get_parent().get_parent()
 	choose_direction_and_time()
@@ -37,14 +38,13 @@ func Physics_Update(delta: float):
 	brain_owner.velocity.x = direction.x * walk_speed
 	if target:
 		if brain_owner.position.distance_to(target.position) < detection_distance:
-				Transitioned.emit(self,"going_to")
 				get_parent().full_brain.get("going_to").target = target
+				Transitioned.emit(self,"going_to")
 				
 		
 			
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
-	print(body)
 	if body.is_in_group("player"):
-		print("here")
-		target = body
+		if target == null:
+			target = body

@@ -6,11 +6,15 @@ class_name going_to
 var target : Node2D
 var direction : Vector2
 
+var past_direction = 1
 
 func Enter():
 	if get_parent().get_parent():
 		brain_owner = 	get_parent().get_parent()
-	
+		if target:
+			print("here")
+			past_direction = sign((target.position - brain_owner.position).x)
+
 func Exit():
 	pass
 	
@@ -19,9 +23,13 @@ func Update(_delta: float):
 	
 func Physics_Update(_delta: float):
 	if target:
-		direction = (target.position - brain_owner.position).normalized()
-		brain_owner.velocity.x = direction.x * walk_speed
-		#brain_owner.scale.x = direction.x *1.5
+		direction = (target.position - brain_owner.position)
+		brain_owner.velocity.x =  walk_speed * sign(direction.x)
+	
+		if past_direction != sign(direction.x):
+			past_direction = sign(direction.x)	
+			brain_owner.scale =  brain_owner.scale * Vector2(-1,1)
+
 
 	else:
 		Transitioned.emit(self,"idle")
