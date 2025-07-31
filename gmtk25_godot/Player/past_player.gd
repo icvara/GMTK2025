@@ -15,7 +15,9 @@ var past_id = 1
 func _ready() -> void:
 	time_frame = 0
 	$Label.text = str(past_id)
-
+	await get_tree().create_timer(1.).timeout	
+	set_collision_layer_value(1,true)
+	
 func _process(delta: float) -> void:
 	if alive:
 		if time_frame < record_movement.size():
