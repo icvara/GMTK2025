@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqbdrpqu08k8m"]
+[gd_scene load_steps=11 format=3 uid="uid://dqbdrpqu08k8m"]
 
 [ext_resource type="Script" uid="uid://cbo6idpa1n0at" path="res://enemies/enemy_1.gd" id="1_df7aa"]
 [ext_resource type="Texture2D" uid="uid://d2msdhun6wpxe" path="res://Assets/red_monster1.png" id="1_gwy4j"]
@@ -15,6 +15,9 @@ size = Vector2(295, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjp7y"]
 size = Vector2(41, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_583k3"]
+size = Vector2(26, 20)
 
 [node name="enemy_1" type="CharacterBody2D"]
 script = ExtResource("1_df7aa")
@@ -71,5 +74,14 @@ offset_right = -12.0
 offset_bottom = 31.0
 color = Color(0.956253, 0.454159, 0.274714, 1)
 
+[node name="damage_area" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_area"]
+position = Vector2(3, -20)
+shape = SubResource("RectangleShape2D_583k3")
+
 [connection signal="body_entered" from="Detection_area" to="Brain/idle" method="_on_detection_area_body_entered"]
 [connection signal="body_entered" from="attack_area" to="Brain/attack1" method="_on_attack_area_body_entered"]
+[connection signal="body_entered" from="damage_area" to="." method="_on_damage_area_body_entered"]

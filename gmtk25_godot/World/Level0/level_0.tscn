@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://b1qd7t1dnl4ec"]
+[gd_scene load_steps=8 format=4 uid="uid://b1qd7t1dnl4ec"]
 
 [ext_resource type="TileSet" uid="uid://bcx1nxuurly25" path="res://Assets/tileset/protype_tileset.tres" id="1_fevtq"]
 [ext_resource type="PackedScene" uid="uid://bvmwfn05o86yj" path="res://Player/player.tscn" id="2_wpcyh"]
 [ext_resource type="PackedScene" uid="uid://bdfg8dygjc5d1" path="res://Player/ui.tscn" id="3_ydok3"]
 [ext_resource type="PackedScene" uid="uid://dqbdrpqu08k8m" path="res://enemies/enemy_1.tscn" id="4_g08tj"]
 [ext_resource type="Script" path="res://World/Level0/door_to_next_level.gd" id="5_hjwai"]
+[ext_resource type="PackedScene" uid="uid://u0d4ckcus72v" path="res://enemies/boss_1.tscn" id="6_34f2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g08tj"]
 size = Vector2(59, 98)
@@ -51,6 +52,15 @@ text = "Congratulations!
 [node name="Button" type="Button" parent="Door_to_next_level/VBoxContainer"]
 layout_mode = 2
 text = "Thanks!"
+
+[node name="Boss_1" parent="." instance=ExtResource("6_34f2h")]
+position = Vector2(4673, 878)
+
+[node name="enemy_2" parent="." instance=ExtResource("4_g08tj")]
+position = Vector2(3513, 381)
+
+[node name="enemy_3" parent="." instance=ExtResource("4_g08tj")]
+position = Vector2(3990, 867)
 
 [connection signal="body_entered" from="Door_to_next_level" to="Door_to_next_level" method="_on_body_entered"]
 [connection signal="button_down" from="Door_to_next_level/VBoxContainer/Button" to="Door_to_next_level" method="_on_button_button_down"]

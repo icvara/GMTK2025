@@ -97,9 +97,9 @@ func _process(delta: float) -> void:
 		record_movement[time_frame]=[velocity,"rock"]
 		init_loop()
 		
-	for c in range(0,5):
+	'for c in range(0,5):
 		if Input.is_action_just_pressed("save"+str(c)):
-			past_record_list[c-1]={}
+			past_record_list[c-1]={}'
 
 
 func Spawn_ALL_Past_Players():

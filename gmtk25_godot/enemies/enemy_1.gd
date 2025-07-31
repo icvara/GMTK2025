@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var jump_speed = 1500
 @export var gravity = 4000
 #@export var player: Node2D
-
+var alive = true
 var starting_position = Vector2(0,0)
 
 func _ready() -> void:
@@ -21,5 +21,19 @@ func _process(delta: float) -> void:
 	
 
 func on_reset_loop():
+	alive = true
+	modulate = Color(1,1,1,1)
 	position = starting_position
 	$Brain.on_child_transition($Brain.current_state, $Brain.initial_state.name)
+
+
+func Kill():
+	alive = false
+	velocity = Vector2(0,0)
+	modulate = Color(1,1,1,0.2)
+	$Brain.on_child_transition($Brain.current_state, $Brain.initial_state.name)
+
+
+func _on_damage_area_body_entered(body: Node2D) -> void:
+	print("oz")
+	Kill()
