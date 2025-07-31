@@ -5,12 +5,13 @@ extends Area2D
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("something enetred")
+	if body.is_in_group("player"):
+		print("something enetred")
 	
-	$VBoxContainer.show
-	#body.freeze = true  # Example: stop the player
-	get_tree().paused = true
-	$VBoxContainer.visible = true
+		$VBoxContainer.show
+		#body.freeze = true  # Example: stop the player
+		get_tree().paused = true
+		$VBoxContainer.visible = true
 	
 
 

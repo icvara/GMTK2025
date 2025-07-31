@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://boe2h4qfv6v2p"]
+
+[ext_resource type="Script" uid="uid://th1pqh2btluq" path="res://angry_cube.gd" id="1_cu53k"]
+[ext_resource type="Texture2D" uid="uid://cuad5qv4rt6oy" path="res://Assets/angry_cube.png" id="1_sxtge"]
+[ext_resource type="Script" uid="uid://cixl3foptptsv" path="res://enemies/brain/brain_manager.gd" id="3_i3epo"]
+[ext_resource type="Script" uid="uid://ct78f601nsqb3" path="res://enemies/brain/node_list/staying_still.gd" id="4_i3epo"]
+[ext_resource type="Script" uid="uid://bsxd4jh7amu61" path="res://enemies/brain/node_list/jumping_toward_player.gd" id="5_4c1uk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cu53k"]
+size = Vector2(64, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kt3h"]
+size = Vector2(57, 21)
+
+[node name="Angry_cube" type="CharacterBody2D"]
+script = ExtResource("1_cu53k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_cu53k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sxtge")
+
+[node name="Head_Area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head_Area"]
+position = Vector2(0.5, -30.5)
+shape = SubResource("RectangleShape2D_8kt3h")
+
+[node name="Brain" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_i3epo")
+initial_state = NodePath("staying_still")
+
+[node name="staying_still" type="Node" parent="Brain"]
+script = ExtResource("4_i3epo")
+metadata/_custom_type_script = "uid://ct78f601nsqb3"
+
+[node name="jumping_toward_player" type="Node" parent="Brain"]
+script = ExtResource("5_4c1uk")
+metadata/_custom_type_script = "uid://bsxd4jh7amu61"
+
+[connection signal="body_entered" from="Head_Area" to="Brain/staying_still" method="_on_head_area_body_entered"]

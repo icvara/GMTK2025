@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://85owg1sna3vj"]
+[gd_scene load_steps=9 format=4 uid="uid://85owg1sna3vj"]
 
 [ext_resource type="TileSet" uid="uid://bcx1nxuurly25" path="res://Assets/tileset/protype_tileset.tres" id="1_mnwpk"]
 [ext_resource type="PackedScene" uid="uid://bvmwfn05o86yj" path="res://Player/player.tscn" id="2_2nd2f"]
 [ext_resource type="PackedScene" uid="uid://bdfg8dygjc5d1" path="res://Player/ui.tscn" id="3_67abc"]
 [ext_resource type="PackedScene" uid="uid://dqbdrpqu08k8m" path="res://enemies/enemy_1.tscn" id="4_vo1yx"]
-[ext_resource type="Script" path="res://World/Level0/door_to_next_level.gd" id="5_6alws"]
+[ext_resource type="Script" uid="uid://8c77poh1vmtf" path="res://World/Level0/door_to_next_level.gd" id="5_6alws"]
 [ext_resource type="PackedScene" uid="uid://u0d4ckcus72v" path="res://enemies/boss_1.tscn" id="6_risdn"]
+[ext_resource type="PackedScene" uid="uid://boe2h4qfv6v2p" path="res://angry_cube.tscn" id="7_2nd2f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g08tj"]
 size = Vector2(59, 98)
@@ -61,6 +62,9 @@ position = Vector2(3513, 381)
 
 [node name="enemy_3" parent="." instance=ExtResource("4_vo1yx")]
 position = Vector2(3990, 867)
+
+[node name="Angry_cube" parent="." instance=ExtResource("7_2nd2f")]
+position = Vector2(431, 496)
 
 [connection signal="body_entered" from="Door_to_next_level" to="Door_to_next_level" method="_on_body_entered"]
 [connection signal="button_down" from="Door_to_next_level/VBoxContainer/Button" to="Door_to_next_level" method="_on_button_button_down"]
