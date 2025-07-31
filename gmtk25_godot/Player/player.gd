@@ -13,6 +13,8 @@ var record_movement = {}
 var time_frame = 0
 var starting_position = Vector2(0,0)
 var past_player_list = []
+var past_record_list = []
+
 signal reset_loop
 
 
@@ -33,8 +35,12 @@ func init_loop():
 	time_frame = 0
 	position = starting_position
 	if record_movement.size()>0:
-		Spawn_Past_Player()
+		past_record_list.append(record_movement)
 	reset_loop.emit()
+	Spawn_ALL_Past_Players()
+	record_movement = {}
+
+
 
 func _process(delta: float) -> void:
 	
@@ -77,17 +83,20 @@ func _process(delta: float) -> void:
 		init_loop()
 
 
-
-
-func Spawn_Past_Player():
+func Spawn_ALL_Past_Players():
 	for p in past_player_list:
 		p.queue_free()
-		past_player_list.erase(p)
+	past_player_list = []
+	for record in past_record_list:
+		Spawn_Past_Player(record)
+	
+
+
+func Spawn_Past_Player(record):
 	var new_past_player = past_1.instantiate()
-	new_past_player.record_movement = record_movement
+	new_past_player.record_movement = record
 	new_past_player.position = starting_position
 	get_parent().add_child(new_past_player)
 	past_player_list.append(new_past_player)
 	#currently reinit the save to not have one ghost running trough 5 save 
-	record_movement = {}
 	
