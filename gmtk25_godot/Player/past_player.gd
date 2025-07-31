@@ -16,16 +16,18 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-
 	if time_frame < record_movement.size():
-		velocity = record_movement[time_frame][0]
+		velocity.x = record_movement[time_frame][0].x
+		
+		if record_movement[time_frame][1]=="jump" and is_on_floor():
+			velocity.y = record_movement[time_frame][0].y
 
 		
 		if record_movement[time_frame][1]=="rock":
 			Transform_in_rock()
 			
 	else:
-		velocity = Vector2(0,0)
+		velocity.x = 0
 		
 	velocity.y += gravity *delta
 

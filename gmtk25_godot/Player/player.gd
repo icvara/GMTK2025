@@ -39,27 +39,25 @@ func _process(delta: float) -> void:
 		direction.x = -1		
 	
 	velocity.x = moving_speed*direction.x
-
-
-	#JUMP
-	velocity.y += gravity *delta
-
-			
-
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = -jump_speed 
-	
-	move_and_slide()
-	
 	#RECORD PART
 	record_movement[time_frame]=[velocity,"move"]
 	time_frame += 1
+
+	#JUMP
+	velocity.y += gravity *delta
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = -jump_speed
+		#RECORD PART
+		record_movement[time_frame]=[velocity,"jump"]
+		time_frame += 1
+
+ 
 	
+	move_and_slide()
 	
 	if Input.is_action_just_pressed("retry"):
 		position = starting_position
 		record_movement[time_frame]=[velocity,"rock"]
-
 		init_loop()
 
 
