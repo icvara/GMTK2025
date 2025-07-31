@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=4 uid="uid://b1qd7t1dnl4ec"]
+[gd_scene load_steps=7 format=4 uid="uid://b1qd7t1dnl4ec"]
 
 [ext_resource type="TileSet" uid="uid://bcx1nxuurly25" path="res://Assets/tileset/protype_tileset.tres" id="1_fevtq"]
 [ext_resource type="PackedScene" uid="uid://bvmwfn05o86yj" path="res://Player/player.tscn" id="2_wpcyh"]
 [ext_resource type="PackedScene" uid="uid://bdfg8dygjc5d1" path="res://Player/ui.tscn" id="3_ydok3"]
 [ext_resource type="PackedScene" uid="uid://dqbdrpqu08k8m" path="res://enemies/enemy_1.tscn" id="4_g08tj"]
+[ext_resource type="Script" uid="uid://8c77poh1vmtf" path="res://World/Level0/door_to_next_level.gd" id="5_hjwai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g08tj"]
+size = Vector2(59, 98)
 
 [node name="level0" type="Node2D"]
 
@@ -20,3 +24,33 @@ position = Vector2(68, 411)
 [node name="enemy_1" parent="." instance=ExtResource("4_g08tj")]
 position = Vector2(1744, 856)
 scale = Vector2(1.5, 1.5)
+
+[node name="Door_to_next_level" type="Area2D" parent="."]
+position = Vector2(4970, 875)
+collision_layer = 3
+collision_mask = 2
+script = ExtResource("5_hjwai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door_to_next_level"]
+position = Vector2(-6.5, -11)
+shape = SubResource("RectangleShape2D_g08tj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Door_to_next_level"]
+process_mode = 3
+visible = false
+offset_left = -160.0
+offset_top = -160.0
+offset_right = -31.0
+offset_bottom = -76.0
+
+[node name="Label" type="Label" parent="Door_to_next_level/VBoxContainer"]
+layout_mode = 2
+text = "Congratulations!
+"
+
+[node name="Button" type="Button" parent="Door_to_next_level/VBoxContainer"]
+layout_mode = 2
+text = "Thanks!"
+
+[connection signal="body_entered" from="Door_to_next_level" to="Door_to_next_level" method="_on_body_entered"]
+[connection signal="button_down" from="Door_to_next_level/VBoxContainer/Button" to="Door_to_next_level" method="_on_button_button_down"]
