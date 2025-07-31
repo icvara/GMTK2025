@@ -5,7 +5,7 @@ extends Control
 
 
 func _on_button_button_down() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://World/Level0/level_0.tscn")
 
 
 func _on_button_2_button_down() -> void:
@@ -13,4 +13,4 @@ func _on_button_2_button_down() -> void:
 
 
 func _on_button_3_button_down() -> void:
-	pass # Replace with function body.
+	get_tree().quit()
