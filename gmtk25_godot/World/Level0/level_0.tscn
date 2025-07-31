@@ -18,5 +18,5 @@ position = Vector2(68, 411)
 [node name="UI" parent="." instance=ExtResource("3_ydok3")]
 
 [node name="enemy_1" parent="." instance=ExtResource("4_g08tj")]
-position = Vector2(2800, 609)
+position = Vector2(1744, 856)
 scale = Vector2(1.5, 1.5)

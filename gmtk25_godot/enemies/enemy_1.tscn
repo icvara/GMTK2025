@@ -1,16 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqbdrpqu08k8m"]
+[gd_scene load_steps=10 format=3 uid="uid://dqbdrpqu08k8m"]
 
 [ext_resource type="Script" uid="uid://cbo6idpa1n0at" path="res://enemies/enemy_1.gd" id="1_df7aa"]
 [ext_resource type="Texture2D" uid="uid://d2msdhun6wpxe" path="res://Assets/red_monster1.png" id="1_gwy4j"]
 [ext_resource type="Script" uid="uid://cixl3foptptsv" path="res://enemies/brain/brain_manager.gd" id="3_rlllf"]
 [ext_resource type="Script" uid="uid://6v58lk4l4hdr" path="res://enemies/brain/node_list/idle.gd" id="4_8dj5n"]
 [ext_resource type="Script" uid="uid://cb3lam7tgsq7w" path="res://enemies/brain/node_list/going_to.gd" id="5_fshb8"]
+[ext_resource type="Script" uid="uid://cs0866s26scb" path="res://enemies/brain/node_list/attack1.gd" id="6_kjp7y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4n4up"]
 size = Vector2(26, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fshb8"]
 size = Vector2(295, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjp7y"]
+size = Vector2(41, 56)
 
 [node name="enemy_1" type="CharacterBody2D"]
 script = ExtResource("1_df7aa")
@@ -38,6 +42,11 @@ metadata/_custom_type_script = "uid://6v58lk4l4hdr"
 script = ExtResource("5_fshb8")
 metadata/_custom_type_script = "uid://cb3lam7tgsq7w"
 
+[node name="attack1" type="Node" parent="Brain" node_paths=PackedStringArray("attack_area")]
+script = ExtResource("6_kjp7y")
+attack_area = NodePath("../../attack_area")
+metadata/_custom_type_script = "uid://cs0866s26scb"
+
 [node name="Detection_area" type="Area2D" parent="."]
 collision_mask = 3
 
@@ -46,4 +55,21 @@ position = Vector2(-131.5, 3.5)
 shape = SubResource("RectangleShape2D_fshb8")
 debug_color = Color(0.616277, 0.382985, 0.948373, 0.42)
 
+[node name="attack_area" type="Area2D" parent="."]
+visible = false
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
+position = Vector2(-31.5, 4)
+shape = SubResource("RectangleShape2D_kjp7y")
+disabled = true
+
+[node name="ColorRect" type="ColorRect" parent="attack_area"]
+offset_left = -52.0
+offset_top = -24.0
+offset_right = -12.0
+offset_bottom = 31.0
+color = Color(0.956253, 0.454159, 0.274714, 1)
+
 [connection signal="body_entered" from="Detection_area" to="Brain/idle" method="_on_detection_area_body_entered"]
+[connection signal="body_entered" from="attack_area" to="Brain/attack1" method="_on_attack_area_body_entered"]

@@ -13,11 +13,16 @@ var record_movement = {}
 var time_frame = 0
 var starting_position = Vector2(0,0)
 var past_player_list = []
+signal reset_loop
+
 
 #movement
 var direction = Vector2(0,0)
 
-signal reset_loop
+
+#monster intraction
+var alive = true
+
 
 func _ready() -> void:
 	time_frame = 0
@@ -47,20 +52,22 @@ func _process(delta: float) -> void:
 	time_frame += 1
 
 	#JUMP
+	#if is_on_floor()==false:
 	velocity.y += gravity *delta
+		
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = -jump_speed
 		#RECORD PART
 		record_movement[time_frame]=[velocity,"jump"]
 		time_frame += 1
 
-	if Input.is_action_just_pressed("jump"):
-		print("jumped") 
-		print(is_on_floor())
-
-	var collision_info = move_and_collide(velocity * delta)
-	if collision_info:
-		velocity = velocity.bounce(collision_info.get_normal())
+	#if Input.is_action_just_pressed("jump"):
+		#print("jumped") 
+		#print(is_on_floor())
+	#print(velocity)
+	#var collision_info = move_and_collide(velocity)
+	#if collision_info:
+		#velocity = velocity.bounce(collision_info.get_normal())
 	
 	move_and_slide()
 	

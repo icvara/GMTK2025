@@ -41,10 +41,10 @@ func Physics_Update(delta: float):
 				get_parent().full_brain.get("going_to").target = target
 				Transitioned.emit(self,"going_to")
 				
-		
-			
-
+				
 func _on_detection_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		if target == null:
-			target = body
+	if get_parent().current_state == self:
+			if body.is_in_group("player"):
+				if body.alive:
+					if target == null:
+						target = body
