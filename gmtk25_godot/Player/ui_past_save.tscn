@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://e8bnyflrhd8x"]
+
+[ext_resource type="Script" uid="uid://b5nb52llhg7s" path="res://Player/ui_past_save.gd" id="1_26ooa"]
+
+[node name="UI_past_save" type="CanvasLayer"]
+script = ExtResource("1_26ooa")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="0" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Past 1"
+
+[node name="1" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Past 2"
+
+[node name="2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Past 3"
+
+[node name="3" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Past 4"
+
+[node name="4" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Past 5"
+
+[connection signal="pressed" from="HBoxContainer/0" to="." method="_on__pressed"]
+[connection signal="pressed" from="HBoxContainer/1" to="." method="_on__pressed"]
+[connection signal="pressed" from="HBoxContainer/2" to="." method="_on__pressed"]
+[connection signal="pressed" from="HBoxContainer/3" to="." method="_on__pressed"]
+[connection signal="pressed" from="HBoxContainer/4" to="." method="_on__pressed"]

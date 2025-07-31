@@ -81,6 +81,10 @@ func _process(delta: float) -> void:
 		position = starting_position
 		record_movement[time_frame]=[velocity,"rock"]
 		init_loop()
+		
+	for c in range(0,5):
+		if Input.is_action_just_pressed("save"+str(c)):
+			past_record_list[c-1]={}
 
 
 func Spawn_ALL_Past_Players():
@@ -93,10 +97,10 @@ func Spawn_ALL_Past_Players():
 
 
 func Spawn_Past_Player(record):
-	var new_past_player = past_1.instantiate()
-	new_past_player.record_movement = record
-	new_past_player.position = starting_position
-	get_parent().add_child(new_past_player)
-	past_player_list.append(new_past_player)
+	if record.size()>0:
+		var new_past_player = past_1.instantiate()
+		new_past_player.record_movement = record
+		new_past_player.position = starting_position
+		get_parent().add_child(new_past_player)
+		past_player_list.append(new_past_player)
 	#currently reinit the save to not have one ghost running trough 5 save 
-	
