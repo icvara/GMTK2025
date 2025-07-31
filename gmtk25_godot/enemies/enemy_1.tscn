@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqbdrpqu08k8m"]
+
+[ext_resource type="Script" uid="uid://cbo6idpa1n0at" path="res://enemies/enemy_1.gd" id="1_df7aa"]
+[ext_resource type="Texture2D" uid="uid://d2msdhun6wpxe" path="res://Assets/red_monster1.png" id="1_gwy4j"]
+[ext_resource type="Script" uid="uid://cixl3foptptsv" path="res://enemies/brain/brain_manager.gd" id="3_rlllf"]
+[ext_resource type="Script" uid="uid://6v58lk4l4hdr" path="res://enemies/brain/node_list/idle.gd" id="4_8dj5n"]
+[ext_resource type="Script" uid="uid://cb3lam7tgsq7w" path="res://enemies/brain/node_list/going_to.gd" id="5_fshb8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4n4up"]
+size = Vector2(26, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fshb8"]
+size = Vector2(295, 57)
+
+[node name="enemy_1" type="CharacterBody2D"]
+script = ExtResource("1_df7aa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 3.5)
+shape = SubResource("RectangleShape2D_4n4up")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(30, 88)
+texture = ExtResource("1_gwy4j")
+offset = Vector2(-30, -88)
+
+[node name="Brain" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_rlllf")
+initial_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="Brain"]
+script = ExtResource("4_8dj5n")
+walk_time_min = 1.0
+metadata/_custom_type_script = "uid://6v58lk4l4hdr"
+
+[node name="going_to" type="Node" parent="Brain"]
+script = ExtResource("5_fshb8")
+metadata/_custom_type_script = "uid://cb3lam7tgsq7w"
+
+[node name="Detection_area" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_area"]
+position = Vector2(-131.5, 3.5)
+shape = SubResource("RectangleShape2D_fshb8")
+debug_color = Color(0.616277, 0.382985, 0.948373, 0.42)
+
+[connection signal="body_entered" from="Detection_area" to="Brain/idle" method="_on_detection_area_body_entered"]
