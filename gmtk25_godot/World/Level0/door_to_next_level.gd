@@ -15,4 +15,6 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_button_button_down() -> void:
-	print("You pressed the button")
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://World/Level0/level_1.tscn")
+	
