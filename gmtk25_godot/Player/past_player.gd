@@ -39,10 +39,10 @@ func _ready() -> void:
 
 	
 func _physics_process(delta: float) -> void:
+	velocity.y += gravity *delta
 	if alive:
 		if time_frame < record_movement.size():
 			if isdashing==false:
-				velocity.y += gravity *delta
 
 				velocity.x = record_movement[time_frame][0].x
 				

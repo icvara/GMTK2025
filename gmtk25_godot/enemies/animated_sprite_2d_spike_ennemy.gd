@@ -20,6 +20,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		timer = 0.0
 		frame = 0
 		set_process(true)  # start calling _process
+		body.Kill()
 
 func Spike_attack(delta: float) -> void:
 	timer += delta

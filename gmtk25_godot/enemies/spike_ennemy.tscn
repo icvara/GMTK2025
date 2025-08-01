@@ -1,29 +1,29 @@
 [gd_scene load_steps=13 format=3 uid="uid://b8owreyjwhjs2"]
 
-[ext_resource type="Texture2D" uid="uid://8s3d3su004r" path="res://Assets/spike_ennemy_sprite_sheet1.png" id="1_p2cve"]
-[ext_resource type="Script" uid="uid://cm4cn5gxgayya" path="res://animated_sprite_2d_spike_ennemy.gd" id="2_1n0or"]
+[ext_resource type="Texture2D" uid="uid://8s3d3su004r" path="res://Assets/spike_ennemy_sprite_sheet1.png" id="1_itudq"]
+[ext_resource type="Script" uid="uid://cm4cn5gxgayya" path="res://enemies/animated_sprite_2d_spike_ennemy.gd" id="2_m4biv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ntos"]
 size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ooi8v"]
-atlas = ExtResource("1_p2cve")
+atlas = ExtResource("1_itudq")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qsuqs"]
-atlas = ExtResource("1_p2cve")
+atlas = ExtResource("1_itudq")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dmfgo"]
-atlas = ExtResource("1_p2cve")
+atlas = ExtResource("1_itudq")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ho4c3"]
-atlas = ExtResource("1_p2cve")
+atlas = ExtResource("1_itudq")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y5syh"]
-atlas = ExtResource("1_p2cve")
+atlas = ExtResource("1_itudq")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5y0kk"]
@@ -69,7 +69,7 @@ shape = SubResource("RectangleShape2D_0ntos")
 sprite_frames = SubResource("SpriteFrames_5y0kk")
 frame = 1
 frame_progress = 0.518266
-script = ExtResource("2_1n0or")
+script = ExtResource("2_m4biv")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

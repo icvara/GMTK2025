@@ -113,6 +113,8 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.play("default")
 		elif is_on_floor() and is_jumping_started ==false:
 			$AnimatedSprite2D.play("walk")
+		if is_on_floor() == false:
+			$AnimatedSprite2D.play("jump_fall")
 		
 		#move with more lag
 		#velocity.x = moving_speed*direction.x

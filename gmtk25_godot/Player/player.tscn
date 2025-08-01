@@ -128,7 +128,6 @@ bounce_strength = 8
 past_1 = ExtResource("2_btcbx")
 
 [node name="UI_LIFE" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_gwnis")]
-visible = false
 player = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
