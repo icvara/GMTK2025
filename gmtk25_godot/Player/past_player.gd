@@ -57,13 +57,18 @@ func _physics_process(delta: float) -> void:
 				
 			else:
 				velocity.x = 0
+		
+
 			
 			velocity.y += gravity *delta
 			time_frame += 1
 
-		move_and_slide()
-		
-	
+			move_and_slide()
+		else: #end of loop
+			init_past_loop()
+	else: #die
+		pass
+		#init_past_loop()
 func Transform_in_rock():
 	$Sprite2D.hide()
 	$Sprite2D_block.show()
@@ -94,6 +99,7 @@ func init_past_loop():
 
 func _on_timer_timeout() -> void:
 	init_past_loop()
+	pass
 
 
 func _on_dash_timer_timeout() -> void:

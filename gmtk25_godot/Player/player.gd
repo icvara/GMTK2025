@@ -153,8 +153,11 @@ func _physics_process(delta: float) -> void:
 			record_movement[time_frame]=[velocity,"use"]
 			time_frame += 1
 	
-	if Input.is_action_just_pressed("retry") and !start_recording:
-		start_loop()
+	if Input.is_action_just_pressed("retry"):
+		if  !start_recording:
+			start_loop()
+		else:
+			end_loop()
 
 		
 	'for c in range(0,5):
@@ -191,6 +194,9 @@ func Spawn_Past_Player(record,i):
 
 
 func Kill():
+	if start_recording:
+		record_movement[time_frame]=[velocity,"die"]
+		time_frame += 1
 	#print(starting_position)
 	#position = starting_position
 	end_loop()
@@ -203,7 +209,6 @@ func Kill():
 func _on_timer_timeout() -> void:
 	$ProgressBar.value -= 1
 	if $ProgressBar.value <= 0:
-		$Timer.stop()
 		end_loop()
 
 

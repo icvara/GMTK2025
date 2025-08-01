@@ -59,7 +59,7 @@ position = Vector2(754.5, 140.5)
 shape = SubResource("RectangleShape2D_6uqi0")
 
 [node name="other" type="RigidBody2D" parent="."]
-position = Vector2(284, -50)
+position = Vector2(278, -50)
 lock_rotation = true
 linear_damp = 1.0
 
