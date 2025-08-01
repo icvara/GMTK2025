@@ -69,3 +69,4 @@ text = "Exit"
 [connection signal="button_down" from="VBoxContainer/Button" to="." method="_on_button_button_down"]
 [connection signal="button_down" from="VBoxContainer/Button4" to="." method="_on_button_4_button_down"]
 [connection signal="button_down" from="VBoxContainer/Button5" to="." method="_on_button_5_button_down"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]

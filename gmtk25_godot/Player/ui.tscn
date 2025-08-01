@@ -18,7 +18,9 @@ grow_vertical = 0
 text = "Temp_Tuto
 A,D or Arrows : Move
 SPACE, W or UP : JUMP
-R: Retry/Die"
+R: REMEMBRANCE
+F: USE ITEM/COMPETENCE
+"
 
 [node name="FPS" type="Label" parent="."]
 anchors_preset = 1

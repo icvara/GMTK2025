@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var moving_speed = 1000
 @export var jump_speed = 1500
 @export var gravity = 4000
+@export var projectile :PackedScene
+
 
 @export_group("Past_player")
 @export var past_1 :PackedScene
@@ -114,6 +116,16 @@ func _process(delta: float) -> void:
 		#velocity = velocity.bounce(collision_info.get_normal())
 	
 	move_and_slide()
+
+	if Input.is_action_just_pressed("use"):
+		var n_projectile = projectile.instantiate()
+		n_projectile.global_position = position + Vector2(100,0)
+		#n_projectile.direction = (get_global_mouse_position() - global_position).normalized()
+		n_projectile.linear_velocity = (get_global_mouse_position() - global_position).normalized()* 800
+		get_tree().current_scene.add_child(n_projectile)
+		if start_recording:
+			record_movement[time_frame]=[velocity,"use"]
+			time_frame += 1
 	
 	if Input.is_action_just_pressed("retry") and !start_recording:
 		start_loop()
@@ -144,6 +156,8 @@ func Spawn_Past_Player(record,i):
 		new_past_player.past_id = i
 		new_past_player.starting_position = starting_position
 		new_past_player.max_time =  time_past #- $ProgressBar.value - 1
+		new_past_player.projectile = projectile
+
 		print(new_past_player.max_time)
 		get_parent().add_child(new_past_player)
 		past_player_list.append(new_past_player)

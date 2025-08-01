@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var moving_speed = 1000
 @export var jump_speed = 1500
 @export var gravity = 4000
+var projectile :PackedScene
 
 
 #varibale for the record_golem
@@ -35,6 +36,13 @@ func _process(delta: float) -> void:
 			
 			if record_movement[time_frame][1]=="rock":
 				Transform_in_rock()
+
+			if record_movement[time_frame][1]=="use":
+				var n_projectile = projectile.instantiate()
+				n_projectile.global_position = position + Vector2(100,0)
+				n_projectile.linear_velocity = (get_global_mouse_position() - global_position).normalized()* 800
+				get_tree().current_scene.add_child(n_projectile)
+		
 				
 		else:
 			velocity.x = 0
