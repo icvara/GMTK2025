@@ -10,6 +10,8 @@ size = Vector2(60, 60)
 [node name="Past_Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_65lp3")
+friction = 0.6
+acceleration = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_wuc3v")

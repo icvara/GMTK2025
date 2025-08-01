@@ -25,6 +25,10 @@ var isdashing = false
 var max_time = 5
 var starting_position = Vector2(0,0)
 
+
+##
+var count = 0
+
 func _ready() -> void:
 	$Timer.start(max_time)
 	time_frame = 0
@@ -44,17 +48,21 @@ func _physics_process(delta: float) -> void:
 				
 				if record_movement[time_frame][1]=="jump" and is_on_floor():
 					is_jumping = true
-					jump_time = 0.0		
+					count = 0
+
+					#jump_time = 0.0	
+						
 				if is_jumping :
-					if record_movement[time_frame][1]=="jump" and jump_time < max_jump_time:
+					if record_movement[time_frame][1]=="jump":# and jump_time < max_jump_time:
 						#velocity.y = -jump_speed #record_movement[time_frame][0].y
 						#jump_time += delta
 						velocity.y = -jump_speed
-						print(velocity.y )
-						print("bug de ces mkort")
-					else :
-						print ("je saute pas lol")
+						#print(velocity.y )
+			
+					elif record_movement[time_frame][1]=="stop_jump":
 						is_jumping = false
+
+				
 
 
 

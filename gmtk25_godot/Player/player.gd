@@ -27,8 +27,7 @@ var max_record = 5
 var last_record_id = 0
 var start_recording = false
 var LP = 3
-var jump_action := ""
-
+var ACTION := ""
 signal reset_loop
 
 
@@ -39,6 +38,9 @@ var isdashing = false
 
 #monster intraction
 var alive = true
+
+
+var count = 0
 
 
 func _ready() -> void:
@@ -92,12 +94,20 @@ func _physics_process(delta: float) -> void:
 	
 	if isdashing==false:
 		direction = Vector2(0,0)
-		
+
 		#left-right
 		if Input.is_action_pressed("right"):
 			direction.x = 1
+			$AnimatedSprite2D.flip_h = true
+			$AnimatedSprite2D.play("jump")
 		if Input.is_action_pressed("left"):
-			direction.x = -1		
+			direction.x = -1
+			$AnimatedSprite2D.flip_h = false
+			$AnimatedSprite2D.play("jump")
+	
+		if direction.x == 0:
+			$AnimatedSprite2D.play("default")
+
 		
 		#move with more lag
 		#velocity.x = moving_speed*direction.x
@@ -107,33 +117,38 @@ func _physics_process(delta: float) -> void:
 			velocity.x = lerp(velocity.x,0.0,friction)
 		#RECORD PART
 		if start_recording:
-			record_movement.append([velocity,"move"])
-			time_frame += 1
+			ACTION ="move"
 
 		#JUMP
 		#if is_on_floor()==false:
 		velocity.y += gravity *delta
 			
-		# Decide jump input
-	if Input.is_action_pressed("jump"):
-		jump_action = "jump"
+
 
 # Handle jump logic
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			is_jumping = true
 			jump_time = 0.0
-			velocity.y = -jump_speed
+			#velocity.y = -jump_speed
 
-		elif is_jumping and jump_action == "jump" and jump_time < max_jump_time:
-			velocity.y = -jump_speed
-			jump_time += delta
-		else:
-			is_jumping = false
+		if Input.is_action_pressed("jump") and is_jumping:
+			if jump_time < max_jump_time:
+			#if count < 50:
+
+				velocity.y = -jump_speed
+				jump_time += delta
+				if start_recording:
+					ACTION ="jump"
+
+			else:
+				is_jumping = false
+				if start_recording:
+					ACTION ="stop_jump"
+
+					#record_movement.append([velocity, "stop_jump"])
 
 # Always record once per frame
-	if start_recording:
-		record_movement.append([velocity, jump_action])
-		time_frame += 1
+
 		#if Input.is_action_pressed("jump") and is_on_floor():
 			#if start_recording:
 				#record_movement[time_frame]=[velocity,"jump"]
@@ -164,8 +179,8 @@ func _physics_process(delta: float) -> void:
 			$dashTimer.start()
 			#RECORD PART
 			if start_recording:
-				record_movement.append([velocity,"dash"])
-				time_frame += 1
+				ACTION = "dash"
+				
 				
 		#if Input.is_action_just_pressed("jump"):
 			#print("jumped") 
@@ -181,6 +196,9 @@ func _physics_process(delta: float) -> void:
 			velocity.x = velocity.bounce(col.get_normal()).x * bounce_strength
 		
 	velocity = Vector2(clamp(velocity.x,-max_velocity,max_velocity),clamp(velocity.y,-max_velocity,max_velocity))
+	if start_recording:
+		record_movement.append([velocity,ACTION])
+		time_frame += 1
 	move_and_slide()
 
 	if Input.is_action_just_pressed("use"):
@@ -190,8 +208,7 @@ func _physics_process(delta: float) -> void:
 		n_projectile.linear_velocity = (get_global_mouse_position() - global_position).normalized()* 800
 		get_tree().current_scene.add_child(n_projectile)
 		if start_recording:
-			record_movement.append([velocity,"use"])
-			time_frame += 1
+			ACTION = "use"
 	
 	if Input.is_action_just_pressed("retry"):
 		if  !start_recording:
