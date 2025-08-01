@@ -24,7 +24,7 @@ var isdashing = false
 
 var max_time = 5
 var starting_position = Vector2(0,0)
-
+var is_jumping_started =false
 
 ##
 var count = 0
@@ -46,16 +46,32 @@ func _physics_process(delta: float) -> void:
 
 				velocity.x = record_movement[time_frame][0].x
 				
-				if record_movement[time_frame][1]=="jump" and is_on_floor():
+				if velocity.x <0:
+					$AnimatedSprite2D.flip_h = false
+				if velocity.x >0:
+					$AnimatedSprite2D.flip_h = true
+				if velocity.x == 0  and is_on_floor() and is_jumping_started ==false:
+					$AnimatedSprite2D.play("default")
+				elif is_on_floor() and is_jumping_started ==false:
+					$AnimatedSprite2D.play("walk")
+				
+				if record_movement[time_frame][1]=="start_jump" and is_on_floor() and is_jumping_started ==false:
+					is_jumping_started = true
+					velocity.x = 0
+					$AnimatedSprite2D.play("jump_0")
+					await get_tree().create_timer(0.2).timeout
+					is_jumping_started = false
 					is_jumping = true
-					count = 0
-
+					jump_time = 0.0
+					velocity.y = -jump_speed
+					print(velocity.y)
 					#jump_time = 0.0	
 						
-				if is_jumping :
+				if is_jumping and is_jumping_started==false :
 					if record_movement[time_frame][1]=="jump":# and jump_time < max_jump_time:
 						#velocity.y = -jump_speed #record_movement[time_frame][0].y
 						#jump_time += delta
+						pass
 						velocity.y = -jump_speed
 						#print(velocity.y )
 			

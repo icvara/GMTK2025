@@ -35,6 +35,7 @@ signal reset_loop
 var direction = Vector2(0,0)
 var isdashing = false
 var is_jumping_started = false
+var is_falling = false
 
 #monster intraction
 var alive = true
@@ -103,22 +104,27 @@ func _physics_process(delta: float) -> void:
 			direction.x = -1
 			$AnimatedSprite2D.flip_h = false
 	
-	
+		'if is_falling and is_on_floor():
+			is_falling =false
+			$AnimatedSprite2D.play("jump_landing")
+			await get_tree().create_timer(1.).timeout'
 	
 		if direction.x == 0  and is_on_floor() and is_jumping_started ==false:
 			$AnimatedSprite2D.play("default")
-		elif is_on_floor() and is_jumping ==false:
+		elif is_on_floor() and is_jumping_started ==false:
 			$AnimatedSprite2D.play("walk")
 		
 		#move with more lag
 		#velocity.x = moving_speed*direction.x
-		if direction.x != 0:
-			velocity.x = lerp(velocity.x,moving_speed*direction.x,acceleration)
-		else:
-			velocity.x = lerp(velocity.x,0.0,friction)
-		#RECORD PART
-		if start_recording:
-			ACTION ="move"
+		if is_jumping_started == false:
+
+			if direction.x != 0:
+				velocity.x = lerp(velocity.x,moving_speed*direction.x,acceleration)
+			else:
+				velocity.x = lerp(velocity.x,0.0,friction)
+			#RECORD PART
+			if start_recording:
+				ACTION ="move"
 
 		#JUMP
 		#if is_on_floor()==false:
@@ -130,15 +136,19 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			is_jumping_started = true
 			$AnimatedSprite2D.play("jump_0")
-			#await get_tree().create_timer(1).timeout
+			velocity.x = 0
+			if start_recording:
+				ACTION ="start_jump"
+			await get_tree().create_timer(0.2).timeout
+			is_jumping_started = false
 			is_jumping = true
 			jump_time = 0.0
+			velocity.y = -jump_speed
+
 			#velocity.y = -jump_speed
 
-		if Input.is_action_pressed("jump") and is_jumping:
-				if jump_time < max_jump_time:
-				#if count < 50:
-
+		if Input.is_action_pressed("jump") and is_jumping and is_jumping_started == false :
+				if jump_time < max_jump_time:				
 					velocity.y = -jump_speed
 					jump_time += delta
 					if start_recording:
@@ -146,13 +156,15 @@ func _physics_process(delta: float) -> void:
 
 				else:
 					is_jumping = false
-					#$AnimatedSprite2D.play("jump_fall")
+					$AnimatedSprite2D.play("jump_fall")
+					is_falling =true
 
 					if start_recording:
 						ACTION ="stop_jump"
-		if Input.is_action_just_released("jump"):
+		if Input.is_action_just_released("jump") and is_jumping:
 			is_jumping = false
-					#$AnimatedSprite2D.play("jump_fall")
+			$AnimatedSprite2D.play("jump_fall")
+			is_falling =true
 			if start_recording:
 						ACTION ="stop_jump"
 
