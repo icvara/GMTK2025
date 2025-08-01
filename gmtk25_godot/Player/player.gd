@@ -120,12 +120,17 @@ func _physics_process(delta: float) -> void:
 		if is_jumping and Input.is_action_pressed("jump") and jump_time < max_jump_time:
 			velocity.y = -jump_speed  # sustain upward force
 			jump_time += delta
+			print(velocity.y )
+
 			#RECORD PART
 			if start_recording:
 				record_movement[time_frame]=[velocity,"jump"]
 				time_frame += 1
 		elif not Input.is_action_pressed("jump"):
 			is_jumping = false
+			if start_recording:
+				record_movement[time_frame]=[velocity,"move"]
+				time_frame += 1
 				
 		if Input.is_action_just_pressed("dash"):
 			velocity.x = 4*velocity.x 

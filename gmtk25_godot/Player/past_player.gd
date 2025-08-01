@@ -38,16 +38,18 @@ func _physics_process(delta: float) -> void:
 	if alive:
 		if time_frame < record_movement.size():
 			if isdashing==false:
+				velocity.y += gravity *delta
+
 				velocity.x = record_movement[time_frame][0].x
 				
 				if record_movement[time_frame][1]=="jump" and is_on_floor():
 					is_jumping = true
-					jump_time = 0.0
-					
-				if record_movement[time_frame][1]=="jump" and jump_time < max_jump_time:
-					velocity.y = record_movement[time_frame][0].y
+					jump_time = 0.0		
+				if is_jumping and record_movement[time_frame][1]=="jump" and jump_time < max_jump_time:
+					velocity.y = -jump_speed #record_movement[time_frame][0].y
 					jump_time += delta
-				elif record_movement[time_frame][1]=="jump":
+					print(velocity.y )
+				elif record_movement[time_frame][1]!="jump":
 					is_jumping = false
 
 
@@ -73,7 +75,6 @@ func _physics_process(delta: float) -> void:
 		
 
 			
-			velocity.y += gravity *delta
 			time_frame += 1
 			
 			'for c in get_slide_collision_count():
