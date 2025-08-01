@@ -18,6 +18,7 @@ moving_speed = 600
 projectile = ExtResource("2_k53q1")
 friction = 0.6
 acceleration = 0.1
+bounce_strength = 8
 past_1 = ExtResource("2_btcbx")
 
 [node name="UI_LIFE" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_gwnis")]

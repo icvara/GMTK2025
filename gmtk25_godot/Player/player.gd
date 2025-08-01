@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var projectile :PackedScene
 @export_range(0.0,1.0) var friction = 0.1
 @export_range(0.0,1.0) var acceleration = 0.25
+@export var bounce_strength = 100
+
 
 @export_group("Past_player")
 @export var past_1 :PackedScene
@@ -132,6 +134,13 @@ func _physics_process(delta: float) -> void:
 		#var collision_info = move_and_collide(velocity)
 		#if collision_info:
 			#velocity = velocity.bounce(collision_info.get_normal())
+	#var collision_info = move_and_collide(velocity * delta)
+	for c in get_slide_collision_count():
+		var col = get_slide_collision(c)
+		if col.get_collider().is_in_group("player"):
+			velocity.x = velocity.bounce(col.get_normal()).x * bounce_strength
+		
+
 	move_and_slide()
 
 	if Input.is_action_just_pressed("use"):
