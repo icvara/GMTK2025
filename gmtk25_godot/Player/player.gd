@@ -34,7 +34,7 @@ signal reset_loop
 #movement
 var direction = Vector2(0,0)
 var isdashing = false
-
+var is_jumping_started = false
 
 #monster intraction
 var alive = true
@@ -98,17 +98,18 @@ func _physics_process(delta: float) -> void:
 		#left-right
 		if Input.is_action_pressed("right"):
 			direction.x = 1
-			$AnimatedSprite2D.flip_h = true
-			
+			$AnimatedSprite2D.flip_h = true	
 		if Input.is_action_pressed("left"):
 			direction.x = -1
 			$AnimatedSprite2D.flip_h = false
 	
-		if direction.x == 0:
+	
+	
+		if direction.x == 0  and is_on_floor() and is_jumping_started ==false:
 			$AnimatedSprite2D.play("default")
-		elif is_on_floor() and is_jumping == false:
+		elif is_on_floor() and is_jumping ==false:
 			$AnimatedSprite2D.play("walk")
-		d
+		
 		#move with more lag
 		#velocity.x = moving_speed*direction.x
 		if direction.x != 0:
@@ -127,27 +128,33 @@ func _physics_process(delta: float) -> void:
 
 # Handle jump logic
 		if Input.is_action_just_pressed("jump") and is_on_floor():
+			is_jumping_started = true
+			$AnimatedSprite2D.play("jump_0")
+			#await get_tree().create_timer(1).timeout
 			is_jumping = true
 			jump_time = 0.0
-			$AnimatedSprite2D.play("jump_0")
-
 			#velocity.y = -jump_speed
 
 		if Input.is_action_pressed("jump") and is_jumping:
-			if jump_time < max_jump_time:
-			#if count < 50:
+				if jump_time < max_jump_time:
+				#if count < 50:
 
-				velocity.y = -jump_speed
-				jump_time += delta
-				if start_recording:
-					ACTION ="jump"
+					velocity.y = -jump_speed
+					jump_time += delta
+					if start_recording:
+						ACTION ="jump"
 
-			else:
-				is_jumping = false
-				$AnimatedSprite2D.play("jump_fall")
+				else:
+					is_jumping = false
+					#$AnimatedSprite2D.play("jump_fall")
 
-				if start_recording:
-					ACTION ="stop_jump"
+					if start_recording:
+						ACTION ="stop_jump"
+		if Input.is_action_just_released("jump"):
+			is_jumping = false
+					#$AnimatedSprite2D.play("jump_fall")
+			if start_recording:
+						ACTION ="stop_jump"
 
 					#record_movement.append([velocity, "stop_jump"])
 
