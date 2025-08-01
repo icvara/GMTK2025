@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://b1qd7t1dnl4ec"]
+[gd_scene load_steps=10 format=4 uid="uid://b1qd7t1dnl4ec"]
 
 [ext_resource type="TileSet" uid="uid://bcx1nxuurly25" path="res://Assets/tileset/protype_tileset.tres" id="1_fevtq"]
 [ext_resource type="PackedScene" uid="uid://bvmwfn05o86yj" path="res://Player/player.tscn" id="2_wpcyh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://8c77poh1vmtf" path="res://World/Level0/door_to_next_level.gd" id="5_hjwai"]
 [ext_resource type="PackedScene" uid="uid://cjgbsyk0hekxr" path="res://World/room/event_loop_room.tscn" id="6_34f2h"]
 [ext_resource type="PackedScene" uid="uid://hdwiww3bkfkc" path="res://World/door.tscn" id="7_vk8vr"]
+[ext_resource type="PackedScene" uid="uid://b8owreyjwhjs2" path="res://spike_ennemy.tscn" id="8_4adwr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g08tj"]
 size = Vector2(59, 98)
@@ -20,11 +21,6 @@ tile_set = ExtResource("1_fevtq")
 
 [node name="Player" parent="." instance=ExtResource("2_wpcyh")]
 position = Vector2(401, 642)
-jump_speed = 750
-max_jump_time = 0.25
-gravity = 4000
-max_velocity = 2000
-time_past = 5.0
 
 [node name="UI" parent="." instance=ExtResource("3_ydok3")]
 
@@ -184,6 +180,9 @@ position = Vector2(657, 227)
 
 [node name="Door3" parent="room" instance=ExtResource("7_vk8vr")]
 position = Vector2(657, 383)
+
+[node name="Spike_ennemy" parent="." instance=ExtResource("8_4adwr")]
+position = Vector2(114, 629)
 
 [connection signal="body_entered" from="Door_to_next_level" to="Door_to_next_level" method="_on_body_entered"]
 [connection signal="button_down" from="Door_to_next_level/VBoxContainer/Button" to="Door_to_next_level" method="_on_button_button_down"]

@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://b8owreyjwhjs2"]
+
+[ext_resource type="Texture2D" uid="uid://8s3d3su004r" path="res://Assets/spike_ennemy_sprite_sheet1.png" id="1_p2cve"]
+[ext_resource type="Script" uid="uid://cm4cn5gxgayya" path="res://animated_sprite_2d_spike_ennemy.gd" id="2_1n0or"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ntos"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooi8v"]
+atlas = ExtResource("1_p2cve")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsuqs"]
+atlas = ExtResource("1_p2cve")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmfgo"]
+atlas = ExtResource("1_p2cve")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho4c3"]
+atlas = ExtResource("1_p2cve")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5syh"]
+atlas = ExtResource("1_p2cve")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5y0kk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooi8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsuqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmfgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ho4c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5syh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_huxkn"]
+radius = 32.0
+
+[sub_resource type="Animation" id="Animation_ehy8j"]
+resource_name = "spike_attack"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s0lvk"]
+_data = {
+&"spike_attack": SubResource("Animation_ehy8j")
+}
+
+[node name="Spike_ennemy" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0ntos")
+
+[node name="AnimatedSprite2D_spikeEnnemy" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5y0kk")
+frame = 1
+frame_progress = 0.518266
+script = ExtResource("2_1n0or")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_huxkn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_s0lvk")
+}
+
+[connection signal="body_entered" from="Area2D" to="AnimatedSprite2D_spikeEnnemy" method="_on_area_2d_body_entered"]
