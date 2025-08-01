@@ -166,9 +166,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
-size = Vector2(7, 26)
+size = Vector2(25, 20)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(0, -4)
 collision_layer = 2
 script = ExtResource("1_4ntmi")
 moving_speed = 600
@@ -179,6 +180,7 @@ bounce_strength = 8
 past_1 = ExtResource("2_btcbx")
 
 [node name="UI_LIFE" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_gwnis")]
+visible = false
 player = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -223,16 +225,20 @@ script = ExtResource("7_vtle1")
 
 [node name="kick_area" type="Area2D" parent="kick_center"]
 position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kick_center/kick_area"]
-position = Vector2(-12.5, 3)
+position = Vector2(-21.5, 2)
 shape = SubResource("RectangleShape2D_fhl08")
 
 [node name="ColorRect" type="ColorRect" parent="kick_center/kick_area"]
-offset_left = -16.0
-offset_top = -10.0
+visible = false
+offset_left = -34.0
+offset_top = -8.0
 offset_right = -9.0
-offset_bottom = 16.0
+offset_bottom = 12.0
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]

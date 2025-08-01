@@ -23,7 +23,7 @@ var time_frame = 0
 var alive = true
 var past_id = 1
 var isdashing = false
-
+var last_dir = 1
 var max_time = 5
 var starting_position = Vector2(0,0)
 var is_jumping_started =false
@@ -35,9 +35,9 @@ func _ready() -> void:
 	$Timer.start(max_time)
 	time_frame = 0
 	$Label.text = str(past_id)
-	await get_tree().create_timer(1.).timeout	
-	set_collision_layer_value(1,true)
-	set_collision_layer_value(2,true)
+	#await get_tree().create_timer(1.).timeout	
+	#set_collision_layer_value(1,true)
+	#set_collision_layer_value(2,true)
 
 	
 func _physics_process(delta: float) -> void:
@@ -50,8 +50,10 @@ func _physics_process(delta: float) -> void:
 				
 				if velocity.x <0:
 					$AnimatedSprite2D.flip_h = false
+					last_dir = -1
 				if velocity.x >0:
 					$AnimatedSprite2D.flip_h = true
+					last_dir = 1
 				if velocity.x == 0  and is_on_floor() and is_jumping_started ==false:
 					$AnimatedSprite2D.play("default")
 				elif is_on_floor() and is_jumping_started ==false:
@@ -87,6 +89,18 @@ func _physics_process(delta: float) -> void:
 				
 				if record_movement[time_frame][1]=="rock":
 					Transform_in_rock()
+
+
+				if record_movement[time_frame][1]=="kick":
+					$kick_center.kick()
+					var new_rotation = Vector2(-record_movement[time_frame][2].x,record_movement[time_frame][2].y).angle()
+				
+					if record_movement[time_frame][2] == Vector2(0,0) :
+						$kick_center.rotation = Vector2(-last_dir,0).angle()
+					else:
+						$kick_center.rotation = new_rotation
+						$kick_center.last_rotation = new_rotation
+					$kick_center.kick()
 
 				if record_movement[time_frame][1]=="use":
 					var n_projectile = projectile.instantiate()
@@ -134,7 +148,7 @@ func Transform_in_rock():
 func Kill():
 	alive = false
 	modulate = Color(1,1,1,0.2)
-	set_collision_layer_value(1,false)
+	#set_collision_layer_value(1,false)
 	#set_collision_layer_value(2,false)
 	#$Timer.stop()
 
@@ -146,11 +160,11 @@ func init_past_loop():
 	time_frame = 0
 	$Timer.start(max_time)
 	position = starting_position
-	set_collision_layer_value(1,false)
+	'set_collision_layer_value(1,false)
 	#set_collision_layer_value(2,false)
 	await get_tree().create_timer(1.).timeout	
 	set_collision_layer_value(1,true)
-	#set_collision_layer_value(2,true)
+	#set_collision_layer_value(2,true)'
 
 
 func _on_timer_timeout() -> void:

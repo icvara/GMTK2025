@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://jn18vmulh7f5"]
+[gd_scene load_steps=21 format=3 uid="uid://jn18vmulh7f5"]
 
 [ext_resource type="Script" uid="uid://darrtfc41r2ya" path="res://Player/past_player.gd" id="1_65lp3"]
 [ext_resource type="Texture2D" uid="uid://wbsm41042k22" path="res://Assets/Prototype_art/player_bloc2.png" id="2_wuc3v"]
 [ext_resource type="Texture2D" uid="uid://djoit85qdyew5" path="res://Assets/Prototype_art/player_bloc1.png" id="3_wuc3v"]
 [ext_resource type="Texture2D" uid="uid://cgkvb6fboy30c" path="res://Assets/player/bunny-Sheet.png" id="4_078cs"]
+[ext_resource type="Script" uid="uid://c3txi511ab0rk" path="res://Player/kick_center.gd" id="5_yllah"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_078cs"]
 
@@ -115,6 +116,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yllah"]
+size = Vector2(25, 20)
+
 [node name="Past_Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_65lp3")
@@ -151,6 +155,26 @@ wait_time = 0.1
 modulate = Color(1, 0.21, 0.21, 1)
 self_modulate = Color(1, 1, 1, 0.678431)
 sprite_frames = SubResource("SpriteFrames_g63ky")
+
+[node name="kick_center" type="Node2D" parent="."]
+position = Vector2(0, 4)
+script = ExtResource("5_yllah")
+
+[node name="kick_area" type="Area2D" parent="kick_center"]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kick_center/kick_area"]
+position = Vector2(-21.5, 0)
+shape = SubResource("RectangleShape2D_yllah")
+
+[node name="ColorRect" type="ColorRect" parent="kick_center/kick_area"]
+visible = false
+offset_left = -34.0
+offset_top = -10.0
+offset_right = -9.0
+offset_bottom = 10.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]

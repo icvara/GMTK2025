@@ -28,8 +28,10 @@ var last_record_id = 0
 var start_recording = false
 var LP = 3
 var ACTION := ""
+var last_dir = 1
 signal reset_loop
-
+var kick_dir_x = 0
+var kick_dir_y = 0 
 
 #movement
 var direction = Vector2(0,0)
@@ -102,9 +104,11 @@ func _physics_process(delta: float) -> void:
 			#left-right
 			if Input.is_action_pressed("right"):
 				direction.x = 1
+				last_dir = 1
 				$AnimatedSprite2D.flip_h = true	
 			if Input.is_action_pressed("left"):
 				direction.x = -1
+				last_dir = -1
 				$AnimatedSprite2D.flip_h = false
 		
 			'if is_falling and is_on_floor():
@@ -172,34 +176,32 @@ func _physics_process(delta: float) -> void:
 				if start_recording:
 							ACTION ="stop_jump"
 
-						#record_movement.append([velocity, "stop_jump"])
+			kick_dir_x = Input.get_action_strength("right") - Input.get_action_strength("left")
+			kick_dir_y = Input.get_action_strength("up") - Input.get_action_strength("down")
+			if Input.is_action_just_pressed("kick"):			
+				var new_rotation = Vector2(-kick_dir_x,kick_dir_y).angle()
+				
+				if Vector2(-kick_dir_x,kick_dir_y) == Vector2(0,0) :
+						$kick_center.rotation = Vector2(-last_dir,0).angle()
+				else:
+					$kick_center.rotation = new_rotation
+					$kick_center.last_rotation = new_rotation
+				$kick_center.kick()
+				if start_recording:
+					ACTION = "kick"
+			
+			if Input.is_action_just_pressed("use2"):
+				var n_projectile = projectile.instantiate()
+				n_projectile.global_position = position + Vector2(100,0)
+				#n_projectile.direction = (get_global_mouse_position() - global_position).normalized()
+				n_projectile.linear_velocity = (get_global_mouse_position() - global_position).normalized()* 800
+				get_tree().current_scene.add_child(n_projectile)
+				if start_recording:
+					ACTION = "use"
 
-	# Always record once per frame
-
-			#if Input.is_action_pressed("jump") and is_on_floor():
-				#if start_recording:
-					#record_movement[time_frame]=[velocity,"jump"]
-					#time_frame += 1
-				#is_jumping = true
-				#jump_time = 0.0
-				## Continue jump while holding
-			#if is_jumping and Input.is_action_pressed("jump") and jump_time < max_jump_time:
-				#velocity.y = -jump_speed  # sustain upward force
-				#jump_time += delta
-				#print(velocity.y )
-	#
-				##RECORD PART
-				#if start_recording:
-					#record_movement[time_frame]=[velocity,"jump"]
-					#time_frame += 1
-			#else :
-				#is_jumping = false
-			#if Input.is_action_pressed("jump"):
-				#if start_recording:
-					#record_movement[time_frame]=[velocity,"jump"]
-					#time_frame += 1
+			
 					
-			if Input.is_action_just_pressed("dash"):
+			if Input.is_action_just_pressed("dash2"):
 				velocity.x = 4*velocity.x 
 				velocity.y = 0
 				isdashing = true
@@ -209,18 +211,11 @@ func _physics_process(delta: float) -> void:
 					ACTION = "dash"
 					
 					
-			#if Input.is_action_just_pressed("jump"):
-				#print("jumped") 
-				#print(is_on_floor())
-			#print(velocity)
-			#var collision_info = move_and_collide(velocity)
-			#if collision_info:
-				#velocity = velocity.bounce(collision_info.get_normal())
-		#var collision_info = move_and_collide(velocity * delta)
-		for c in get_slide_collision_count():
+	
+		'for c in get_slide_collision_count():
 			var col = get_slide_collision(c)
 			if col.get_collider().is_in_group("player"):
-				velocity.x = velocity.bounce(col.get_normal()).x * bounce_strength
+				velocity.x = velocity.bounce(col.get_normal()).x * bounce_strength'
 		
 	velocity.y += gravity *delta
 	external_velocity.x = lerp(external_velocity.x,0.0,external_friction)
@@ -229,24 +224,16 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity + external_velocity
 	velocity = Vector2(clamp(velocity.x,-max_velocity,max_velocity),clamp(velocity.y,-max_velocity,max_velocity))
 	if start_recording:
-		record_movement.append([velocity,ACTION])
+		record_movement.append([velocity,ACTION,Vector2(kick_dir_x,kick_dir_y)])
 		time_frame += 1
 	move_and_slide()
-
-	if Input.is_action_just_pressed("use"):
-		var n_projectile = projectile.instantiate()
-		n_projectile.global_position = position + Vector2(100,0)
-		#n_projectile.direction = (get_global_mouse_position() - global_position).normalized()
-		n_projectile.linear_velocity = (get_global_mouse_position() - global_position).normalized()* 800
-		get_tree().current_scene.add_child(n_projectile)
-		if start_recording:
-			ACTION = "use"
 	
 	if Input.is_action_just_pressed("retry"):
 		if  !start_recording:
 			start_loop()
 		else:
 			end_loop()
+
 
 		
 	'for c in range(0,5):
