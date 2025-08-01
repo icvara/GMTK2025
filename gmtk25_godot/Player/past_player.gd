@@ -14,6 +14,8 @@ var max_velocity = 2000
 
 var projectile :PackedScene
 
+var external_velocity =Vector2(0,0)
+var external_friction = 0.05
 
 #varibale for the record_golem
 var record_movement = []
@@ -111,7 +113,10 @@ func _physics_process(delta: float) -> void:
 				if col.get_collider().is_in_group("player"):
 					velocity.x = velocity.bounce(col.get_normal()).x * bounce_strength'
 		
-			
+			external_velocity.x = lerp(external_velocity.x,0.0,external_friction)
+			external_velocity.y = lerp(external_velocity.y,0.0,external_friction)
+
+			velocity = velocity + external_velocity
 			velocity = Vector2(clamp(velocity.x,-max_velocity,max_velocity),clamp(velocity.y,-max_velocity,max_velocity))
 
 			move_and_slide()
@@ -137,7 +142,7 @@ func Kill():
 func init_past_loop():
 	alive = true
 	modulate = Color(1,1,1,0.8)
-
+	external_velocity =Vector2(0,0)
 	time_frame = 0
 	$Timer.start(max_time)
 	position = starting_position

@@ -36,10 +36,11 @@ var direction = Vector2(0,0)
 var isdashing = false
 var is_jumping_started = false
 var is_falling = false
-
+var is_pushed = false
+var external_velocity =Vector2(0,0)
 #monster intraction
 var alive = true
-
+var external_friction = 0.05
 
 var count = 0
 
@@ -69,7 +70,7 @@ func start_loop():
 func end_loop():
 	start_recording = false
 	time_frame = 0
-
+	external_velocity =Vector2(0,0)
 	position = starting_position
 	add_new_record()
 	reset_loop.emit()
@@ -222,7 +223,10 @@ func _physics_process(delta: float) -> void:
 				velocity.x = velocity.bounce(col.get_normal()).x * bounce_strength
 		
 	velocity.y += gravity *delta
+	external_velocity.x = lerp(external_velocity.x,0.0,external_friction)
+	external_velocity.y = lerp(external_velocity.y,0.0,external_friction)
 
+	velocity = velocity + external_velocity
 	velocity = Vector2(clamp(velocity.x,-max_velocity,max_velocity),clamp(velocity.y,-max_velocity,max_velocity))
 	if start_recording:
 		record_movement.append([velocity,ACTION])
@@ -292,8 +296,8 @@ func Kill():
 		await get_tree().create_timer(1.5).timeout
 		end_loop()
 		$UI_LIFE.Update()
-		if LP <= 0:
-			get_tree().change_scene_to_file("res://Menus/start_menu.tscn")
+		#if LP <= 0:
+			#get_tree().change_scene_to_file("res://Menus/start_menu.tscn")
 
 
 func _on_timer_timeout() -> void:

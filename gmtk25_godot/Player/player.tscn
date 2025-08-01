@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bvmwfn05o86yj"]
+[gd_scene load_steps=29 format=3 uid="uid://bvmwfn05o86yj"]
 
 [ext_resource type="Script" uid="uid://db7xmfb528gh4" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://wbsm41042k22" path="res://Assets/Prototype_art/player_bloc2.png" id="1_l8h54"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c0lkdknqo45ay" path="res://Player/projectile.tscn" id="2_k53q1"]
 [ext_resource type="PackedScene" uid="uid://dkr23ytvjjaw7" path="res://Player/ui_life.tscn" id="3_gwnis"]
 [ext_resource type="Texture2D" uid="uid://cgkvb6fboy30c" path="res://Assets/player/bunny-Sheet.png" id="6_fhl08"]
+[ext_resource type="Script" uid="uid://c3txi511ab0rk" path="res://Player/kick_center.gd" id="7_vtle1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_btcbx"]
 
@@ -164,6 +165,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
+size = Vector2(7, 26)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_4ntmi")
@@ -175,7 +179,6 @@ bounce_strength = 8
 past_1 = ExtResource("2_btcbx")
 
 [node name="UI_LIFE" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_gwnis")]
-visible = false
 player = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -214,9 +217,22 @@ wait_time = 0.1
 sprite_frames = SubResource("SpriteFrames_gu6f8")
 animation = &"dead"
 
-[node name="kick_area" type="Area2D" parent="."]
+[node name="kick_center" type="Node2D" parent="."]
+position = Vector2(0, 4)
+script = ExtResource("7_vtle1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="kick_area"]
+[node name="kick_area" type="Area2D" parent="kick_center"]
+position = Vector2(0, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kick_center/kick_area"]
+position = Vector2(-12.5, 3)
+shape = SubResource("RectangleShape2D_fhl08")
+
+[node name="ColorRect" type="ColorRect" parent="kick_center/kick_area"]
+offset_left = -16.0
+offset_top = -10.0
+offset_right = -9.0
+offset_bottom = 16.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]
