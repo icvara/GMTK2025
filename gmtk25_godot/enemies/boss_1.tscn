@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://u0d4ckcus72v"]
+[gd_scene load_steps=12 format=3 uid="uid://u0d4ckcus72v"]
 
 [ext_resource type="Script" uid="uid://cbo6idpa1n0at" path="res://enemies/enemy_1.gd" id="1_swyey"]
 [ext_resource type="Script" uid="uid://cixl3foptptsv" path="res://enemies/brain/brain_manager.gd" id="2_swyey"]
 [ext_resource type="Script" uid="uid://cs0866s26scb" path="res://enemies/brain/node_list/attack1.gd" id="5_bwt4o"]
+[ext_resource type="Script" uid="uid://c1ab1eyiiux60" path="res://enemies/brain/node_list/after_attack.gd" id="6_0jaru"]
 [ext_resource type="Script" uid="uid://o4pm3tp5jv5y" path="res://enemies/brain/node_list/idle_boss1.gd" id="6_hrag1"]
 [ext_resource type="Script" uid="uid://dktfbnjghxl84" path="res://enemies/brain/node_list/hurt.gd" id="6_swyey"]
+[ext_resource type="Script" uid="uid://dypxhmoqrk64r" path="res://enemies/brain/node_list/dead.gd" id="7_hrag1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xph0f"]
 size = Vector2(258.5, 195)
@@ -23,7 +25,9 @@ script = ExtResource("1_swyey")
 
 [node name="attack_area" type="Area2D" parent="."]
 visible = false
+collision_layer = 0
 collision_mask = 2
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
 position = Vector2(65.75, 33.5)
@@ -41,13 +45,6 @@ offset_right = 128.0
 offset_bottom = 128.0
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = 8.0
-offset_right = 120.0
-offset_bottom = 14.0
-color = Color(1, 0.15, 0.15, 1)
-metadata/_edit_use_anchors_ = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(64.25, 65.25)
 shape = SubResource("RectangleShape2D_jotph")
@@ -58,7 +55,7 @@ initial_state = NodePath("idle_boss1")
 
 [node name="attack1" type="Node" parent="Brain" node_paths=PackedStringArray("next_state", "attack_area")]
 script = ExtResource("5_bwt4o")
-next_state = NodePath("../idle_boss1")
+next_state = NodePath("../after_attack")
 attack_area = NodePath("../../attack_area")
 metadata/_custom_type_script = "uid://cs0866s26scb"
 
@@ -71,6 +68,16 @@ metadata/_custom_type_script = "uid://dktfbnjghxl84"
 script = ExtResource("6_hrag1")
 metadata/_custom_type_script = "uid://o4pm3tp5jv5y"
 
+[node name="after_attack" type="Node" parent="Brain" node_paths=PackedStringArray("damage_area", "next_state")]
+script = ExtResource("6_0jaru")
+damage_area = NodePath("../../damage_area")
+next_state = NodePath("../idle_boss1")
+metadata/_custom_type_script = "uid://c1ab1eyiiux60"
+
+[node name="dead" type="Node" parent="Brain"]
+script = ExtResource("7_hrag1")
+metadata/_custom_type_script = "uid://dypxhmoqrk64r"
+
 [node name="Detection_area" type="Area2D" parent="."]
 collision_mask = 3
 
@@ -80,12 +87,20 @@ shape = SubResource("RectangleShape2D_bp5xk")
 debug_color = Color(0.616277, 0.382985, 0.948373, 0.42)
 
 [node name="damage_area" type="Area2D" parent="."]
+visible = false
 collision_layer = 3
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_area"]
 position = Vector2(64, 1.5)
 shape = SubResource("RectangleShape2D_swyey")
+
+[node name="ColorRect2" type="ColorRect" parent="damage_area"]
+offset_left = 8.0
+offset_right = 120.0
+offset_bottom = 14.0
+color = Color(1, 0.15, 0.15, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 modulate = Color(0.15, 1, 0.305833, 1)

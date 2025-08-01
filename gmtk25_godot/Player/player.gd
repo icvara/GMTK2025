@@ -18,6 +18,7 @@ var past_record_list = []
 var max_record = 5
 var last_record_id = 0
 var start_recording = false
+var LP = 3
 
 signal reset_loop
 
@@ -142,7 +143,7 @@ func Spawn_Past_Player(record,i):
 		new_past_player.modulate = Color(1,1,1,0.7)
 		new_past_player.past_id = i
 		new_past_player.starting_position = starting_position
-		new_past_player.max_time =  time_past - $ProgressBar.value
+		new_past_player.max_time =  time_past #- $ProgressBar.value - 1
 		print(new_past_player.max_time)
 		get_parent().add_child(new_past_player)
 		past_player_list.append(new_past_player)
@@ -150,8 +151,14 @@ func Spawn_Past_Player(record,i):
 
 
 func Kill():
-	print(starting_position)
-	position = starting_position
+	#print(starting_position)
+	#position = starting_position
+	end_loop()
+	LP -= 1
+	$UI_LIFE.Update()
+	if LP <= 0:
+		get_tree().change_scene_to_file("res://Menus/start_menu.tscn")
+
 
 func _on_timer_timeout() -> void:
 	$ProgressBar.value -= 1

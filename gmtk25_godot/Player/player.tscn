@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvmwfn05o86yj"]
+[gd_scene load_steps=7 format=3 uid="uid://bvmwfn05o86yj"]
 
 [ext_resource type="Script" uid="uid://db7xmfb528gh4" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://wbsm41042k22" path="res://Assets/Prototype_art/player_bloc2.png" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://jn18vmulh7f5" path="res://Player/past_player.tscn" id="2_btcbx"]
+[ext_resource type="PackedScene" uid="uid://dkr23ytvjjaw7" path="res://Player/ui_life.tscn" id="3_gwnis"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_btcbx"]
 
@@ -13,6 +14,9 @@ radius = 30.0167
 collision_layer = 2
 script = ExtResource("1_4ntmi")
 past_1 = ExtResource("2_btcbx")
+
+[node name="UI_LIFE" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_gwnis")]
+player = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_l8h54")

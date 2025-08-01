@@ -17,7 +17,7 @@ func _ready() -> void:
 	
 	starting_position = position
 	var player = get_parent().get_node("Player")
-	player.reset_loop.connect(on_reset_loop)
+	#player.reset_loop.connect(on_reset_loop)
 
 	
 
@@ -36,8 +36,7 @@ func on_reset_loop():
 func Kill():
 	alive = false
 	velocity = Vector2(0,0)
-	$Brain.on_child_transition($Brain.current_state, $Brain.initial_state.name)
-	modulate = Color(1,1,1,0.2)
+	#modulate = Color(0,0,0,0.2)
 
 
 func getDamage(value):

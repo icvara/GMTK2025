@@ -53,18 +53,23 @@ func Transform_in_rock():
 func Kill():
 	alive = false
 	modulate = Color(1,1,1,0.2)
+	set_collision_layer_value(1,false)
+	#set_collision_layer_value(2,false)
+	#$Timer.stop()
 
 	
 func init_past_loop():
+	alive = true
+	modulate = Color(1,1,1,0.8)
+
 	time_frame = 0
 	$Timer.start(max_time)
 	position = starting_position
 	set_collision_layer_value(1,false)
-	set_collision_layer_value(2,false)
-
+	#set_collision_layer_value(2,false)
 	await get_tree().create_timer(1.).timeout	
 	set_collision_layer_value(1,true)
-	set_collision_layer_value(2,true)
+	#set_collision_layer_value(2,true)
 
 
 func _on_timer_timeout() -> void:
