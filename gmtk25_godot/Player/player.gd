@@ -69,6 +69,7 @@ func start_loop():
 func end_loop():
 	start_recording = false
 	time_frame = 0
+	alive =true
 
 	position = starting_position
 	add_new_record()
@@ -108,13 +109,13 @@ func _physics_process(delta: float) -> void:
 			is_falling =false
 			$AnimatedSprite2D.play("jump_landing")
 			await get_tree().create_timer(1.).timeout'
-	
-		if direction.x == 0  and is_on_floor() and is_jumping_started ==false:
-			$AnimatedSprite2D.play("default")
-		elif is_on_floor() and is_jumping_started ==false:
-			$AnimatedSprite2D.play("walk")
-		if is_on_floor() == false:
-			$AnimatedSprite2D.play("jump_fall")
+		if alive:
+			if direction.x == 0  and is_on_floor() and is_jumping_started ==false:
+				$AnimatedSprite2D.play("default")
+			elif is_on_floor() and is_jumping_started ==false:
+				$AnimatedSprite2D.play("walk")
+			if is_on_floor() == false:
+				$AnimatedSprite2D.play("jump_fall")
 		
 		#move with more lag
 		#velocity.x = moving_speed*direction.x
@@ -281,11 +282,15 @@ func Kill():
 		time_frame += 1
 	#print(starting_position)
 	#position = starting_position
-	end_loop()
-	LP -= 1
-	$UI_LIFE.Update()
-	if LP <= 0:
-		get_tree().change_scene_to_file("res://Menus/start_menu.tscn")
+	if alive:
+		alive =false
+		LP -= 1
+		$AnimatedSprite2D.play("dead")
+		await get_tree().create_timer(1.5).timeout
+		end_loop()
+		$UI_LIFE.Update()
+		if LP <= 0:
+			get_tree().change_scene_to_file("res://Menus/start_menu.tscn")
 
 
 func _on_timer_timeout() -> void:

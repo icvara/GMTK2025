@@ -7,11 +7,8 @@
 [ext_resource type="Script" uid="uid://8c77poh1vmtf" path="res://World/Level0/door_to_next_level.gd" id="5_hjwai"]
 [ext_resource type="PackedScene" uid="uid://cjgbsyk0hekxr" path="res://World/room/event_loop_room.tscn" id="6_34f2h"]
 [ext_resource type="PackedScene" uid="uid://hdwiww3bkfkc" path="res://World/door.tscn" id="7_vk8vr"]
-<<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://b8owreyjwhjs2" path="res://spike_ennemy.tscn" id="8_4adwr"]
-=======
+
 [ext_resource type="PackedScene" uid="uid://b8owreyjwhjs2" path="res://enemies/spike_ennemy.tscn" id="8_4adwr"]
->>>>>>> 5774204 (kill block)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g08tj"]
 size = Vector2(59, 98)
