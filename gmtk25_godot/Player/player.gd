@@ -2,7 +2,10 @@ extends CharacterBody2D
 
 
 @export var moving_speed = 1000
-@export var jump_speed = 1500
+@export var jump_speed = 750
+@export var max_jump_time: float = 0.25  # seconds you can hold jump
+var jump_time: float = 0.0
+var is_jumping: bool = false
 @export var gravity = 4000
 @export var projectile :PackedScene
 @export_range(0.0,1.0) var friction = 0.1
@@ -111,11 +114,18 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity *delta
 			
 		if Input.is_action_just_pressed("jump") and is_on_floor():
-			velocity.y = -jump_speed
+			is_jumping = true
+			jump_time = 0.0
+			# Continue jump while holding
+		if is_jumping and Input.is_action_pressed("jump") and jump_time < max_jump_time:
+			velocity.y = -jump_speed  # sustain upward force
+			jump_time += delta
 			#RECORD PART
 			if start_recording:
 				record_movement[time_frame]=[velocity,"jump"]
 				time_frame += 1
+		elif not Input.is_action_pressed("jump"):
+			is_jumping = false
 				
 		if Input.is_action_just_pressed("dash"):
 			velocity.x = 4*velocity.x 

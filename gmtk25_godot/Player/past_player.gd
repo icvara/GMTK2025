@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
-
+@export var max_jump_time: float = 0.25  # seconds you can hold jump
+var jump_time: float = 0.0
+var is_jumping: bool = false
 @export var moving_speed = 1000
-@export var jump_speed = 1500
+@export var jump_speed = 750
 @export var gravity = 4000
 @export_range(0.0,1.0) var friction = 0.1
 @export_range(0.0,1.0) var acceleration = 0.25
@@ -39,7 +41,15 @@ func _physics_process(delta: float) -> void:
 				velocity.x = record_movement[time_frame][0].x
 				
 				if record_movement[time_frame][1]=="jump" and is_on_floor():
+					is_jumping = true
+					jump_time = 0.0
+					
+				if record_movement[time_frame][1]=="jump" and jump_time < max_jump_time:
 					velocity.y = record_movement[time_frame][0].y
+					jump_time += delta
+				elif record_movement[time_frame][1]=="jump":
+					is_jumping = false
+
 
 				
 				if record_movement[time_frame][1]=="rock":
