@@ -16,7 +16,7 @@ var projectile :PackedScene
 
 
 #varibale for the record_golem
-var record_movement = {}
+var record_movement = []
 var time_frame = 0
 var alive = true
 var past_id = 1
@@ -45,12 +45,17 @@ func _physics_process(delta: float) -> void:
 				if record_movement[time_frame][1]=="jump" and is_on_floor():
 					is_jumping = true
 					jump_time = 0.0		
-				if is_jumping and record_movement[time_frame][1]=="jump" and jump_time < max_jump_time:
-					velocity.y = -jump_speed #record_movement[time_frame][0].y
-					jump_time += delta
-					print(velocity.y )
-				elif record_movement[time_frame][1]!="jump":
-					is_jumping = false
+				if is_jumping :
+					if record_movement[time_frame][1]=="jump" and jump_time < max_jump_time:
+						#velocity.y = -jump_speed #record_movement[time_frame][0].y
+						#jump_time += delta
+						velocity.y = -jump_speed
+						print(velocity.y )
+						print("bug de ces mkort")
+					else :
+						print ("je saute pas lol")
+						is_jumping = false
+
 
 
 				

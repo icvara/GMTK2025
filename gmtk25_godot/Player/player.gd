@@ -18,7 +18,7 @@ var is_jumping: bool = false
 @export var time_past = 5.0
 
 #varibale for the record_golem
-var record_movement = {}
+var record_movement = []
 var time_frame = 0
 var starting_position = Vector2(0,0)
 var past_player_list = []
@@ -27,6 +27,7 @@ var max_record = 5
 var last_record_id = 0
 var start_recording = false
 var LP = 3
+var jump_action := ""
 
 signal reset_loop
 
@@ -74,7 +75,7 @@ func end_loop():
 	$Timer.stop()
 	$ProgressBar.hide()
 	$ProgressBar.value = time_past
-	record_movement = {}
+	record_movement = []
 
 
 func add_new_record():		
@@ -106,31 +107,55 @@ func _physics_process(delta: float) -> void:
 			velocity.x = lerp(velocity.x,0.0,friction)
 		#RECORD PART
 		if start_recording:
-			record_movement[time_frame]=[velocity,"move"]
+			record_movement.append([velocity,"move"])
 			time_frame += 1
 
 		#JUMP
 		#if is_on_floor()==false:
 		velocity.y += gravity *delta
 			
+		# Decide jump input
+	if Input.is_action_pressed("jump"):
+		jump_action = "jump"
+
+# Handle jump logic
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			is_jumping = true
 			jump_time = 0.0
-			# Continue jump while holding
-		if is_jumping and Input.is_action_pressed("jump") and jump_time < max_jump_time:
-			velocity.y = -jump_speed  # sustain upward force
-			jump_time += delta
-			print(velocity.y )
+			velocity.y = -jump_speed
 
-			#RECORD PART
-			if start_recording:
-				record_movement[time_frame]=[velocity,"jump"]
-				time_frame += 1
-		elif not Input.is_action_pressed("jump"):
+		elif is_jumping and jump_action == "jump" and jump_time < max_jump_time:
+			velocity.y = -jump_speed
+			jump_time += delta
+		else:
 			is_jumping = false
-			if start_recording:
-				record_movement[time_frame]=[velocity,"move"]
-				time_frame += 1
+
+# Always record once per frame
+	if start_recording:
+		record_movement.append([velocity, jump_action])
+		time_frame += 1
+		#if Input.is_action_pressed("jump") and is_on_floor():
+			#if start_recording:
+				#record_movement[time_frame]=[velocity,"jump"]
+				#time_frame += 1
+			#is_jumping = true
+			#jump_time = 0.0
+			## Continue jump while holding
+		#if is_jumping and Input.is_action_pressed("jump") and jump_time < max_jump_time:
+			#velocity.y = -jump_speed  # sustain upward force
+			#jump_time += delta
+			#print(velocity.y )
+#
+			##RECORD PART
+			#if start_recording:
+				#record_movement[time_frame]=[velocity,"jump"]
+				#time_frame += 1
+		#else :
+			#is_jumping = false
+		#if Input.is_action_pressed("jump"):
+			#if start_recording:
+				#record_movement[time_frame]=[velocity,"jump"]
+				#time_frame += 1
 				
 		if Input.is_action_just_pressed("dash"):
 			velocity.x = 4*velocity.x 
@@ -139,7 +164,7 @@ func _physics_process(delta: float) -> void:
 			$dashTimer.start()
 			#RECORD PART
 			if start_recording:
-				record_movement[time_frame]=[velocity,"dash"]
+				record_movement.append([velocity,"dash"])
 				time_frame += 1
 				
 		#if Input.is_action_just_pressed("jump"):
@@ -165,7 +190,7 @@ func _physics_process(delta: float) -> void:
 		n_projectile.linear_velocity = (get_global_mouse_position() - global_position).normalized()* 800
 		get_tree().current_scene.add_child(n_projectile)
 		if start_recording:
-			record_movement[time_frame]=[velocity,"use"]
+			record_movement.append([velocity,"use"])
 			time_frame += 1
 	
 	if Input.is_action_just_pressed("retry"):
@@ -210,7 +235,7 @@ func Spawn_Past_Player(record,i):
 
 func Kill():
 	if start_recording:
-		record_movement[time_frame]=[velocity,"die"]
+		record_movement.append([velocity,"die"])
 		time_frame += 1
 	#print(starting_position)
 	#position = starting_position
