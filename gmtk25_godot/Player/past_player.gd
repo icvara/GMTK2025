@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export var moving_speed = 1000
 @export var jump_speed = 1500
 @export var gravity = 4000
+@export_range(0.0,1.0) var friction = 0.1
+@export_range(0.0,1.0) var acceleration = 0.25
+
 var projectile :PackedScene
 
 

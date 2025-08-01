@@ -13,7 +13,6 @@ radius = 30.0167
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-collision_mask = 3
 script = ExtResource("1_4ntmi")
 projectile = ExtResource("2_k53q1")
 past_1 = ExtResource("2_btcbx")

@@ -5,7 +5,8 @@ extends CharacterBody2D
 @export var jump_speed = 1500
 @export var gravity = 4000
 @export var projectile :PackedScene
-
+@export_range(0.0,1.0) var friction = 0.1
+@export_range(0.0,1.0) var acceleration = 0.25
 
 @export_group("Past_player")
 @export var past_1 :PackedScene
@@ -92,7 +93,12 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("left"):
 			direction.x = -1		
 		
-		velocity.x = moving_speed*direction.x
+		#move with more lag
+		#velocity.x = moving_speed*direction.x
+		if direction.x != 0:
+			velocity.x = lerp(velocity.x,moving_speed*direction.x,acceleration)
+		else:
+			velocity.x = lerp(velocity.x,0.0,friction)
 		#RECORD PART
 		if start_recording:
 			record_movement[time_frame]=[velocity,"move"]
