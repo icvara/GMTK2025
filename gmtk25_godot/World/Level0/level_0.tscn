@@ -20,6 +20,11 @@ tile_set = ExtResource("1_fevtq")
 
 [node name="Player" parent="." instance=ExtResource("2_wpcyh")]
 position = Vector2(401, 642)
+jump_speed = 750
+max_jump_time = 0.25
+gravity = 4000
+max_velocity = 2000
+time_past = 5.0
 
 [node name="UI" parent="." instance=ExtResource("3_ydok3")]
 
