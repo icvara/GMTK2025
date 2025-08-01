@@ -69,7 +69,6 @@ func start_loop():
 func end_loop():
 	start_recording = false
 	time_frame = 0
-	alive =true
 
 	position = starting_position
 	add_new_record()
@@ -80,6 +79,7 @@ func end_loop():
 	$ProgressBar.hide()
 	$ProgressBar.value = time_past
 	record_movement = []
+	alive =true
 
 
 func add_new_record():		
@@ -93,134 +93,136 @@ func add_new_record():
 	$Label.text = str(last_record_id)
 
 func _physics_process(delta: float) -> void:
-	
-	if isdashing==false:
-		direction = Vector2(0,0)
+	if alive:
 
-		#left-right
-		if Input.is_action_pressed("right"):
-			direction.x = 1
-			$AnimatedSprite2D.flip_h = true	
-		if Input.is_action_pressed("left"):
-			direction.x = -1
-			$AnimatedSprite2D.flip_h = false
-	
-		'if is_falling and is_on_floor():
-			is_falling =false
-			$AnimatedSprite2D.play("jump_landing")
-			await get_tree().create_timer(1.).timeout'
-		if alive:
-			if direction.x == 0  and is_on_floor() and is_jumping_started ==false:
-				$AnimatedSprite2D.play("default")
-			elif is_on_floor() and is_jumping_started ==false:
-				$AnimatedSprite2D.play("walk")
-			if is_on_floor() == false:
-				$AnimatedSprite2D.play("jump_fall")
+		if isdashing==false:
+			direction = Vector2(0,0)
+
+			#left-right
+			if Input.is_action_pressed("right"):
+				direction.x = 1
+				$AnimatedSprite2D.flip_h = true	
+			if Input.is_action_pressed("left"):
+				direction.x = -1
+				$AnimatedSprite2D.flip_h = false
 		
-		#move with more lag
-		#velocity.x = moving_speed*direction.x
-		if is_jumping_started == false:
+			'if is_falling and is_on_floor():
+				is_falling =false
+				$AnimatedSprite2D.play("jump_landing")
+				await get_tree().create_timer(1.).timeout'
+			if alive:
+				if direction.x == 0  and is_on_floor() and is_jumping_started ==false:
+					$AnimatedSprite2D.play("default")
+				elif is_on_floor() and is_jumping_started ==false:
+					$AnimatedSprite2D.play("walk")
+				if is_on_floor() == false:
+					$AnimatedSprite2D.play("jump_fall")
+			
+			#move with more lag
+			#velocity.x = moving_speed*direction.x
+			if is_jumping_started == false:
 
-			if direction.x != 0:
-				velocity.x = lerp(velocity.x,moving_speed*direction.x,acceleration)
-			else:
-				velocity.x = lerp(velocity.x,0.0,friction)
-			#RECORD PART
-			if start_recording:
-				ACTION ="move"
+				if direction.x != 0:
+					velocity.x = lerp(velocity.x,moving_speed*direction.x,acceleration)
+				else:
+					velocity.x = lerp(velocity.x,0.0,friction)
+				#RECORD PART
+				if start_recording:
+					ACTION ="move"
 
-		#JUMP
-		#if is_on_floor()==false:
-		velocity.y += gravity *delta
+			#JUMP
+			#if is_on_floor()==false:
 			
 
 
-# Handle jump logic
-		if Input.is_action_just_pressed("jump") and is_on_floor():
-			is_jumping_started = true
-			$AnimatedSprite2D.play("jump_0")
-			velocity.x = 0
-			if start_recording:
-				ACTION ="start_jump"
-			await get_tree().create_timer(0.2).timeout
-			is_jumping_started = false
-			is_jumping = true
-			jump_time = 0.0
-			velocity.y = -jump_speed
+	# Handle jump logic
+			if Input.is_action_just_pressed("jump") and is_on_floor():
+				is_jumping_started = true
+				$AnimatedSprite2D.play("jump_0")
+				velocity.x = 0
+				if start_recording:
+					ACTION ="start_jump"
+				await get_tree().create_timer(0.2).timeout
+				is_jumping_started = false
+				is_jumping = true
+				jump_time = 0.0
+				velocity.y = -jump_speed
 
-			#velocity.y = -jump_speed
+				#velocity.y = -jump_speed
 
-		if Input.is_action_pressed("jump") and is_jumping and is_jumping_started == false :
-				if jump_time < max_jump_time:				
-					velocity.y = -jump_speed
-					jump_time += delta
-					if start_recording:
-						ACTION ="jump"
+			if Input.is_action_pressed("jump") and is_jumping and is_jumping_started == false :
+					if jump_time < max_jump_time:				
+						velocity.y = -jump_speed
+						jump_time += delta
+						if start_recording:
+							ACTION ="jump"
 
-				else:
-					is_jumping = false
-					$AnimatedSprite2D.play("jump_fall")
-					is_falling =true
+					else:
+						is_jumping = false
+						$AnimatedSprite2D.play("jump_fall")
+						is_falling =true
 
-					if start_recording:
-						ACTION ="stop_jump"
-		if Input.is_action_just_released("jump") and is_jumping:
-			is_jumping = false
-			$AnimatedSprite2D.play("jump_fall")
-			is_falling =true
-			if start_recording:
-						ACTION ="stop_jump"
+						if start_recording:
+							ACTION ="stop_jump"
+			if Input.is_action_just_released("jump") and is_jumping:
+				is_jumping = false
+				$AnimatedSprite2D.play("jump_fall")
+				is_falling =true
+				if start_recording:
+							ACTION ="stop_jump"
 
-					#record_movement.append([velocity, "stop_jump"])
+						#record_movement.append([velocity, "stop_jump"])
 
-# Always record once per frame
+	# Always record once per frame
 
-		#if Input.is_action_pressed("jump") and is_on_floor():
-			#if start_recording:
-				#record_movement[time_frame]=[velocity,"jump"]
-				#time_frame += 1
-			#is_jumping = true
-			#jump_time = 0.0
-			## Continue jump while holding
-		#if is_jumping and Input.is_action_pressed("jump") and jump_time < max_jump_time:
-			#velocity.y = -jump_speed  # sustain upward force
-			#jump_time += delta
-			#print(velocity.y )
-#
-			##RECORD PART
-			#if start_recording:
-				#record_movement[time_frame]=[velocity,"jump"]
-				#time_frame += 1
-		#else :
-			#is_jumping = false
-		#if Input.is_action_pressed("jump"):
-			#if start_recording:
-				#record_movement[time_frame]=[velocity,"jump"]
-				#time_frame += 1
-				
-		if Input.is_action_just_pressed("dash"):
-			velocity.x = 4*velocity.x 
-			velocity.y = 0
-			isdashing = true
-			$dashTimer.start()
-			#RECORD PART
-			if start_recording:
-				ACTION = "dash"
-				
-				
-		#if Input.is_action_just_pressed("jump"):
-			#print("jumped") 
-			#print(is_on_floor())
-		#print(velocity)
-		#var collision_info = move_and_collide(velocity)
-		#if collision_info:
-			#velocity = velocity.bounce(collision_info.get_normal())
-	#var collision_info = move_and_collide(velocity * delta)
-	for c in get_slide_collision_count():
-		var col = get_slide_collision(c)
-		if col.get_collider().is_in_group("player"):
-			velocity.x = velocity.bounce(col.get_normal()).x * bounce_strength
+			#if Input.is_action_pressed("jump") and is_on_floor():
+				#if start_recording:
+					#record_movement[time_frame]=[velocity,"jump"]
+					#time_frame += 1
+				#is_jumping = true
+				#jump_time = 0.0
+				## Continue jump while holding
+			#if is_jumping and Input.is_action_pressed("jump") and jump_time < max_jump_time:
+				#velocity.y = -jump_speed  # sustain upward force
+				#jump_time += delta
+				#print(velocity.y )
+	#
+				##RECORD PART
+				#if start_recording:
+					#record_movement[time_frame]=[velocity,"jump"]
+					#time_frame += 1
+			#else :
+				#is_jumping = false
+			#if Input.is_action_pressed("jump"):
+				#if start_recording:
+					#record_movement[time_frame]=[velocity,"jump"]
+					#time_frame += 1
+					
+			if Input.is_action_just_pressed("dash"):
+				velocity.x = 4*velocity.x 
+				velocity.y = 0
+				isdashing = true
+				$dashTimer.start()
+				#RECORD PART
+				if start_recording:
+					ACTION = "dash"
+					
+					
+			#if Input.is_action_just_pressed("jump"):
+				#print("jumped") 
+				#print(is_on_floor())
+			#print(velocity)
+			#var collision_info = move_and_collide(velocity)
+			#if collision_info:
+				#velocity = velocity.bounce(collision_info.get_normal())
+		#var collision_info = move_and_collide(velocity * delta)
+		for c in get_slide_collision_count():
+			var col = get_slide_collision(c)
+			if col.get_collider().is_in_group("player"):
+				velocity.x = velocity.bounce(col.get_normal()).x * bounce_strength
 		
+	velocity.y += gravity *delta
+
 	velocity = Vector2(clamp(velocity.x,-max_velocity,max_velocity),clamp(velocity.y,-max_velocity,max_velocity))
 	if start_recording:
 		record_movement.append([velocity,ACTION])
@@ -283,6 +285,7 @@ func Kill():
 	#print(starting_position)
 	#position = starting_position
 	if alive:
+		velocity = Vector2(0,0)
 		alive =false
 		LP -= 1
 		$AnimatedSprite2D.play("dead")
