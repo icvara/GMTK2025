@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh1qul0xtlxas"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kk5hd"]
+size = Vector2(64, 64)
+
+[node name="event_text" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kk5hd")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -56.0
+offset_top = -74.0
+offset_right = 61.0
+offset_bottom = -51.0
+text = "PLACE HOLDER"
