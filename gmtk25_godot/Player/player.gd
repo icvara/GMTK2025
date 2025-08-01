@@ -43,17 +43,27 @@ func _ready() -> void:
 		past_record_list.append({})
 
 
-func init_loop():
+func start_loop():
+		#position = starting_position
+		$Timer.start(1.0)
+		$ProgressBar.show() 
+		starting_position = position
+		start_recording = true
+		#record_movement[time_frame]=[velocity,"rock"]
+		#init_loop()
+
+func end_loop():
 	start_recording = false
 	time_frame = 0
-	$ProgressBar.hide()
-	$ProgressBar.value = time_past
+
 	position = starting_position
 	add_new_record()
 	reset_loop.emit()
 	#Spawn_ALL_Past_Players()
 	Spawn_Past_Player(record_movement,0)
-
+	$Timer.stop()
+	$ProgressBar.hide()
+	$ProgressBar.value = time_past
 	record_movement = {}
 
 
@@ -105,13 +115,8 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	
 	if Input.is_action_just_pressed("retry") and !start_recording:
-		#position = starting_position
-		$Timer.start(1.0)
-		$ProgressBar.show() 
-		starting_position = position
-		start_recording = true
-		#record_movement[time_frame]=[velocity,"rock"]
-		#init_loop()
+		start_loop()
+
 		
 	'for c in range(0,5):
 		if Input.is_action_just_pressed("save"+str(c)):
@@ -137,14 +142,19 @@ func Spawn_Past_Player(record,i):
 		new_past_player.modulate = Color(1,1,1,0.7)
 		new_past_player.past_id = i
 		new_past_player.starting_position = starting_position
-		new_past_player.max_time = time_past
+		new_past_player.max_time =  time_past - $ProgressBar.value
+		print(new_past_player.max_time)
 		get_parent().add_child(new_past_player)
 		past_player_list.append(new_past_player)
 	#currently reinit the save to not have one ghost running trough 5 save 
 
 
+func Kill():
+	print(starting_position)
+	position = starting_position
+
 func _on_timer_timeout() -> void:
 	$ProgressBar.value -= 1
 	if $ProgressBar.value <= 0:
 		$Timer.stop()
-		init_loop()
+		end_loop()

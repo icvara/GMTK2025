@@ -22,4 +22,4 @@ position = Vector2(-378, -79)
 [node name="UI" parent="." instance=ExtResource("3_iecw2")]
 
 [node name="Boss_1" parent="." instance=ExtResource("4_fi57n")]
-position = Vector2(845, 616)
+position = Vector2(274, 770)

@@ -1,8 +1,9 @@
 extends brain_node
 class_name hurt
 
-@export var damage_area : Node2D
+#@export var damage_area : Node2D
 @export var invu_frame_duration = 0.5
+@export var next_state : brain_node
 
 var isInvuFrame = false
 
@@ -14,7 +15,7 @@ func Enter():
 	brain_owner.getDamage(1)
 	await get_tree().create_timer(invu_frame_duration).timeout
 	isInvuFrame = false
-	Transitioned.emit(self, "idle")
+	Transitioned.emit(self, next_state.name)
 
 
 	

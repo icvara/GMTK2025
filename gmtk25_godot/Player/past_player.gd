@@ -21,6 +21,8 @@ func _ready() -> void:
 	$Label.text = str(past_id)
 	await get_tree().create_timer(1.).timeout	
 	set_collision_layer_value(1,true)
+	set_collision_layer_value(2,true)
+
 	
 func _process(delta: float) -> void:
 	if alive:
@@ -57,6 +59,12 @@ func init_past_loop():
 	time_frame = 0
 	$Timer.start(max_time)
 	position = starting_position
+	set_collision_layer_value(1,false)
+	set_collision_layer_value(2,false)
+
+	await get_tree().create_timer(1.).timeout	
+	set_collision_layer_value(1,true)
+	set_collision_layer_value(2,true)
 
 
 func _on_timer_timeout() -> void:
