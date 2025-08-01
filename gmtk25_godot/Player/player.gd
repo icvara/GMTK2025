@@ -27,6 +27,7 @@ signal reset_loop
 
 #movement
 var direction = Vector2(0,0)
+var isdashing = false
 
 
 #monster intraction
@@ -80,41 +81,51 @@ func add_new_record():
 		last_record_id += 1
 	$Label.text = str(last_record_id)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
-	direction = Vector2(0,0)
-	
-	#left-right
-	if Input.is_action_pressed("right"):
-		direction.x = 1
-	if Input.is_action_pressed("left"):
-		direction.x = -1		
-	
-	velocity.x = moving_speed*direction.x
-	#RECORD PART
-	if start_recording:
-		record_movement[time_frame]=[velocity,"move"]
-		time_frame += 1
-
-	#JUMP
-	#if is_on_floor()==false:
-	velocity.y += gravity *delta
+	if isdashing==false:
+		direction = Vector2(0,0)
 		
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = -jump_speed
+		#left-right
+		if Input.is_action_pressed("right"):
+			direction.x = 1
+		if Input.is_action_pressed("left"):
+			direction.x = -1		
+		
+		velocity.x = moving_speed*direction.x
 		#RECORD PART
 		if start_recording:
-			record_movement[time_frame]=[velocity,"jump"]
+			record_movement[time_frame]=[velocity,"move"]
 			time_frame += 1
 
-	#if Input.is_action_just_pressed("jump"):
-		#print("jumped") 
-		#print(is_on_floor())
-	#print(velocity)
-	#var collision_info = move_and_collide(velocity)
-	#if collision_info:
-		#velocity = velocity.bounce(collision_info.get_normal())
-	
+		#JUMP
+		#if is_on_floor()==false:
+		velocity.y += gravity *delta
+			
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = -jump_speed
+			#RECORD PART
+			if start_recording:
+				record_movement[time_frame]=[velocity,"jump"]
+				time_frame += 1
+				
+		if Input.is_action_just_pressed("dash"):
+			velocity.x = 4*velocity.x 
+			velocity.y = 0
+			isdashing = true
+			$dashTimer.start()
+			#RECORD PART
+			if start_recording:
+				record_movement[time_frame]=[velocity,"dash"]
+				time_frame += 1
+				
+		#if Input.is_action_just_pressed("jump"):
+			#print("jumped") 
+			#print(is_on_floor())
+		#print(velocity)
+		#var collision_info = move_and_collide(velocity)
+		#if collision_info:
+			#velocity = velocity.bounce(collision_info.get_normal())
 	move_and_slide()
 
 	if Input.is_action_just_pressed("use"):
@@ -179,3 +190,7 @@ func _on_timer_timeout() -> void:
 	if $ProgressBar.value <= 0:
 		$Timer.stop()
 		end_loop()
+
+
+func _on_dash_timer_timeout() -> void:
+	isdashing = false

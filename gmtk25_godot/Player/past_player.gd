@@ -12,6 +12,7 @@ var record_movement = {}
 var time_frame = 0
 var alive = true
 var past_id = 1
+var isdashing = false
 
 var max_time = 5
 var starting_position = Vector2(0,0)
@@ -25,32 +26,40 @@ func _ready() -> void:
 	set_collision_layer_value(2,true)
 
 	
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if alive:
 		if time_frame < record_movement.size():
-			velocity.x = record_movement[time_frame][0].x
-			
-			if record_movement[time_frame][1]=="jump" and is_on_floor():
-				velocity.y = record_movement[time_frame][0].y
-
-			
-			if record_movement[time_frame][1]=="rock":
-				Transform_in_rock()
-
-			if record_movement[time_frame][1]=="use":
-				var n_projectile = projectile.instantiate()
-				n_projectile.global_position = position + Vector2(100,0)
-				n_projectile.linear_velocity = (get_global_mouse_position() - global_position).normalized()* 800
-				get_tree().current_scene.add_child(n_projectile)
-		
+			if isdashing==false:
+				velocity.x = record_movement[time_frame][0].x
 				
-		else:
-			velocity.x = 0
+				if record_movement[time_frame][1]=="jump" and is_on_floor():
+					velocity.y = record_movement[time_frame][0].y
+
+				
+				if record_movement[time_frame][1]=="rock":
+					Transform_in_rock()
+
+				if record_movement[time_frame][1]=="use":
+					var n_projectile = projectile.instantiate()
+					n_projectile.global_position = position + Vector2(100,0)
+					n_projectile.linear_velocity = (get_global_mouse_position() - global_position).normalized()* 800
+					get_tree().current_scene.add_child(n_projectile)
+				if record_movement[time_frame][1]=="dash":
+					velocity.x = 4*velocity.x 
+					velocity.y = 0
+					isdashing = true
+					$dashTimer.start()
 			
-		velocity.y += gravity *delta
+
+				
+			else:
+				velocity.x = 0
+			
+			velocity.y += gravity *delta
+			time_frame += 1
 
 		move_and_slide()
-		time_frame += 1
+		
 	
 func Transform_in_rock():
 	$Sprite2D.hide()
@@ -82,3 +91,7 @@ func init_past_loop():
 
 func _on_timer_timeout() -> void:
 	init_past_loop()
+
+
+func _on_dash_timer_timeout() -> void:
+	isdashing = false
