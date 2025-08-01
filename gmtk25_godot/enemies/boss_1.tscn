@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://u0d4ckcus72v"]
+[gd_scene load_steps=25 format=3 uid="uid://u0d4ckcus72v"]
 
 [ext_resource type="Script" uid="uid://cbo6idpa1n0at" path="res://enemies/enemy_1.gd" id="1_swyey"]
 [ext_resource type="Texture2D" uid="uid://dcf8bpk8o6lc8" path="res://Assets/ComputerBoss_SpriteSheet1.png" id="2_0jaru"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://o4pm3tp5jv5y" path="res://enemies/brain/node_list/idle_boss1.gd" id="6_hrag1"]
 [ext_resource type="Script" uid="uid://dktfbnjghxl84" path="res://enemies/brain/node_list/hurt.gd" id="6_swyey"]
 [ext_resource type="Script" uid="uid://dypxhmoqrk64r" path="res://enemies/brain/node_list/dead.gd" id="7_hrag1"]
+[ext_resource type="Texture2D" uid="uid://d2f3hpmynt1ui" path="res://Assets/warning_reticle_ComputerBoss1.png" id="9_bwt4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xph0f"]
 size = Vector2(258.5, 195)
@@ -94,7 +95,7 @@ animations = [{
 size = Vector2(127.5, 128.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp5xk"]
-size = Vector2(227, 169)
+size = Vector2(192, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swyey"]
 size = Vector2(110, 11)
@@ -166,9 +167,13 @@ metadata/_custom_type_script = "uid://dypxhmoqrk64r"
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_area"]
-position = Vector2(64, 44)
+position = Vector2(64, 48)
 shape = SubResource("RectangleShape2D_bp5xk")
 debug_color = Color(0.616277, 0.382985, 0.948373, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Detection_area"]
+position = Vector2(64, 48)
+texture = ExtResource("9_bwt4o")
 
 [node name="damage_area" type="Area2D" parent="."]
 visible = false
