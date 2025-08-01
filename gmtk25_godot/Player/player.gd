@@ -99,16 +99,16 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("right"):
 			direction.x = 1
 			$AnimatedSprite2D.flip_h = true
-			$AnimatedSprite2D.play("jump")
+			
 		if Input.is_action_pressed("left"):
 			direction.x = -1
 			$AnimatedSprite2D.flip_h = false
-			$AnimatedSprite2D.play("jump")
 	
 		if direction.x == 0:
 			$AnimatedSprite2D.play("default")
-
-		
+		elif is_on_floor() and is_jumping == false:
+			$AnimatedSprite2D.play("walk")
+		d
 		#move with more lag
 		#velocity.x = moving_speed*direction.x
 		if direction.x != 0:
@@ -129,6 +129,8 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			is_jumping = true
 			jump_time = 0.0
+			$AnimatedSprite2D.play("jump_0")
+
 			#velocity.y = -jump_speed
 
 		if Input.is_action_pressed("jump") and is_jumping:
@@ -142,6 +144,8 @@ func _physics_process(delta: float) -> void:
 
 			else:
 				is_jumping = false
+				$AnimatedSprite2D.play("jump_fall")
+
 				if start_recording:
 					ACTION ="stop_jump"
 
