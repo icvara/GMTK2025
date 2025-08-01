@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://u0d4ckcus72v"]
+[gd_scene load_steps=24 format=3 uid="uid://u0d4ckcus72v"]
 
 [ext_resource type="Script" uid="uid://cbo6idpa1n0at" path="res://enemies/enemy_1.gd" id="1_swyey"]
+[ext_resource type="Texture2D" uid="uid://dcf8bpk8o6lc8" path="res://Assets/ComputerBoss_SpriteSheet1.png" id="2_0jaru"]
 [ext_resource type="Script" uid="uid://cixl3foptptsv" path="res://enemies/brain/brain_manager.gd" id="2_swyey"]
 [ext_resource type="Script" uid="uid://cs0866s26scb" path="res://enemies/brain/node_list/attack1.gd" id="5_bwt4o"]
 [ext_resource type="Script" uid="uid://c1ab1eyiiux60" path="res://enemies/brain/node_list/after_attack.gd" id="6_0jaru"]
@@ -10,6 +11,84 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xph0f"]
 size = Vector2(258.5, 195)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwt4o"]
+atlas = ExtResource("2_0jaru")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jotph"]
+atlas = ExtResource("2_0jaru")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp5xk"]
+atlas = ExtResource("2_0jaru")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xph0f"]
+atlas = ExtResource("2_0jaru")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubnot"]
+atlas = ExtResource("2_0jaru")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q1bj"]
+atlas = ExtResource("2_0jaru")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jf67"]
+atlas = ExtResource("2_0jaru")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc33l"]
+atlas = ExtResource("2_0jaru")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blb76"]
+atlas = ExtResource("2_0jaru")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q28dc"]
+atlas = ExtResource("2_0jaru")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hxnji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwt4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jotph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp5xk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xph0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubnot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q1bj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jf67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc33l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blb76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q28dc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jotph"]
 size = Vector2(127.5, 128.5)
@@ -41,12 +120,17 @@ offset_bottom = 132.0
 color = Color(0.956253, 0.454159, 0.274714, 1)
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 128.0
 offset_bottom = 128.0
 metadata/_edit_use_anchors_ = true
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(64, 64)
+sprite_frames = SubResource("SpriteFrames_hxnji")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(64.25, 65.25)
+position = Vector2(64, 64)
 shape = SubResource("RectangleShape2D_jotph")
 
 [node name="Brain" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
