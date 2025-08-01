@@ -1,10 +1,10 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bcx1nxuurly25"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://cq056g8hr5x86"]
 
-[ext_resource type="Texture2D" uid="uid://cuhxsdsope1gw" path="res://Assets/Prototype_art/prototype_tileset.png" id="1_0p0o1"]
-[ext_resource type="Texture2D" uid="uid://dtatfo2edp6aq" path="res://Assets/tileset/room-tileset.png" id="1_j86m6"]
+[ext_resource type="Texture2D" uid="uid://cuhxsdsope1gw" path="res://Assets/Prototype_art/prototype_tileset.png" id="1_f25ia"]
+[ext_resource type="Texture2D" uid="uid://dtatfo2edp6aq" path="res://Assets/tileset/room-tileset.png" id="2_725mj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j86m6"]
-texture = ExtResource("1_0p0o1")
+texture = ExtResource("1_f25ia")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -177,7 +177,7 @@ texture_region_size = Vector2i(32, 32)
 4:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -0.63726, -16, -0.63726, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qb2do"]
-texture = ExtResource("1_j86m6")
+texture = ExtResource("2_725mj")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 8.92166, -16, 7.32851, -16, 16, 16, 16)

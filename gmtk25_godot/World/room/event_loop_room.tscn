@@ -8,7 +8,7 @@ size = Vector2(64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dva6u"]
 atlas = ExtResource("2_vgpw6")
-region = Rect2(0, 0, 32.0999, 33.0999)
+region = Rect2(0, 33.0999, 32.0999, 31.1202)
 
 [node name="event_room" type="Area2D"]
 collision_layer = 2
@@ -21,13 +21,25 @@ shape = SubResource("RectangleShape2D_kk5hd")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 0.05, 0.05, 1)
-position = Vector2(-82, 17)
+position = Vector2(-332, -167)
 texture = SubResource("AtlasTexture_dva6u")
+flip_h = true
 
-[node name="Label" type="Label" parent="."]
-offset_left = -140.0
-offset_top = -31.0
-offset_right = -23.0
-offset_bottom = -8.0
+[node name="Panel" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -368.0
+offset_top = -228.0
+offset_right = -288.0
+offset_bottom = -198.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+z_index = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
