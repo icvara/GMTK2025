@@ -213,5 +213,9 @@ wait_time = 0.1
 sprite_frames = SubResource("SpriteFrames_gu6f8")
 animation = &"dead"
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]
