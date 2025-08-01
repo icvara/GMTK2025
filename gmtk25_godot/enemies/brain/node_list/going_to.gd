@@ -28,13 +28,13 @@ func Physics_Update(_delta: float):
 		direction = (target.position - brain_owner.position)
 		brain_owner.velocity.x =  walk_speed * sign(direction.x)
 	
-		if past_direction != sign(direction.x):
-			past_direction = sign(direction.x)	
-			brain_owner.scale =  brain_owner.scale * Vector2(-1,1)
+		#if past_direction != sign(direction.x):
+			#past_direction = sign(direction.x)	
+			#brain_owner.scale =  brain_owner.scale * Vector2(-1,1)
 			
 		if brain_owner.position.distance_to(target.position) < attack_range:
 			Transitioned.emit(self,"attack1")
 
-
+ 
 	else:
 		Transitioned.emit(self,"idle")

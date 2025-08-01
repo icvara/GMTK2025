@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://u0d4ckcus72v"]
 
-[ext_resource type="Texture2D" uid="uid://d2msdhun6wpxe" path="res://Assets/red_monster1.png" id="1_h6mrw"]
 [ext_resource type="Script" uid="uid://cbo6idpa1n0at" path="res://enemies/enemy_1.gd" id="1_swyey"]
 [ext_resource type="Script" uid="uid://cixl3foptptsv" path="res://enemies/brain/brain_manager.gd" id="2_swyey"]
 [ext_resource type="Script" uid="uid://6v58lk4l4hdr" path="res://enemies/brain/node_list/idle.gd" id="3_hrag1"]
 [ext_resource type="Script" uid="uid://cb3lam7tgsq7w" path="res://enemies/brain/node_list/going_to.gd" id="4_0jaru"]
 [ext_resource type="Script" uid="uid://cs0866s26scb" path="res://enemies/brain/node_list/attack1.gd" id="5_bwt4o"]
+[ext_resource type="Script" uid="uid://dktfbnjghxl84" path="res://enemies/brain/node_list/hurt.gd" id="6_swyey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jotph"]
-size = Vector2(83, 151)
+size = Vector2(127.5, 128.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp5xk"]
 size = Vector2(295, 152)
@@ -17,21 +17,26 @@ size = Vector2(295, 152)
 size = Vector2(41, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swyey"]
-size = Vector2(83, 38)
+size = Vector2(110, 11)
 
 [node name="Boss_1" type="CharacterBody2D"]
 script = ExtResource("1_swyey")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(31.5, -43.5)
-shape = SubResource("RectangleShape2D_jotph")
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 128.0
+offset_bottom = 128.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(106.188, 180.75)
-scale = Vector2(2.65625, 2.65625)
-texture = ExtResource("1_h6mrw")
-offset = Vector2(-30, -88)
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 8.0
+offset_right = 120.0
+offset_bottom = 14.0
+color = Color(1, 0.15, 0.15, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(64.25, 65.25)
+shape = SubResource("RectangleShape2D_jotph")
 
 [node name="Brain" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_swyey")
@@ -50,11 +55,15 @@ metadata/_custom_type_script = "uid://cb3lam7tgsq7w"
 script = ExtResource("5_bwt4o")
 metadata/_custom_type_script = "uid://cs0866s26scb"
 
+[node name="hurt" type="Node" parent="Brain"]
+script = ExtResource("6_swyey")
+metadata/_custom_type_script = "uid://dktfbnjghxl84"
+
 [node name="Detection_area" type="Area2D" parent="."]
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_area"]
-position = Vector2(-131.5, -44)
+position = Vector2(-221, 61)
 shape = SubResource("RectangleShape2D_bp5xk")
 debug_color = Color(0.616277, 0.382985, 0.948373, 0.42)
 
@@ -79,7 +88,17 @@ collision_layer = 3
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_area"]
-position = Vector2(32, -132)
+position = Vector2(64, 1.5)
 shape = SubResource("RectangleShape2D_swyey")
 
-[connection signal="body_entered" from="damage_area" to="." method="_on_damage_area_body_entered"]
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(0.15, 1, 0.305833, 1)
+offset_left = -1.0
+offset_top = 143.0
+offset_right = 127.0
+offset_bottom = 160.0
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="damage_area" to="Brain/hurt" method="_on_damage_area_body_entered"]

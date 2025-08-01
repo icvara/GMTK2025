@@ -31,6 +31,7 @@ var alive = true
 
 
 func _ready() -> void:
+	$Camera2D.make_current()
 	$Label.text = str(last_record_id)
 	$ProgressBar.max_value = time_past
 	$ProgressBar.value = time_past

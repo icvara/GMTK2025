@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://p86v18itxdpn"]
+
+[ext_resource type="Script" uid="uid://il0bergdyf2e" path="res://World/lock_camera.gd" id="1_m6a4q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6a4q"]
+size = Vector2(1290, 820)
+
+[node name="lock_camera" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_m6a4q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m6a4q")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

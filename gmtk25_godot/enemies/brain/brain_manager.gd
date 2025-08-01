@@ -13,6 +13,7 @@ func _ready():
 			if child is brain_node:
 				full_brain[child.name.to_lower()] = child
 				child.Transitioned.connect(on_child_transition)
+				child.brain_owner = get_parent()
 		initialised = true
 		
 	if initial_state:

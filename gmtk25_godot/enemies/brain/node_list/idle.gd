@@ -22,8 +22,8 @@ func choose_direction_and_time():
 	direction.x = direction.x *-1
 
 	wander_time = randf_range(walk_time_min,walk_time_max)	
-	if brain_owner:
-		brain_owner.scale = brain_owner.scale * Vector2(-1,1)
+	#if brain_owner:
+		#brain_owner.scale = brain_owner.scale * Vector2(-1,1)
 		
 
 func Update(delta: float):
