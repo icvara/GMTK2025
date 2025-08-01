@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjgbsyk0hekxr"]
+[gd_scene load_steps=5 format=3 uid="uid://cjgbsyk0hekxr"]
 
 [ext_resource type="Script" uid="uid://cmfcsiwgs04c2" path="res://World/room/event_room.gd" id="1_7s0re"]
-[ext_resource type="Texture2D" uid="uid://wbsm41042k22" path="res://Assets/Prototype_art/player_bloc2.png" id="2_vgpw6"]
+[ext_resource type="Texture2D" uid="uid://cgkvb6fboy30c" path="res://Assets/player/bunny-Sheet.png" id="2_vgpw6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kk5hd"]
 size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dva6u"]
+atlas = ExtResource("2_vgpw6")
+region = Rect2(0, 0, 32.0999, 33.0999)
 
 [node name="event_room" type="Area2D"]
 collision_layer = 2
@@ -17,13 +21,13 @@ shape = SubResource("RectangleShape2D_kk5hd")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 0.05, 0.05, 1)
-position = Vector2(-322, -128)
-texture = ExtResource("2_vgpw6")
+position = Vector2(-82, 17)
+texture = SubResource("AtlasTexture_dva6u")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -377.0
-offset_top = -194.0
-offset_right = -260.0
-offset_bottom = -171.0
+offset_left = -140.0
+offset_top = -31.0
+offset_right = -23.0
+offset_bottom = -8.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
