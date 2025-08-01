@@ -32,6 +32,9 @@ var last_dir = 1
 signal reset_loop
 var kick_dir_x = 0
 var kick_dir_y = 0 
+#var mouse_pos = get_global_mouse_position()
+#var dir_to_mouse = (mouse_pos - global_position).normalized()
+#var new_rotation = dir_to_mouse.angle()
 
 #movement
 var direction = Vector2(0,0)
@@ -176,19 +179,32 @@ func _physics_process(delta: float) -> void:
 				if start_recording:
 							ACTION ="stop_jump"
 
-			kick_dir_x = Input.get_action_strength("right") - Input.get_action_strength("left")
-			kick_dir_y = Input.get_action_strength("up") - Input.get_action_strength("down")
-			if Input.is_action_just_pressed("kick"):			
-				var new_rotation = Vector2(-kick_dir_x,kick_dir_y).angle()
-				
-				if Vector2(-kick_dir_x,kick_dir_y) == Vector2(0,0) :
-						$kick_center.rotation = Vector2(-last_dir,0).angle()
+			#kick_dir_x = Input.get_action_strength("right") - Input.get_action_strength("left")
+			#kick_dir_y = Input.get_action_strength("up") - Input.get_action_strength("down")
+
+			if Input.is_action_just_pressed("kick"):
+				var mouse_pos = get_global_mouse_position()
+				var dir_to_mouse = (mouse_pos - global_position).normalized()
+				var new_rotation = dir_to_mouse.angle() + PI
+				if start_recording:
+					record_movement.append([velocity, "kick", dir_to_mouse])#Vector2(-kick_dir_x,kick_dir_y).angle()
+					# If mouse is exactly on the player, fall back to last direction
+				if dir_to_mouse == Vector2.ZERO:
+					print("Kick triggered toward mouse at:", mouse_pos)
+					$kick_center.rotation = Vector2(-last_dir, 0).angle()
 				else:
+					print("Kick triggered toward mouse at:", mouse_pos)
 					$kick_center.rotation = new_rotation
 					$kick_center.last_rotation = new_rotation
+
+	# Trigger the kick function
 				$kick_center.kick()
+
 				if start_recording:
 					ACTION = "kick"
+				#if Vector2(-kick_dir_x,kick_dir_y) == Vector2(0,0) :
+						#$kick_center.rotation = Vector2(-last_dir,0).angle()
+
 			
 			if Input.is_action_just_pressed("use2"):
 				var n_projectile = projectile.instantiate()
