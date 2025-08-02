@@ -7,7 +7,7 @@ extends Control
 func _on_button_button_down() -> void:
 	$Clickbutton.play()
 	await get_tree().create_timer(0.5).timeout
-	get_tree().change_scene_to_file("res://World/Level0/level_0.tscn")
+	get_tree().change_scene_to_file("res://Menus/story.tscn")
 
 
 func _on_button_2_button_down() -> void:
