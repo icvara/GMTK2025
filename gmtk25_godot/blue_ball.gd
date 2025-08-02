@@ -11,9 +11,10 @@ func _ready() -> void:
 	default_countdown_time = countdown_time  # remember the original export
 
 func _physics_process(delta: float) -> void:
-	$Countdown.rotation = 0  # cancel ball’s rotation
-	#if self.position != start_position:
-		#print("moving")
+	for i in get_colliding_bodies():
+		# Play only if not already playing (prevents spam on multiple contacts)
+		if not $bounce_sound.playing:
+			$bounce_sound.play()
 
 
 func Respawn_after_5():

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsjc3u78xaqor"]
+[gd_scene load_steps=6 format=3 uid="uid://dsjc3u78xaqor"]
 
 [ext_resource type="Texture2D" uid="uid://bsexro5oq4rsk" path="res://Assets/blue_ball1.png" id="1_jvqks"]
 [ext_resource type="Script" uid="uid://b6yg4dkvl6m65" path="res://blue_ball.gd" id="1_t0qoj"]
+[ext_resource type="AudioStream" uid="uid://d0v3lvc0ombi3" path="res://Audio/boing.wav" id="3_llsju"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jvqks"]
 bounce = 0.65
@@ -13,6 +14,8 @@ radius = 16.0
 collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_jvqks")
 gravity_scale = 0.4
+contact_monitor = true
+max_contacts_reported = 4
 script = ExtResource("1_t0qoj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -29,3 +32,9 @@ offset_right = 16.0
 offset_bottom = 16.0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="bounce_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_llsju")
+volume_db = -15.0
+max_distance = 600.0
+attenuation = 0.25
