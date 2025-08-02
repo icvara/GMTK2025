@@ -4,6 +4,7 @@ class_name after_attack
 @export var damage_area : Node2D
 @export var duration = 1.5
 @export var next_state : brain_node
+@export var animation : AnimatedSprite2D
 
 var isInvuFrame = false
 
@@ -13,6 +14,7 @@ func Enter():
 	damage_area.show()
 		#attack_area.get_node("CollisionShape2D").disabled = false
 	damage_area.monitoring = true
+	animation.play("recovery")
 	await get_tree().create_timer(duration).timeout
 	damage_area.hide()
 		#attack_area.get_node("CollisionShape2D").disabled = true

@@ -2,10 +2,11 @@ extends brain_node
 class_name idle_boss1
 
 
-@export var walk_time_min = 0.5
-@export var walk_time_max = 1.
+@export var walk_time_min = 2.
+@export var walk_time_max = 2.
 @export var walk_speed = 200
 @export var detection_distance = 800
+@export var animation : AnimatedSprite2D
 
 var wander_time = 0
 var direction = Vector2(-1,0)
@@ -19,7 +20,10 @@ func Enter():
 
 func choose_direction_and_time():
 	direction.x = direction.x *-1
-
+	if direction.x >0:
+		animation.play("walk_R")
+	else:
+		animation.play("walk_L")
 	wander_time = randf_range(walk_time_min,walk_time_max)	
 	#if brain_owner:
 		#brain_owner.scale = brain_owner.scale * Vector2(-1,1)

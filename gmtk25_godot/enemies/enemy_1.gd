@@ -46,5 +46,6 @@ func Kill():
 func getDamage(value):
 	HP -= value 
 	$ProgressBar.value = HP
+	$Health.play(str(10-HP))
 	if HP <= 0:
 		Kill()
