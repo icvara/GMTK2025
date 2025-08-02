@@ -3,10 +3,12 @@ var Blue_ball_scene = preload("res://blue_ball.tscn")
 
 var start_position : Vector2
 var timer_started = false
-var countdown_time = 0.0
+@export var countdown_time = 5.0
+var default_countdown_time := 0.0
 
 func _ready() -> void:
 	start_position = position
+	default_countdown_time = countdown_time  # remember the original export
 
 func _physics_process(delta: float) -> void:
 	$Countdown.rotation = 0  # cancel ball’s rotation
@@ -17,7 +19,6 @@ func _physics_process(delta: float) -> void:
 func Respawn_after_5():
 	if timer_started == false :
 		timer_started = true
-		countdown_time = 5.0
 		while countdown_time > 0:
 			$Countdown.text = str(ceil(countdown_time))
 			await get_tree().process_frame
@@ -29,6 +30,7 @@ func Respawn_after_5():
 		#go_back_to_start()
 		var Blue_ball = Blue_ball_scene.instantiate()
 		Blue_ball.position = start_position
+		Blue_ball.countdown_time = default_countdown_time
 		get_parent().add_child(Blue_ball)
 		
 

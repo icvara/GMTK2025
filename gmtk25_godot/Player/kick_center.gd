@@ -20,7 +20,7 @@ func kick():
 					if get_parent().name == "Player":
 						i.queue_free()
 				if i.is_in_group("Ball"):
-					i.apply_impulse(direction* Vector2(-200, -500))
+					i.apply_impulse(direction* Vector2(-500, -500))
 					i.Respawn_after_5()
 				else:
 						i.external_velocity -= Vector2(direction.x * 700,direction.y * 200)
