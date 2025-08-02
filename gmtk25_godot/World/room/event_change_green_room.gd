@@ -42,5 +42,5 @@ func activate():
 
 
 func desactivate():
-	show()
+	hide()
 	$Area2D.set_collision_layer_value(2,false)
