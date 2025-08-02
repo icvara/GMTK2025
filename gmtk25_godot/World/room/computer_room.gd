@@ -29,8 +29,8 @@ func desactivate():
 func _on_body_entered(body: Node2D) -> void:
 	if activated:
 		if body.name == "Player":
-			body.TRANSITION_IN()
+			body.TRANSITION_SCREEN_IN()
 			body.room_position = body.position
 			body.global_position = TP.global_position
-			body.TRANSITION_OUT()
+			body.TRANSITION_SCREEN_OUT()
 			rabbit.Silence()
