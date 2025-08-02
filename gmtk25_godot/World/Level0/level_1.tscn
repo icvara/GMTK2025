@@ -54,7 +54,7 @@ text = "Thanks!"
 
 [node name="Blue_ball" parent="." instance=ExtResource("6_mnwpk")]
 position = Vector2(415, 910)
-countdown_time = 3.0
+countdown_time = 2.0
 
 [node name="Goal_for_blue_ball" parent="." instance=ExtResource("6_2nd2f")]
 position = Vector2(853, 895)
@@ -100,6 +100,7 @@ position = Vector2(0, -63)
 
 [node name="Blue_ball2" parent="." instance=ExtResource("6_mnwpk")]
 position = Vector2(1894, 1342)
+countdown_time = 3.0
 
 [node name="What_to_do2" type="Label" parent="."]
 offset_left = 1519.0
@@ -120,7 +121,7 @@ position = Vector2(0, 64)
 
 [node name="Blue_ball3" parent="." instance=ExtResource("6_mnwpk")]
 position = Vector2(3671, 1103)
-countdown_time = 8.0
+countdown_time = 6.0
 
 [node name="Weepwipwoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_2nd2f")
