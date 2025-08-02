@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://duefocxbcco85"]
+
+[ext_resource type="Script" uid="uid://uw2smqst4chp" path="res://World/room/event_change_green_room.gd" id="1_t52l1"]
+[ext_resource type="Texture2D" uid="uid://cgkvb6fboy30c" path="res://Assets/player/bunny-Sheet.png" id="2_qjvnt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rg6qf"]
+size = Vector2(96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txvx5"]
+atlas = ExtResource("2_qjvnt")
+region = Rect2(0, 33.0999, 32.0999, 31.1202)
+
+[node name="TP" type="Node2D"]
+script = ExtResource("1_t52l1")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_rg6qf")
+
+[node name="ColorRect" type="ColorRect" parent="Area2D/CollisionShape2D"]
+offset_left = -49.0
+offset_top = -48.0
+offset_right = 49.0
+offset_bottom = 48.0
+color = Color(1, 0.578667, 0.21, 1)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -6.0
+offset_top = -12.0
+offset_right = 34.0
+offset_bottom = 11.0
+text = "A"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.2, 0, 1, 1)
+texture = SubResource("AtlasTexture_txvx5")
+
+[node name="Panel" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = -54.0
+offset_right = 47.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+visible = false
+z_index = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -126,14 +126,18 @@ func _physics_process(delta: float) -> void:
 				is_falling =false
 				$AnimatedSprite2D.play("jump_landing")
 				await get_tree().create_timer(1.).timeout'
-			if alive:
+			if alive and topview ==false:
 				if direction.x == 0  and is_on_floor() and is_jumping_started ==false:
 					$AnimatedSprite2D.play("default")
 				elif is_on_floor() and is_jumping_started ==false:
 					$AnimatedSprite2D.play("walk")
 				if is_on_floor() == false:
 					$AnimatedSprite2D.play("jump_fall")
-			
+			if topview:
+				if direction.x == 0  and direction.y == 0:
+					$AnimatedSprite2D.play("default")
+				else:
+					$AnimatedSprite2D.play("walk")
 			#move with more lag
 			#velocity.x = moving_speed*direction.x
 			if is_jumping_started == false:
@@ -142,6 +146,11 @@ func _physics_process(delta: float) -> void:
 					velocity.x = lerp(velocity.x,moving_speed*direction.x,acceleration)
 				else:
 					velocity.x = lerp(velocity.x,0.0,friction)
+				if topview:
+					if direction.y != 0:
+						velocity.y = lerp(velocity.y,moving_speed*direction.y,acceleration)
+					else:
+						velocity.y = lerp(velocity.y,0.0,friction)
 				#RECORD PART
 				if start_recording:
 					ACTION ="move"
@@ -152,7 +161,7 @@ func _physics_process(delta: float) -> void:
 
 
 	# Handle jump logic
-			if Input.is_action_just_pressed("jump") and is_on_floor() and not is_jumping_started:
+			if Input.is_action_just_pressed("jump") and is_on_floor() and not is_jumping_started and topview ==false:
 				is_jumping_started = true
 				$AnimatedSprite2D.play("jump_0")
 				$Jump.play()
@@ -247,6 +256,7 @@ func _physics_process(delta: float) -> void:
 	external_velocity.y = lerp(external_velocity.y,0.0,external_friction)
 
 	velocity = velocity + external_velocity
+
 	velocity = Vector2(clamp(velocity.x,-max_velocity,max_velocity),clamp(velocity.y,-max_velocity,max_velocity))
 	if start_recording:
 		record_movement.append([velocity,ACTION,Vector2(kick_dir_x,kick_dir_y)])
