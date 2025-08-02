@@ -19,10 +19,10 @@ func kick():
 				if i.is_in_group("player") and name !="Player":
 					if get_parent().name == "Player":
 						i.queue_free()
-				else:
-					if i.is_in_group("Ball") == false:
-						i.external_velocity -= Vector2(direction.x * 700,direction.y * 200)
-					else :
-						pass
+					else:
+						if i.is_in_group("Ball") == false:
+							i.external_velocity -= Vector2(direction.x * 700,direction.y * 200)
+						else :
+							pass
 		await get_tree().create_timer(0.1).timeout
 		$kick_area/ColorRect.hide()
