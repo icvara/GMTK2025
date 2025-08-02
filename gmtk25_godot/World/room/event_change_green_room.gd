@@ -11,10 +11,10 @@ var isUsed = false
 func _ready() -> void:
 	if activated:
 		show()
-		$Area2D.set_collision_layer_value(2,true)
+		$Area2D.set_collision_mask_value(2,true)
 	else:
 		hide()
-		$Area2D.set_collision_layer_value(2,true)
+		$Area2D.set_collision_mask_value(2,false)
 
 	$Label.show()
 	$Label.text = trick
@@ -38,9 +38,12 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func activate():
 	show()
-	$Area2D.set_collision_layer_value(2,true)
+	activated = true
+	$Area2D.set_collision_mask_value(2,true)
 
 
 func desactivate():
+	activated = false	
+	
 	hide()
-	$Area2D.set_collision_layer_value(2,false)
+	$Area2D.set_collision_mask_value(2,false)
