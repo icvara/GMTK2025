@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bvmwfn05o86yj"]
+[gd_scene load_steps=34 format=3 uid="uid://bvmwfn05o86yj"]
 
 [ext_resource type="Script" uid="uid://db7xmfb528gh4" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://wbsm41042k22" path="res://Assets/Prototype_art/player_bloc2.png" id="1_l8h54"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cgkvb6fboy30c" path="res://Assets/player/bunny-Sheet.png" id="6_fhl08"]
 [ext_resource type="Script" uid="uid://c3txi511ab0rk" path="res://Player/kick_center.gd" id="7_vtle1"]
 [ext_resource type="AudioStream" uid="uid://p30dc8skiwpc" path="res://Audio/tweeeip.wav" id="9_00tjw"]
+[ext_resource type="PackedScene" uid="uid://c26vtqa40have" path="res://Menus/pause.tscn" id="9_5htga"]
 [ext_resource type="AudioStream" uid="uid://btkd6x3xwsq1q" path="res://Audio/pouiiii.wav" id="11_5htga"]
 [ext_resource type="Script" uid="uid://qorkesa8n76m" path="res://Player/kick_center2.gd" id="11_apopc"]
 
@@ -234,6 +235,8 @@ show_percentage = false
 
 [node name="dashTimer" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="Pause" parent="." instance=ExtResource("9_5htga")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gu6f8")
