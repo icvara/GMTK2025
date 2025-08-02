@@ -16,15 +16,13 @@ func kick():
 		pushed_obj = $kick_area.get_overlapping_bodies() 
 		for i in pushed_obj:
 			if i != get_parent():
-				if i.is_in_group("player"):
+				if i.is_in_group("player") and name !="Player":
 					if get_parent().name == "Player":
 						i.queue_free()
+				if i.is_in_group("Ball"):
+					i.apply_impulse(direction* Vector2(-200, -500))
+					i.Respawn_after_5()
 				else:
-				# If it's a RigidBody2D, kick it
-					if i is RigidBody2D :
-						i.apply_impulse(direction* Vector2(-200, -500))
-						i.Respawn_after_5()
-					else:
 						i.external_velocity -= Vector2(direction.x * 700,direction.y * 200)
 		await get_tree().create_timer(0.1).timeout
 		$kick_area/ColorRect.hide()
