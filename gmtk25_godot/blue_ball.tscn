@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsjc3u78xaqor"]
+
+[ext_resource type="Texture2D" uid="uid://bsexro5oq4rsk" path="res://Assets/blue_ball1.png" id="1_jvqks"]
+[ext_resource type="Script" uid="uid://b6yg4dkvl6m65" path="res://blue_ball.gd" id="1_t0qoj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jvqks"]
+bounce = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t0qoj"]
+radius = 16.0
+
+[node name="Blue_ball" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_jvqks")
+gravity_scale = 0.4
+script = ExtResource("1_t0qoj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_jvqks")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_t0qoj")
