@@ -144,7 +144,7 @@ func _physics_process(delta: float) -> void:
 
 
 	# Handle jump logic
-			if Input.is_action_just_pressed("jump") and is_on_floor():
+			if Input.is_action_just_pressed("jump") and is_on_floor() and not is_jumping_started:
 				is_jumping_started = true
 				$AnimatedSprite2D.play("jump_0")
 				$Jump.play()
@@ -157,8 +157,7 @@ func _physics_process(delta: float) -> void:
 				jump_time = 0.0
 				velocity.y = -jump_speed
 
-				#velocity.y = -jump_speed
-
+			#velocity.y = -jump_speed
 			if Input.is_action_pressed("jump") and is_jumping and is_jumping_started == false :
 					if jump_time < max_jump_time:				
 						velocity.y = -jump_speed
@@ -170,9 +169,9 @@ func _physics_process(delta: float) -> void:
 						is_jumping = false
 						$AnimatedSprite2D.play("jump_fall")
 						is_falling =true
-
 						if start_recording:
 							ACTION ="stop_jump"
+
 			if Input.is_action_just_released("jump") and is_jumping:
 				is_jumping = false
 				$AnimatedSprite2D.play("jump_fall")
