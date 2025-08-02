@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://etj0kdfj06ya" path="res://goal_for_blue_ball.tscn" id="6_2nd2f"]
 [ext_resource type="PackedScene" uid="uid://dsjc3u78xaqor" path="res://blue_ball.tscn" id="6_mnwpk"]
 [ext_resource type="AudioStream" uid="uid://bypqheuw6xnve" path="res://Audio/weepwipwoop.wav" id="7_2nd2f"]
-[ext_resource type="PackedScene" uid="uid://dnrl34q2ufynb" path="res://blue_boss.tscn" id="8_67abc"]
+[ext_resource type="PackedScene" path="res://blue_boss.tscn" id="8_67abc"]
 [ext_resource type="PackedScene" uid="uid://b8owreyjwhjs2" path="res://enemies/spike_ennemy.tscn" id="9_vo1yx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g08tj"]
