@@ -7,7 +7,7 @@ extends Node2D
 var camera
 var camera_lock = false
 
-
+@export var can_unlock_when_out = false
 
 
 func _process(delta: float) -> void:
@@ -27,6 +27,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_body_exited(body: Node2D) -> void:
-	if body.name == "Player":
-		camera = body.get_node("Camera2D")
-		camera.make_current()
+	if can_unlock_when_out:
+		if body.name == "Player":
+			camera = body.get_node("Camera2D")
+			camera.make_current()
