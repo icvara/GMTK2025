@@ -1,0 +1,153 @@
+[gd_scene load_steps=14 format=3 uid="uid://dnrl34q2ufynb"]
+
+[ext_resource type="Script" uid="uid://b2ls78053ob4k" path="res://blue_boss.gd" id="1_578fe"]
+[ext_resource type="Texture2D" uid="uid://b28kn1n3kkvup" path="res://Assets/shapeboss_pre_lightning4.png" id="2_lbdhd"]
+[ext_resource type="Texture2D" uid="uid://rknwfikvyh4t" path="res://Assets/shapeboss_pre_lightning3.png" id="3_vsj0w"]
+[ext_resource type="Texture2D" uid="uid://dkq3853qc388x" path="res://Assets/shapeboss_pre_lightning1.png" id="4_4j0ju"]
+[ext_resource type="Texture2D" uid="uid://ymneogw1yfp4" path="res://Assets/shapeboss_lightning1.png" id="5_060ec"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_guv75"]
+size = Vector2(128, 768)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_578fe"]
+size = Vector2(132, 772)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbdhd"]
+size = Vector2(640, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu2ax"]
+atlas = ExtResource("2_lbdhd")
+region = Rect2(0, 0, 64, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbhrl"]
+atlas = ExtResource("3_vsj0w")
+region = Rect2(0, 0, 64, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmi45"]
+atlas = ExtResource("4_4j0ju")
+region = Rect2(0, 0, 64, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p83nv"]
+atlas = ExtResource("5_060ec")
+region = Rect2(0, 0, 64, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ocnfb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu2ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbhrl")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_jmi45")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_p83nv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="Blue_boss" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_578fe")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 128.0
+offset_bottom = 768.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(64, 384)
+shape = SubResource("RectangleShape2D_guv75")
+
+[node name="damage_area" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_area"]
+position = Vector2(64, 384)
+shape = SubResource("RectangleShape2D_578fe")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(0.15, 1, 0.305833, 1)
+offset_left = -137.0
+offset_top = 430.0
+offset_right = -9.0
+offset_bottom = 447.0
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="Light_attack" type="ColorRect" parent="."]
+offset_left = -640.0
+offset_bottom = 85.0
+color = Color(1, 1, 1, 0)
+
+[node name="Area2D" type="Area2D" parent="Light_attack"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Light_attack/Area2D"]
+position = Vector2(320, 43)
+shape = SubResource("RectangleShape2D_lbdhd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Light_attack/Area2D"]
+position = Vector2(319, 46)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_ocnfb")
+frame_progress = 0.256957
+
+[node name="Light_attack2" type="ColorRect" parent="."]
+visible = false
+offset_left = -640.0
+offset_top = 85.0
+offset_bottom = 170.0
+
+[node name="Light_attack3" type="ColorRect" parent="."]
+visible = false
+offset_left = -640.0
+offset_top = 170.0
+offset_bottom = 255.0
+
+[node name="Light_attack4" type="ColorRect" parent="."]
+visible = false
+offset_left = -640.0
+offset_top = 255.0
+offset_bottom = 340.0
+
+[node name="Light_attack5" type="ColorRect" parent="."]
+visible = false
+offset_left = -640.0
+offset_top = 340.0
+offset_bottom = 425.0
+
+[node name="Light_attack6" type="ColorRect" parent="."]
+visible = false
+offset_left = -640.0
+offset_top = 425.0
+offset_bottom = 510.0
+
+[node name="Light_attack7" type="ColorRect" parent="."]
+visible = false
+offset_left = -640.0
+offset_top = 510.0
+offset_bottom = 595.0
+
+[node name="Light_attack8" type="ColorRect" parent="."]
+visible = false
+offset_left = -640.0
+offset_top = 595.0
+offset_bottom = 680.0
+
+[node name="Light_attack9" type="ColorRect" parent="."]
+visible = false
+offset_left = -640.0
+offset_top = 680.0
+offset_bottom = 765.0
+
+[connection signal="body_entered" from="damage_area" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Light_attack/Area2D" to="." method="_on_area_2d_body_entered2"]
