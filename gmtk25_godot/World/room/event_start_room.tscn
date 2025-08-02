@@ -1,21 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjgbsyk0hekxr"]
+[gd_scene load_steps=5 format=3 uid="uid://cdavjm6eah1im"]
 
-[ext_resource type="Script" uid="uid://cmfcsiwgs04c2" path="res://World/room/event_room.gd" id="1_7s0re"]
-[ext_resource type="Texture2D" uid="uid://cgkvb6fboy30c" path="res://Assets/player/bunny-Sheet.png" id="2_vgpw6"]
+[ext_resource type="Script" uid="uid://cmfcsiwgs04c2" path="res://World/room/event_room.gd" id="1_uudpm"]
+[ext_resource type="Texture2D" uid="uid://cgkvb6fboy30c" path="res://Assets/player/bunny-Sheet.png" id="2_f7ect"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kk5hd"]
-size = Vector2(64, 64)
+size = Vector2(161, 141)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dva6u"]
-atlas = ExtResource("2_vgpw6")
+atlas = ExtResource("2_f7ect")
 region = Rect2(0, 33.0999, 32.0999, 31.1202)
 
 [node name="event_room" type="Area2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_7s0re")
+script = ExtResource("1_uudpm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, -1.5)
 shape = SubResource("RectangleShape2D_kk5hd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

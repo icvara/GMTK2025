@@ -4,6 +4,7 @@ var count = 0
 
 @export var door: Node2D
 @export var player: Node2D
+@export var rabbit: Node2D
 
 
 

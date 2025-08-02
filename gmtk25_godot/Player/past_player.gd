@@ -68,19 +68,21 @@ func _physics_process(delta: float) -> void:
 					is_jumping = true
 					jump_time = 0.0
 					velocity.y = -jump_speed
-					print(velocity.y)
 					#jump_time = 0.0	
 						
 				if is_jumping and is_jumping_started==false :
-					if record_movement[time_frame][1]=="jump":# and jump_time < max_jump_time:
-						#velocity.y = -jump_speed #record_movement[time_frame][0].y
-						#jump_time += delta
-						pass
-						velocity.y = -jump_speed
-						#print(velocity.y )
-			
-					elif record_movement[time_frame][1]=="stop_jump":
-						is_jumping = false
+					if time_frame < record_movement.size():
+						if record_movement[time_frame][1]=="jump":# and jump_time < max_jump_time:
+							#velocity.y = -jump_speed #record_movement[time_frame][0].y
+							#jump_time += delta
+							pass
+							velocity.y = -jump_speed
+							#print(velocity.y )
+				
+						elif record_movement[time_frame][1]=="stop_jump":
+							is_jumping = false
+					else:
+						print("somthing strange in past jump. out of array")
 
 				
 

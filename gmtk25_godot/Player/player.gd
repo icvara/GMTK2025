@@ -279,7 +279,6 @@ func Spawn_Past_Player(record,i):
 		new_past_player.max_time =  time_past #- $ProgressBar.value - 1
 		new_past_player.projectile = projectile
 
-		print(new_past_player.max_time)
 		get_parent().add_child(new_past_player)
 		past_player_list.append(new_past_player)
 	#currently reinit the save to not have one ghost running trough 5 save 

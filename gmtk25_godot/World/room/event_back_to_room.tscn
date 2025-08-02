@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjgbsyk0hekxr"]
+
+[ext_resource type="Script" uid="uid://cnkq3x6xnfcsk" path="res://World/room/event_back_room.gd" id="1_0p2ft"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kk5hd"]
+size = Vector2(161, 141)
+
+[node name="event_back_room" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_0p2ft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, -1.5)
+shape = SubResource("RectangleShape2D_kk5hd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var gravity = 4000
 @export var HP = 10
 @export var maxHP = 10
+@export var door : Node2D
+#@export var door2 : Node2D
 
 #@export var player: Node2D
 var alive = true
@@ -36,6 +38,8 @@ func on_reset_loop():
 func Kill():
 	alive = false
 	velocity = Vector2(0,0)
+	if door:
+		door.open()
 	#modulate = Color(0,0,0,0.2)
 
 
