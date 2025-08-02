@@ -49,6 +49,7 @@ var external_friction = 0.05
 
 var count = 0
 
+var topview = false
 
 func _ready() -> void:
 	$Camera2D.make_current()
@@ -113,6 +114,13 @@ func _physics_process(delta: float) -> void:
 				direction.x = -1
 				last_dir = -1
 				$AnimatedSprite2D.flip_h = false
+			if topview:
+				if Input.is_action_pressed("down"):
+					direction.y = 1
+					#$AnimatedSprite2D.flip_h = true	
+				if Input.is_action_pressed("up"):
+					direction.y = -1
+					#$AnimatedSprite2D.flip_h = false
 		
 			'if is_falling and is_on_floor():
 				is_falling =false
