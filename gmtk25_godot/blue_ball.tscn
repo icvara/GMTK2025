@@ -35,6 +35,6 @@ vertical_alignment = 1
 
 [node name="bounce_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_llsju")
-volume_db = -15.0
-max_distance = 400.0
-attenuation = 0.143587
+volume_db = -18.0
+max_distance = 300.0
+attenuation = 0.241483
