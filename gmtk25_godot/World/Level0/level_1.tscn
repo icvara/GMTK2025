@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://85owg1sna3vj"]
+[gd_scene load_steps=8 format=4 uid="uid://85owg1sna3vj"]
 
 [ext_resource type="TileSet" uid="uid://bcx1nxuurly25" path="res://Assets/tileset/protype_tileset.tres" id="1_mnwpk"]
 [ext_resource type="PackedScene" uid="uid://bvmwfn05o86yj" path="res://Player/player.tscn" id="2_2nd2f"]
 [ext_resource type="PackedScene" uid="uid://bdfg8dygjc5d1" path="res://Player/ui.tscn" id="3_67abc"]
 [ext_resource type="Script" uid="uid://8c77poh1vmtf" path="res://World/Level0/door_to_next_level.gd" id="5_6alws"]
+[ext_resource type="PackedScene" uid="uid://etj0kdfj06ya" path="res://goal_for_blue_ball.tscn" id="6_2nd2f"]
 [ext_resource type="PackedScene" uid="uid://dsjc3u78xaqor" path="res://blue_ball.tscn" id="6_mnwpk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g08tj"]
@@ -17,7 +18,7 @@ tile_map_data = PackedByteArray("AAD9/wsAAQAGAAAAAAD+/wsAAQAGAAAAAAD//wsAAQAGAAA
 tile_set = ExtResource("1_mnwpk")
 
 [node name="Player" parent="." instance=ExtResource("2_2nd2f")]
-position = Vector2(68, 411)
+position = Vector2(120, 928)
 
 [node name="UI" parent="." instance=ExtResource("3_67abc")]
 
@@ -50,7 +51,10 @@ layout_mode = 2
 text = "Thanks!"
 
 [node name="Blue_ball" parent="." instance=ExtResource("6_mnwpk")]
-position = Vector2(303, 446)
+position = Vector2(431, 929)
+
+[node name="Goal_for_blue_ball" parent="." instance=ExtResource("6_2nd2f")]
+position = Vector2(906, 928)
 
 [connection signal="body_entered" from="Door_to_next_level" to="Door_to_next_level" method="_on_body_entered"]
 [connection signal="button_down" from="Door_to_next_level/VBoxContainer/Button" to="Door_to_next_level" method="_on_button_button_down"]

@@ -21,8 +21,9 @@ func kick():
 						i.queue_free()
 				else:
 				# If it's a RigidBody2D, kick it
-					if i is RigidBody2D:
+					if i is RigidBody2D :
 						i.apply_impulse(direction* Vector2(-200, -500))
+						i.Respawn_after_5()
 					else:
 						i.external_velocity -= Vector2(direction.x * 700,direction.y * 200)
 		await get_tree().create_timer(0.1).timeout
