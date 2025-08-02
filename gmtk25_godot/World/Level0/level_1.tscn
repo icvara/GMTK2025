@@ -180,7 +180,7 @@ position = Vector2(3198, 838)
 position = Vector2(3486, 790)
 
 [node name="Spike_ennemy7" parent="." instance=ExtResource("9_vo1yx")]
-position = Vector2(3326, 1014)
+position = Vector2(3326, 1030)
 
 [node name="Spike_ennemy8" parent="." instance=ExtResource("9_vo1yx")]
 position = Vector2(2862, 742)
