@@ -5,6 +5,9 @@ var start_position : Vector2
 var timer_started = false
 @export var countdown_time = 5.0
 var default_countdown_time := 0.0
+var last_velocity: Vector2 = Vector2.ZERO
+var min_bounce_speed := 120.0
+var min_velocity_change := 100.0  # how much the speed must change to count as a bounce
 
 func _ready() -> void:
 	start_position = position
@@ -13,8 +16,13 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	for i in get_colliding_bodies():
 		# Play only if not already playing (prevents spam on multiple contacts)
-		if not $bounce_sound.playing:
-			$bounce_sound.play()
+		var impact_speed = linear_velocity.length()
+		var speed_change = (linear_velocity - last_velocity).length()
+		if impact_speed > min_bounce_speed and speed_change > min_velocity_change:
+			if not $bounce_sound.playing:
+				if impact_speed > 100:
+					$bounce_sound.play()
+	last_velocity = linear_velocity
 
 
 func Respawn_after_5():

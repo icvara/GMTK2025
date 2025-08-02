@@ -218,8 +218,27 @@ func _physics_process(delta: float) -> void:
 				$kick_center.kick()
 				$Pouiiii.play()
 
+			if Input.is_action_just_pressed("kick_ball"):
+				var mouse_pos2 = get_global_mouse_position()
+				var dir_to_mouse2 = (mouse_pos2 - global_position).normalized()
+				var new_rotation2 = dir_to_mouse2.angle() + PI
 				if start_recording:
-					ACTION = "kick"
+					record_movement.append([velocity, "kick_ball", dir_to_mouse2])#Vector2(-kick_dir_x,kick_dir_y).angle()
+					# If mouse is exactly on the player, fall back to last direction
+				if dir_to_mouse2 == Vector2.ZERO:
+					print("Kick triggered toward mouse at:", mouse_pos2)
+					$kick_center2.rotation = Vector2(-last_dir, 0).angle()
+				else:
+					print("Kick triggered toward mouse at:", mouse_pos2)
+					$kick_center2.rotation = new_rotation2
+					$kick_center2.last_rotation = new_rotation2
+
+	# Trigger the kick function
+				$kick_center2.kick_ball()
+				$Pouiiii.play()
+
+				if start_recording:
+					ACTION = "kick_ball"
 				#if Vector2(-kick_dir_x,kick_dir_y) == Vector2(0,0) :
 						#$kick_center.rotation = Vector2(-last_dir,0).angle()
 

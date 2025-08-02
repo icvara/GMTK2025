@@ -102,6 +102,16 @@ func _physics_process(delta: float) -> void:
 							$kick_center.rotation = new_rotation
 							$kick_center.last_rotation = new_rotation
 						$kick_center.kick()
+						
+				if record_movement[time_frame][1]=="kick_ball":
+					var new_rotation2 = record_movement[time_frame][2].angle()+PI#Vector2(record_movement[time_frame][2].x,record_movement[time_frame][2].y).angle() 
+					if time_frame == 0 or record_movement[time_frame - 1][1] != "kick_ball":
+						if record_movement[time_frame][2] == Vector2(0,0) :
+							$kick_center2.rotation = Vector2(-last_dir,0).angle()
+						else:
+							$kick_center2.rotation = new_rotation2
+							$kick_center2.last_rotation = new_rotation2
+						$kick_center2.kick_ball()
 
 				if record_movement[time_frame][1]=="use":
 					var n_projectile = projectile.instantiate()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bvmwfn05o86yj"]
+[gd_scene load_steps=33 format=3 uid="uid://bvmwfn05o86yj"]
 
 [ext_resource type="Script" uid="uid://db7xmfb528gh4" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://wbsm41042k22" path="res://Assets/Prototype_art/player_bloc2.png" id="1_l8h54"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c3txi511ab0rk" path="res://Player/kick_center.gd" id="7_vtle1"]
 [ext_resource type="AudioStream" uid="uid://p30dc8skiwpc" path="res://Audio/tweeeip.wav" id="9_00tjw"]
 [ext_resource type="AudioStream" uid="uid://btkd6x3xwsq1q" path="res://Audio/pouiiii.wav" id="11_5htga"]
+[ext_resource type="Script" uid="uid://qorkesa8n76m" path="res://Player/kick_center2.gd" id="11_apopc"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_btcbx"]
 
@@ -252,6 +253,27 @@ position = Vector2(-21.5, 2)
 shape = SubResource("RectangleShape2D_fhl08")
 
 [node name="ColorRect" type="ColorRect" parent="kick_center/kick_area"]
+visible = false
+offset_left = -34.0
+offset_top = -8.0
+offset_right = -9.0
+offset_bottom = 12.0
+metadata/_edit_use_anchors_ = true
+
+[node name="kick_center2" type="Node2D" parent="."]
+position = Vector2(0, 4)
+script = ExtResource("11_apopc")
+
+[node name="kick_area" type="Area2D" parent="kick_center2"]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kick_center2/kick_area"]
+position = Vector2(-21.5, 2)
+shape = SubResource("RectangleShape2D_fhl08")
+
+[node name="ColorRect" type="ColorRect" parent="kick_center2/kick_area"]
 visible = false
 offset_left = -34.0
 offset_top = -8.0
