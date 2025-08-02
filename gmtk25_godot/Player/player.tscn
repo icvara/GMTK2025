@@ -1,12 +1,15 @@
-[gd_scene load_steps=29 format=3 uid="uid://bvmwfn05o86yj"]
+[gd_scene load_steps=32 format=3 uid="uid://bvmwfn05o86yj"]
 
 [ext_resource type="Script" uid="uid://db7xmfb528gh4" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://wbsm41042k22" path="res://Assets/Prototype_art/player_bloc2.png" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://jn18vmulh7f5" path="res://Player/past_player.tscn" id="2_btcbx"]
 [ext_resource type="PackedScene" uid="uid://c0lkdknqo45ay" path="res://Player/projectile.tscn" id="2_k53q1"]
 [ext_resource type="PackedScene" uid="uid://dkr23ytvjjaw7" path="res://Player/ui_life.tscn" id="3_gwnis"]
+[ext_resource type="AudioStream" uid="uid://dilk4yh6d61nn" path="res://Audio/jump.wav" id="4_od3ui"]
 [ext_resource type="Texture2D" uid="uid://cgkvb6fboy30c" path="res://Assets/player/bunny-Sheet.png" id="6_fhl08"]
 [ext_resource type="Script" uid="uid://c3txi511ab0rk" path="res://Player/kick_center.gd" id="7_vtle1"]
+[ext_resource type="AudioStream" uid="uid://p30dc8skiwpc" path="res://Audio/tweeeip.wav" id="9_00tjw"]
+[ext_resource type="AudioStream" uid="uid://btkd6x3xwsq1q" path="res://Audio/pouiiii.wav" id="11_5htga"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_btcbx"]
 
@@ -178,6 +181,21 @@ friction = 0.6
 acceleration = 0.1
 bounce_strength = 8
 past_1 = ExtResource("2_btcbx")
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_od3ui")
+volume_db = -19.81
+pitch_scale = 2.55
+
+[node name="Tweeeip" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_00tjw")
+volume_db = 0.99
+pitch_scale = 0.2
+
+[node name="Pouiiii" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_5htga")
+volume_db = -12.876
+pitch_scale = 0.77
 
 [node name="UI_LIFE" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_gwnis")]
 visible = false

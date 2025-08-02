@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://u0d4ckcus72v"]
+[gd_scene load_steps=65 format=3 uid="uid://u0d4ckcus72v"]
 
 [ext_resource type="Script" uid="uid://cbo6idpa1n0at" path="res://enemies/enemy_1.gd" id="1_swyey"]
 [ext_resource type="Texture2D" uid="uid://dcf8bpk8o6lc8" path="res://Assets/ComputerBoss_SpriteSheet1.png" id="2_0jaru"]
@@ -10,9 +10,13 @@
 [ext_resource type="Script" uid="uid://dypxhmoqrk64r" path="res://enemies/brain/node_list/dead.gd" id="7_hrag1"]
 [ext_resource type="Texture2D" uid="uid://d2f3hpmynt1ui" path="res://Assets/warning_reticle_ComputerBoss1.png" id="9_bwt4o"]
 [ext_resource type="Texture2D" uid="uid://h053vk0xiocm" path="res://Assets/Prototype_art/boss_computer_anim-Sheet.png" id="10_jotph"]
+[ext_resource type="AudioStream" uid="uid://bhxnuafhuxiid" path="res://Audio/brrrrrrrrrooooooooommmm.wav" id="11_bp5xk"]
+[ext_resource type="AudioStream" uid="uid://dv1yn8jv1i2cr" path="res://Audio/golemsound1.wav" id="11_xph0f"]
+[ext_resource type="AudioStream" uid="uid://b3ro7wgh147qy" path="res://Audio/monstersound.wav" id="12_ubnot"]
+[ext_resource type="AudioStream" uid="uid://di052n0k31wrh" path="res://Audio/zombiesound1.wav" id="13_2q1bj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xph0f"]
-size = Vector2(258.5, 195)
+size = Vector2(200, 172)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwt4o"]
 atlas = ExtResource("2_0jaru")
@@ -444,14 +448,14 @@ collision_mask = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
-position = Vector2(65.75, 33.5)
+position = Vector2(64, 44)
 shape = SubResource("RectangleShape2D_xph0f")
 
 [node name="ColorRect" type="ColorRect" parent="attack_area"]
-offset_left = -65.0
-offset_top = -64.0
-offset_right = 196.0
-offset_bottom = 132.0
+offset_left = -36.0
+offset_top = -42.0
+offset_right = 164.0
+offset_bottom = 130.0
 color = Color(0.956253, 0.454159, 0.274714, 1)
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -553,6 +557,36 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(64, 32)
 sprite_frames = SubResource("SpriteFrames_nviwk")
 animation = &"0"
+
+[node name="Golemsound1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_xph0f")
+pitch_scale = 2.02
+
+[node name="attacking_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_bp5xk")
+volume_db = -14.857
+pitch_scale = 4.0
+
+[node name="damagedsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_2q1bj")
+volume_db = 0.093
+pitch_scale = 2.72
+max_distance = 600.0
+attenuation = 0.217638
+
+[node name="deathsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_bp5xk")
+volume_db = -5.0
+pitch_scale = 0.75
+max_distance = 800.0
+attenuation = 0.217638
+
+[node name="walkingsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_ubnot")
+volume_db = -7.923
+pitch_scale = 0.24
+max_distance = 600.0
+attenuation = 0.217638
 
 [connection signal="body_entered" from="attack_area" to="Brain/attack1" method="_on_attack_area_body_entered"]
 [connection signal="body_entered" from="Detection_area" to="Brain/idle_boss1" method="_on_detection_area_body_entered"]

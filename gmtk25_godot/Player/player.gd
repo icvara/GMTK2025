@@ -147,6 +147,7 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				is_jumping_started = true
 				$AnimatedSprite2D.play("jump_0")
+				$Jump.play()
 				velocity.x = 0
 				if start_recording:
 					ACTION ="start_jump"
@@ -199,6 +200,7 @@ func _physics_process(delta: float) -> void:
 
 	# Trigger the kick function
 				$kick_center.kick()
+				$Pouiiii.play()
 
 				if start_recording:
 					ACTION = "kick"
@@ -295,6 +297,7 @@ func Kill():
 		alive =false
 		LP -= 1
 		$AnimatedSprite2D.play("dead")
+		$Tweeeip.play()
 		await get_tree().create_timer(1.5).timeout
 		end_loop()
 		$UI_LIFE.Update()

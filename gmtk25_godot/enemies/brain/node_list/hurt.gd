@@ -14,6 +14,7 @@ func Enter():
 	brain_owner.velocity = Vector2(0,0)
 	brain_owner.getDamage(1)
 	animation.play("hurt")
+	brain_owner.get_node("damagedsound").play()
 	await get_tree().create_timer(invu_frame_duration).timeout
 	isInvuFrame = false
 	if brain_owner.HP <= 0 :

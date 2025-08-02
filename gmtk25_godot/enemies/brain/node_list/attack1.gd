@@ -43,5 +43,6 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		#print("here")
 
 		if body.is_in_group("player"):
+			brain_owner.get_node("Golemsound1").play()
 		
-				body.Kill()
+			body.Kill()

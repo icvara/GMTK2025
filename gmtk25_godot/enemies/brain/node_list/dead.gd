@@ -11,6 +11,7 @@ func Enter():
 	#brain_owner.modulate = Color(0,0,0,0.2)
 	brain_owner.velocity = Vector2(0,0)
 	animation.play("dead")
+	brain_owner.get_node("deathsound").play()
 func Exit():
 
 	pass

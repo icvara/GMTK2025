@@ -40,7 +40,7 @@ func Update(delta: float):
 func Physics_Update(delta: float):
 	if brain_owner.alive:
 		brain_owner.velocity.x = direction.x * walk_speed
-		
+		brain_owner.get_node("walkingsound").play()
 					
 				
 func _on_detection_area_body_entered(body: Node2D) -> void:
