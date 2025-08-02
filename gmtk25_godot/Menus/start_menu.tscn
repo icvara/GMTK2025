@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bunfx6tl2smu1"]
+[gd_scene load_steps=5 format=3 uid="uid://bunfx6tl2smu1"]
 
 [ext_resource type="Script" uid="uid://ceqpkma3uvnw1" path="res://Menus/start_menu.gd" id="1_omtxr"]
 [ext_resource type="Texture2D" uid="uid://h0b10gbbd2dh" path="res://Assets/background_wood1.png" id="1_ylpl7"]
+[ext_resource type="Texture2D" uid="uid://c1jrsu7xydp0m" path="res://Assets/draft_bunbunleapou2.png" id="3_h66ku"]
 [ext_resource type="AudioStream" uid="uid://jdq62c0tpjcp" path="res://Audio/pickupCoin.wav" id="3_xgchj"]
 
 [node name="StartMenu" type="Control"]
@@ -29,6 +30,7 @@ grow_vertical = 2
 texture = ExtResource("1_ylpl7")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -54,12 +56,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -32.5
+offset_top = 15.0
+offset_right = 32.5
+offset_bottom = 186.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="DraftBunbunleapou2" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(28.5, -117)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("3_h66ku")
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
