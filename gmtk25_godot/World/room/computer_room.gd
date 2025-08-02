@@ -2,6 +2,7 @@ extends Area2D
 
 
 @export var TP : Node2D
+@export var rabbit: Node2D
 
 var activated = false
 
@@ -28,5 +29,8 @@ func desactivate():
 func _on_body_entered(body: Node2D) -> void:
 	if activated:
 		if body.name == "Player":
+			body.TRANSITION_IN()
 			body.room_position = body.position
 			body.global_position = TP.global_position
+			body.TRANSITION_OUT()
+			rabbit.Silence()

@@ -4,8 +4,18 @@ extends Node2D
 @export var trick = ""
 
 var isUsed = false
+@export var activated : bool = true
+@export var single_use : bool = false
+
 
 func _ready() -> void:
+	if activated:
+		show()
+		$Area2D.set_collision_layer_value(2,true)
+	else:
+		hide()
+		$Area2D.set_collision_layer_value(2,true)
+
 	$Label.show()
 	$Label.text = trick
 
@@ -18,8 +28,19 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			body.global_position = new_TP.global_position
 			if body.name == "Player":
 				body.TRANSITION_SCREEN_OUT()
-
+			if single_use:
+				desactivate()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		isUsed = false
+
+
+func activate():
+	show()
+	$Area2D.set_collision_layer_value(2,true)
+
+
+func desactivate():
+	show()
+	$Area2D.set_collision_layer_value(2,false)
