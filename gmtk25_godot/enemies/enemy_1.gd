@@ -18,7 +18,8 @@ func _ready() -> void:
 	$ProgressBar.value = HP
 	
 	starting_position = position
-	var player = get_parent().get_node("Player")
+	#var player = get_tree().root.get_node("Player")
+	#print(player)
 	#player.reset_loop.connect(on_reset_loop)
 
 	

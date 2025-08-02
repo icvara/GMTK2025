@@ -48,7 +48,7 @@ var alive = true
 var external_friction = 0.05
 
 var count = 0
-
+var room_position = Vector2(0,0)
 var topview = false
 
 func _ready() -> void:
@@ -59,6 +59,8 @@ func _ready() -> void:
 
 	time_frame = 0
 	starting_position = position
+	room_position = position
+
 	#init record list capped at X
 	for r in range(0,max_record):
 		past_record_list.append({})
@@ -349,3 +351,28 @@ func _on_timer_timeout() -> void:
 
 func _on_dash_timer_timeout() -> void:
 	isdashing = false
+
+
+func TRANSITION_SCREEN_IN():
+	$transition_screen.show()
+	set_physics_process(false)
+
+	#get_tree().paused = true
+	for i in range(5):
+		$transition_screen.modulate = Color(1,1,1,i*0.2)
+		await get_tree().create_timer(0.05).timeout
+	#get_tree().paused = false
+
+func TRANSITION_SCREEN_OUT():
+	#get_tree().paused = true
+	for i in range(5):
+		$transition_screen.modulate = Color(1,1,1,1-i*0.2)
+		await get_tree().create_timer(0.05).timeout
+	$transition_screen.hide()
+	set_physics_process(true)
+
+	#get_tree().paused = false		
+		
+		
+		
+		

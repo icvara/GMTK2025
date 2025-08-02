@@ -10,6 +10,7 @@ region = Rect2(0, 33.0999, 32.0999, 31.1202)
 [node name="event_rabbit" type="Node2D"]
 visible = false
 script = ExtResource("1_j6gu2")
+color = Color(0, 0, 1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.2, 0, 1, 1)
@@ -20,14 +21,17 @@ visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -33.0
-offset_top = -54.0
-offset_right = 47.0
-offset_bottom = -24.0
+offset_left = -99.0
+offset_top = -83.0
+offset_right = 101.0
+offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="Panel"]
 z_index = 1
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 3

@@ -16,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://di052n0k31wrh" path="res://Audio/zombiesound1.wav" id="13_2q1bj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xph0f"]
-size = Vector2(200, 172)
+size = Vector2(192, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwt4o"]
 atlas = ExtResource("2_0jaru")
@@ -97,7 +97,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jotph"]
-size = Vector2(127.5, 119.25)
+size = Vector2(127.5, 118)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp5xk"]
 size = Vector2(192, 160)
@@ -448,14 +448,14 @@ collision_mask = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
-position = Vector2(64, 44)
+position = Vector2(64, 48)
 shape = SubResource("RectangleShape2D_xph0f")
 
 [node name="ColorRect" type="ColorRect" parent="attack_area"]
-offset_left = -36.0
-offset_top = -42.0
-offset_right = 164.0
-offset_bottom = 130.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 160.0
+offset_bottom = 128.0
 color = Color(0.956253, 0.454159, 0.274714, 1)
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -472,7 +472,7 @@ frame = 9
 frame_progress = 0.588844
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(64, 68.625)
+position = Vector2(64, 68)
 shape = SubResource("RectangleShape2D_jotph")
 
 [node name="Brain" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]

@@ -284,5 +284,14 @@ offset_right = -9.0
 offset_bottom = 12.0
 metadata/_edit_use_anchors_ = true
 
+[node name="transition_screen" type="ColorRect" parent="."]
+process_mode = 3
+visible = false
+offset_left = -1387.0
+offset_top = -675.0
+offset_right = 1479.0
+offset_bottom = 879.0
+color = Color(0, 0, 0, 1)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]
