@@ -1297,9 +1297,9 @@ can_unlock_when_out = true
 [node name="RED_AREA" type="Node2D" parent="."]
 
 [node name="TP" parent="RED_AREA" instance=ExtResource("13_w4oqf")]
-visible = false
 position = Vector2(-693, 772)
 activated = false
+set_starting_pos = true
 
 [node name="boss_room" type="Node2D" parent="RED_AREA"]
 position = Vector2(-5968, 511)
@@ -1314,6 +1314,7 @@ position = Vector2(1460, -70)
 new_TP = NodePath("../../TP")
 activated = false
 single_use = true
+set_starting_pos = true
 
 [node name="event_back_room2" parent="RED_AREA/boss_room" node_paths=PackedStringArray("rabbit", "TP") instance=ExtResource("14_rrwil")]
 position = Vector2(1212, 124)
@@ -1331,6 +1332,7 @@ position = Vector2(2386, 145)
 [node name="TP2" parent="lvl1" instance=ExtResource("13_w4oqf")]
 position = Vector2(97, 138)
 activated = false
+set_starting_pos = true
 
 [node name="bed_boss" parent="lvl1" node_paths=PackedStringArray("bed_room", "door") instance=ExtResource("16_yqtko")]
 position = Vector2(5164, 685)

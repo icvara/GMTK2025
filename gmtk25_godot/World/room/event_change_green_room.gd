@@ -6,6 +6,8 @@ extends Node2D
 var isUsed = false
 @export var activated : bool = true
 @export var single_use : bool = false
+@export var set_starting_pos : bool = false
+
 
 
 func _ready() -> void:
@@ -27,8 +29,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				body.TRANSITION_SCREEN_IN()
 				
 				body.global_position = new_TP.global_position
-				body.check_point = new_TP.global_position
-				body.starting_position = new_TP.global_position
+				if set_starting_pos:
+					body.check_point = new_TP.global_position
+					body.starting_position = new_TP.global_position
 
 			if body.name == "Player":
 				body.TRANSITION_SCREEN_OUT()

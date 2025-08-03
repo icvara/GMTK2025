@@ -61,7 +61,7 @@ var check_point = Vector2(0,0)
 func _ready() -> void:
 	$AnimatedSprite2D.modulate = color
 	$Camera2D.make_current()
-	$Label.text = str(last_record_id)
+	#$Label.text = str(last_record_id)
 	$ProgressBar.max_value = time_past
 	$ProgressBar.value = time_past
 
@@ -81,6 +81,8 @@ func start_loop():
 		$ProgressBar.show() 
 		starting_position = position
 		start_recording = true
+		if power_ID == 2:
+			$Label.text = str(count_rabbit)
 		#record_movement[time_frame]=[velocity,"rock"]
 		#init_loop()
 
@@ -338,8 +340,9 @@ func Spawn_Past_Player(record,i):
 		elif power_ID == 2:
 			new_past_player.get_node("AnimatedSprite2D").modulate = Color(0,1,0,0.7)
 			new_past_player.get_node("Label2").text = str(count_rabbit)
-			$Label.text = str(count_rabbit)
 			count_rabbit += 1
+			
+
 			new_past_player.topview = topview
 		get_parent().add_child(new_past_player)
 		past_player_list.append(new_past_player)
