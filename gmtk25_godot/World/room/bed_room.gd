@@ -9,7 +9,7 @@ var activated = false
 var isfinished = false
 func _ready() -> void:
 	desactivate()
-	#activate()
+	activate()
 
 
 func activate():
@@ -33,7 +33,7 @@ func story():
 	await get_tree().create_timer(2.).timeout
 	rabbit.Say("We are comfortable here!")
 	await get_tree().create_timer(2.).timeout
-	rabbit.Say("let's do a nap")
+	rabbit.Say("let's take a nap")
 	await get_tree().create_timer(2.).timeout
 	activate()
 	isfinished = true
