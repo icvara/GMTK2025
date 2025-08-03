@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://c2xp7ogtrfnu4" path="res://World/room/green_room.tscn" id="15_vi4m0"]
 [ext_resource type="PackedScene" uid="uid://dtkkba3ywoo5w" path="res://World/room/bed_boss.tscn" id="16_yqtko"]
 [ext_resource type="PackedScene" uid="uid://tkrp2acr20ux" path="res://check_point.tscn" id="23_meaf0"]
-[ext_resource type="Script" path="res://World/Level0/tuto_red_bun.gd" id="24_rdw7a"]
+[ext_resource type="Script" uid="uid://dj1nbpdqkkl6c" path="res://World/Level0/tuto_red_bun.gd" id="24_rdw7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g08tj"]
 size = Vector2(59, 98)
@@ -314,8 +314,9 @@ position = Vector2(-3232, 3730)
 [node name="lock_camera20" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
 position = Vector2(-3232, 4306)
 
-[node name="event_go_green_room" parent="GREEN_AREA" instance=ExtResource("12_3vqho")]
-position = Vector2(814, 1794)
+[node name="event_go_green_room" parent="GREEN_AREA" node_paths=PackedStringArray("TP") instance=ExtResource("12_3vqho")]
+position = Vector2(830, 1881)
+TP = NodePath("../TP_all/TP197")
 
 [node name="TP_all" type="Node2D" parent="GREEN_AREA"]
 
@@ -493,9 +494,8 @@ new_TP = NodePath("../TP291")
 position = Vector2(-2704, 3088)
 new_TP = NodePath("../TP2")
 
-[node name="TP49" parent="GREEN_AREA/TP_all" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
+[node name="TP49" parent="GREEN_AREA/TP_all" instance=ExtResource("13_w4oqf")]
 position = Vector2(-1842, 3184)
-new_TP = NodePath("../../../ROOM_AREA/TP4")
 
 [node name="TP50" parent="GREEN_AREA/TP_all" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
 position = Vector2(-2225, 2897)
@@ -1158,6 +1158,7 @@ position = Vector2(-688, 5105)
 [node name="lock_camera" parent="GREEN_AREA" node_paths=PackedStringArray("player") instance=ExtResource("5_34f2h")]
 position = Vector2(816, 1640)
 player = NodePath("../../Player")
+can_unlock_when_out = true
 
 [node name="RED_AREA" type="Node2D" parent="."]
 
