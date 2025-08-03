@@ -200,7 +200,6 @@ volume_db = -12.876
 pitch_scale = 0.77
 
 [node name="UI_LIFE" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_gwnis")]
-visible = false
 player = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

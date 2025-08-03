@@ -328,6 +328,9 @@ func Spawn_Past_Player(record,i):
 		past_player_list.append(new_past_player)
 	#currently reinit the save to not have one ghost running trough 5 save 
 
+func restoreLife():
+	LP = 3
+	$UI_LIFE.Update()
 
 func Kill():
 	if start_recording:
@@ -344,8 +347,8 @@ func Kill():
 		await get_tree().create_timer(1.5).timeout
 		end_loop()
 		$UI_LIFE.Update()
-		#if LP <= 0:
-			#get_tree().change_scene_to_file("res://Menus/start_menu.tscn")
+		if LP <= 0:
+			position = room_position
 
 
 func _on_timer_timeout() -> void:
