@@ -37,6 +37,7 @@ func on_reset_loop():
 
 func reset():
 	HP = maxHP
+	$ProgressBar.value = HP
 	$Health.play(str(10-HP))
 	
 
