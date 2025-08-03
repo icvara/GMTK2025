@@ -469,7 +469,6 @@ position = Vector2(830, 1881)
 TP = NodePath("../TP_all/TP197")
 
 [node name="TP_all" type="Node2D" parent="GREEN_AREA"]
-visible = false
 
 [node name="TP" parent="GREEN_AREA/TP_all" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
 position = Vector2(177, 3088)
@@ -493,7 +492,6 @@ trick = "3_7"
 [node name="TP4" parent="GREEN_AREA/TP_all" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
 position = Vector2(1137, 3088)
 new_TP = NodePath("../TP49")
-trick = "4_2"
 
 [node name="TP5" parent="GREEN_AREA/TP_all" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
 position = Vector2(1999, 3184)
@@ -502,12 +500,10 @@ new_TP = NodePath("../TP36")
 [node name="TP7" parent="GREEN_AREA/TP_all" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
 position = Vector2(1616, 2897)
 new_TP = NodePath("../TP75")
-trick = "7"
 
 [node name="TP6" parent="GREEN_AREA/TP_all" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
 position = Vector2(1520, 3376)
 new_TP = NodePath("../TP78")
-trick = "6"
 
 [node name="TP8" parent="GREEN_AREA/TP_all" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
 position = Vector2(1138, 3665)
