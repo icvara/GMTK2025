@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dnrl34q2ufynb"]
+[gd_scene load_steps=19 format=3 uid="uid://dnrl34q2ufynb"]
 
 [ext_resource type="Script" uid="uid://b2ls78053ob4k" path="res://blue_boss.gd" id="1_578fe"]
 [ext_resource type="Texture2D" uid="uid://bbrlcdtaxpi3q" path="res://Assets/Bed_boss1.png" id="2_4j0ju"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://rknwfikvyh4t" path="res://Assets/shapeboss_pre_lightning3.png" id="3_vsj0w"]
 [ext_resource type="Texture2D" uid="uid://dkq3853qc388x" path="res://Assets/shapeboss_pre_lightning1.png" id="4_4j0ju"]
 [ext_resource type="Texture2D" uid="uid://ymneogw1yfp4" path="res://Assets/shapeboss_lightning1.png" id="5_060ec"]
+[ext_resource type="AudioStream" uid="uid://i37jho6m3ly1" path="res://Audio/golemsound3.wav" id="7_060ec"]
+[ext_resource type="AudioStream" uid="uid://hmeyg5vhvfxp" path="res://Audio/golemsound2.wav" id="8_wbhrl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_060ec"]
 atlas = ExtResource("2_4j0ju")
@@ -121,6 +123,16 @@ position = Vector2(319, 46)
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_ocnfb")
 frame_progress = 0.256957
+
+[node name="zap_sound" type="AudioStreamPlayer2D" parent="Light_attack"]
+stream = ExtResource("7_060ec")
+pitch_scale = 1.56
+max_distance = 600.0
+attenuation = 0.31864
+
+[node name="pre_zap_sound" type="AudioStreamPlayer2D" parent="Light_attack"]
+stream = ExtResource("8_wbhrl")
+pitch_scale = 4.0
 
 [node name="Light_attack2" type="ColorRect" parent="."]
 visible = false

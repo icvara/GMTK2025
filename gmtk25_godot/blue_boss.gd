@@ -58,6 +58,10 @@ func _process(delta: float) -> void:
 	velocity.y += gravity *delta
 	#if $Light_attack/Area2D/AnimatedSprite2D.play() == 1:
 	animation_frame = $Light_attack/Area2D/AnimatedSprite2D.frame
+	if animation_frame == 3 and $Light_attack/zap_sound.playing == false:
+		$Light_attack/zap_sound.play()
+	#if animation_frame == 0 and $Light_attack/pre_zap_sound.playing == false:
+		#$Light_attack/pre_zap_sound.play()
 	for body in $Light_attack/Area2D.get_overlapping_bodies():
 		if animation_frame == 3 and body.is_in_group("player"):
 			print("I touched a player")
