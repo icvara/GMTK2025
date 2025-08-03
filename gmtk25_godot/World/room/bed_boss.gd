@@ -23,8 +23,12 @@ func _process(delta: float) -> void:
 			end_battle = true
 
 func end_fight_event():
+	for member in get_tree().get_nodes_in_group("Ball"):
+		member.queue_free()
 	await get_tree().create_timer(5.).timeout
 	bed_room.desactivate()
+	for member in get_tree().get_nodes_in_group("Ball"):
+		member.queue_free()
 	player.TRANSITION_SCREEN_IN()
 	player.global_position = player.room_position
 	player.TRANSITION_SCREEN_OUT()

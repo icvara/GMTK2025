@@ -661,6 +661,21 @@ activated = false
 position = Vector2(5164, 685)
 bed_room = NodePath("../../ROOM_AREA/bed")
 
+[node name="TP" parent="lvl1" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
+position = Vector2(-2178, 515)
+new_TP = NodePath("../TP4")
+
+[node name="TP3" parent="lvl1" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
+position = Vector2(-1806, 421)
+new_TP = NodePath("../TP5")
+
+[node name="TP4" parent="lvl1" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
+position = Vector2(-7413, 332)
+new_TP = NodePath(".")
+
+[node name="TP5" parent="lvl1" instance=ExtResource("13_w4oqf")]
+position = Vector2(4630, 711)
+
 [node name="Player" parent="." instance=ExtResource("2_wpcyh")]
 position = Vector2(719, 830)
 
