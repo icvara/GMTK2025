@@ -102,5 +102,8 @@ func _on_area_2d_body_entered2(body: Node2D) -> void:
 			if body.LP <= 0:
 				if door: 
 					door.close()
+				$damage_area/CollisionShape2D.disabled = true
 				HP = 100
 				$ProgressBar.value = HP
+				await get_tree().create_timer(0.5).timeout
+				$damage_area/CollisionShape2D.disabled = false
