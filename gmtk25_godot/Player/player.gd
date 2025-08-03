@@ -35,7 +35,7 @@ var kick_dir_y = 0
 #var mouse_pos = get_global_mouse_position()
 #var dir_to_mouse = (mouse_pos - global_position).normalized()
 #var new_rotation = dir_to_mouse.angle()
-
+var color = Color(0,0,0)
 #movement
 var direction = Vector2(0,0)
 var isdashing = false
@@ -51,7 +51,12 @@ var count = 0
 var room_position = Vector2(0,0)
 var topview = false
 
+var power_is_available = false
+var power_ID = 0
+
+
 func _ready() -> void:
+	$AnimatedSprite2D.modulate = color
 	$Camera2D.make_current()
 	$Label.text = str(last_record_id)
 	$ProgressBar.max_value = time_past
@@ -200,52 +205,53 @@ func _physics_process(delta: float) -> void:
 
 			#kick_dir_x = Input.get_action_strength("right") - Input.get_action_strength("left")
 			#kick_dir_y = Input.get_action_strength("up") - Input.get_action_strength("down")
+			if power_is_available:
+				if Input.is_action_just_pressed("kick"):
+					if power_ID == 0:
+						var mouse_pos = get_global_mouse_position()
+						var dir_to_mouse = (mouse_pos - global_position).normalized()
+						var new_rotation = dir_to_mouse.angle() + PI
+						if start_recording:
+							record_movement.append([velocity, "kick", dir_to_mouse])#Vector2(-kick_dir_x,kick_dir_y).angle()
+							# If mouse is exactly on the player, fall back to last direction
+						if dir_to_mouse == Vector2.ZERO:
+							print("Kick triggered toward mouse at:", mouse_pos)
+							$kick_center.rotation = Vector2(-last_dir, 0).angle()
+						else:
+							print("Kick triggered toward mouse at:", mouse_pos)
+							$kick_center.rotation = new_rotation
+							$kick_center.last_rotation = new_rotation
 
-			if Input.is_action_just_pressed("kick"):
-				var mouse_pos = get_global_mouse_position()
-				var dir_to_mouse = (mouse_pos - global_position).normalized()
-				var new_rotation = dir_to_mouse.angle() + PI
-				if start_recording:
-					record_movement.append([velocity, "kick", dir_to_mouse])#Vector2(-kick_dir_x,kick_dir_y).angle()
-					# If mouse is exactly on the player, fall back to last direction
-				if dir_to_mouse == Vector2.ZERO:
-					print("Kick triggered toward mouse at:", mouse_pos)
-					$kick_center.rotation = Vector2(-last_dir, 0).angle()
-				else:
-					print("Kick triggered toward mouse at:", mouse_pos)
-					$kick_center.rotation = new_rotation
-					$kick_center.last_rotation = new_rotation
+			# Trigger the kick function
+						$kick_center.kick()
+						$Pouiiii.play()
+					elif power_ID == 1:
 
-	# Trigger the kick function
-				$kick_center.kick()
-				$Pouiiii.play()
+						var mouse_pos2 = get_global_mouse_position()
+						var dir_to_mouse2 = (mouse_pos2 - global_position).normalized()
+						var new_rotation2 = dir_to_mouse2.angle() + PI
+						if start_recording:
+							record_movement.append([velocity, "kick_ball", dir_to_mouse2])#Vector2(-kick_dir_x,kick_dir_y).angle()
+							# If mouse is exactly on the player, fall back to last direction
+						if dir_to_mouse2 == Vector2.ZERO:
+							#print("Kick triggered toward mouse at:", mouse_pos2)
+							$kick_center2.rotation = Vector2(-last_dir, 0).angle()
+						else:
+							#print("Kick triggered toward mouse at:", mouse_pos2)
+							$kick_center2.rotation = new_rotation2
+							$kick_center2.last_rotation = new_rotation2
 
-			if Input.is_action_just_pressed("kick_ball"):
-				var mouse_pos2 = get_global_mouse_position()
-				var dir_to_mouse2 = (mouse_pos2 - global_position).normalized()
-				var new_rotation2 = dir_to_mouse2.angle() + PI
-				if start_recording:
-					record_movement.append([velocity, "kick_ball", dir_to_mouse2])#Vector2(-kick_dir_x,kick_dir_y).angle()
-					# If mouse is exactly on the player, fall back to last direction
-				if dir_to_mouse2 == Vector2.ZERO:
-					print("Kick triggered toward mouse at:", mouse_pos2)
-					$kick_center2.rotation = Vector2(-last_dir, 0).angle()
-				else:
-					print("Kick triggered toward mouse at:", mouse_pos2)
-					$kick_center2.rotation = new_rotation2
-					$kick_center2.last_rotation = new_rotation2
+			# Trigger the kick function
+						$kick_center2.kick_ball()
+						$Pouiiii.play()
 
-	# Trigger the kick function
-				$kick_center2.kick_ball()
-				$Pouiiii.play()
-
-				if start_recording:
-					ACTION = "kick_ball"
-				#if Vector2(-kick_dir_x,kick_dir_y) == Vector2(0,0) :
-						#$kick_center.rotation = Vector2(-last_dir,0).angle()
+						if start_recording:
+							ACTION = "kick_ball"
+						#if Vector2(-kick_dir_x,kick_dir_y) == Vector2(0,0) :
+								#$kick_center.rotation = Vector2(-last_dir,0).angle()
 
 			
-			if Input.is_action_just_pressed("use2"):
+		'	if Input.is_action_just_pressed("use2"):
 				var n_projectile = projectile.instantiate()
 				n_projectile.global_position = position + Vector2(100,0)
 				#n_projectile.direction = (get_global_mouse_position() - global_position).normalized()
@@ -263,7 +269,7 @@ func _physics_process(delta: float) -> void:
 				$dashTimer.start()
 				#RECORD PART
 				if start_recording:
-					ACTION = "dash"
+					ACTION = "dash"'
 					
 					
 	
@@ -283,12 +289,12 @@ func _physics_process(delta: float) -> void:
 		record_movement.append([velocity,ACTION,Vector2(kick_dir_x,kick_dir_y)])
 		time_frame += 1
 	move_and_slide()
-	
-	if Input.is_action_just_pressed("retry"):
-		if  !start_recording:
-			start_loop()
-		else:
-			end_loop()
+	if power_is_available:
+		if Input.is_action_just_pressed("retry"):
+			if  !start_recording:
+				start_loop()
+			else:
+				end_loop()
 
 
 		
@@ -373,6 +379,11 @@ func TRANSITION_SCREEN_OUT():
 
 	#get_tree().paused = false		
 		
-		
+func Say(text):
+	$Panel.show()
+	$Panel/Label.text = text
+
+func Silence():
+	$Panel.hide()		
 		
 		

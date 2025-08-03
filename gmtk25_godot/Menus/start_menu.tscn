@@ -14,7 +14,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_omtxr")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.347474, 0.443272, 0.313485, 1)
+
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -49,6 +59,11 @@ Bunny the glitch
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="DraftBunbunleapou2" type="Sprite2D" parent="."]
+position = Vector2(476, 168)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("3_h66ku")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -57,16 +72,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -32.5
-offset_top = 15.0
+offset_top = 48.0
 offset_right = 32.5
-offset_bottom = 186.0
+offset_bottom = 219.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="DraftBunbunleapou2" type="Sprite2D" parent="VBoxContainer"]
-position = Vector2(28.5, -117)
-scale = Vector2(0.55, 0.55)
-texture = ExtResource("3_h66ku")
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2

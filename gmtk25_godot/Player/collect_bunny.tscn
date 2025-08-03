@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0opx1putc52a"]
+
+[ext_resource type="Script" uid="uid://biryitky300t4" path="res://Player/collect_bunny.gd" id="1_7y1sl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lm1bq"]
+size = Vector2(96, 96)
+
+[node name="collect_bunny" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_7y1sl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(62.5, 52.5)
+shape = SubResource("RectangleShape2D_lm1bq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

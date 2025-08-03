@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://c2xp7ogtrfnu4"]
+[gd_scene load_steps=5 format=4 uid="uid://c2xp7ogtrfnu4"]
 
 [ext_resource type="Script" uid="uid://cuav3sv4rtg" path="res://World/room/green_room.gd" id="1_ejmpt"]
 [ext_resource type="TileSet" uid="uid://cq056g8hr5x86" path="res://Assets/tileset/room_tileset.tres" id="2_jl3ei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb3ck"]
-size = Vector2(63, 96)
+size = Vector2(95, 96)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ejmpt"]
+radius = 52.0096
 
 [node name="room_green" type="Area2D"]
 collision_layer = 0
@@ -12,12 +15,18 @@ collision_mask = 2
 script = ExtResource("1_ejmpt")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAEAAAACAAMAAAAAAAAAAAACAAMAAAABAAAAAAACAAMAAAABAAEAAAACAAMAAAAAAAIAAAACAAMAAAABAAIAAAACAAMAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAEAAAABAAEAAAAAAAIAAAAAAAIAAAABAAIAAAABAAIAAAACAAAAAAACAAAAAAACAAEAAAACAAEAAAACAAIAAAACAAIAAAA=")
 tile_set = ExtResource("2_jl3ei")
 collision_enabled = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(31.5, 48)
+position = Vector2(47.5, 48)
 shape = SubResource("RectangleShape2D_xb3ck")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(48, 53)
+shape = SubResource("CircleShape2D_ejmpt")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

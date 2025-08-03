@@ -56,3 +56,5 @@ func _on_body_entered(body: Node2D) -> void:
 			body.global_position = TP.global_position
 			body.TRANSITION_SCREEN_OUT()
 			rabbit.Silence()
+			body.power_is_available = true
+			body.power_ID = 1
