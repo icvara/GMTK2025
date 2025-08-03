@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://wbsm41042k22" path="res://Assets/Prototype_art/player_bloc2.png" id="2_wuc3v"]
 [ext_resource type="Texture2D" uid="uid://djoit85qdyew5" path="res://Assets/Prototype_art/player_bloc1.png" id="3_wuc3v"]
 [ext_resource type="Texture2D" uid="uid://cgkvb6fboy30c" path="res://Assets/player/bunny-Sheet.png" id="4_078cs"]
-[ext_resource type="Script" uid="uid://c3txi511ab0rk" path="res://Player/kick_center.gd" id="5_yllah"]
 [ext_resource type="Script" uid="uid://qorkesa8n76m" path="res://Player/kick_center2.gd" id="6_g63ky"]
+[ext_resource type="PackedScene" uid="uid://b2sxj7exvs8pm" path="res://Player/kick_center.tscn" id="6_k71j7"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_078cs"]
 
@@ -124,8 +124,6 @@ size = Vector2(25, 20)
 position = Vector2(0, -4)
 collision_layer = 2
 script = ExtResource("1_65lp3")
-friction = 0.6
-acceleration = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -159,26 +157,6 @@ modulate = Color(1, 0.21, 0.21, 1)
 self_modulate = Color(1, 1, 1, 0.678431)
 sprite_frames = SubResource("SpriteFrames_g63ky")
 
-[node name="kick_center" type="Node2D" parent="."]
-position = Vector2(0, 4)
-script = ExtResource("5_yllah")
-
-[node name="kick_area" type="Area2D" parent="kick_center"]
-position = Vector2(0, -2)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="kick_center/kick_area"]
-position = Vector2(-23, 2)
-shape = SubResource("RectangleShape2D_yllah")
-
-[node name="ColorRect" type="ColorRect" parent="kick_center/kick_area"]
-visible = false
-offset_left = -36.0
-offset_top = -8.0
-offset_right = -11.0
-offset_bottom = 12.0
-
 [node name="kick_center2" type="Node2D" parent="."]
 position = Vector2(0, 4)
 script = ExtResource("6_g63ky")
@@ -198,6 +176,8 @@ offset_left = -36.0
 offset_top = -8.0
 offset_right = -11.0
 offset_bottom = 12.0
+
+[node name="kick_center" parent="." instance=ExtResource("6_k71j7")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]

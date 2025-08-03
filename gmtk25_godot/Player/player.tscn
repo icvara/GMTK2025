@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bvmwfn05o86yj"]
+[gd_scene load_steps=34 format=3 uid="uid://bvmwfn05o86yj"]
 
 [ext_resource type="Script" uid="uid://db7xmfb528gh4" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://wbsm41042k22" path="res://Assets/Prototype_art/player_bloc2.png" id="1_l8h54"]
@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dkr23ytvjjaw7" path="res://Player/ui_life.tscn" id="3_gwnis"]
 [ext_resource type="AudioStream" uid="uid://dilk4yh6d61nn" path="res://Audio/jump.wav" id="4_od3ui"]
 [ext_resource type="Texture2D" uid="uid://cgkvb6fboy30c" path="res://Assets/player/bunny-Sheet.png" id="6_fhl08"]
-[ext_resource type="Script" uid="uid://c3txi511ab0rk" path="res://Player/kick_center.gd" id="7_vtle1"]
 [ext_resource type="AudioStream" uid="uid://p30dc8skiwpc" path="res://Audio/tweeeip.wav" id="9_00tjw"]
 [ext_resource type="PackedScene" uid="uid://c26vtqa40have" path="res://Menus/pause.tscn" id="9_5htga"]
+[ext_resource type="PackedScene" uid="uid://b2sxj7exvs8pm" path="res://Player/kick_center.tscn" id="10_5htga"]
 [ext_resource type="AudioStream" uid="uid://btkd6x3xwsq1q" path="res://Audio/pouiiii.wav" id="11_5htga"]
 [ext_resource type="Script" uid="uid://qorkesa8n76m" path="res://Player/kick_center2.gd" id="11_apopc"]
 
@@ -173,28 +173,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
 size = Vector2(32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gpjlu"]
-atlas = ExtResource("6_fhl08")
-region = Rect2(64, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8mwp6"]
-atlas = ExtResource("6_fhl08")
-region = Rect2(96, 128, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qemgg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gpjlu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8mwp6")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(0, -4)
 collision_layer = 2
@@ -260,36 +238,11 @@ wait_time = 0.1
 
 [node name="Pause" parent="." instance=ExtResource("9_5htga")]
 
+[node name="kick_center" parent="." instance=ExtResource("10_5htga")]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gu6f8")
 animation = &"dead"
-
-[node name="kick_center" type="Node2D" parent="."]
-position = Vector2(0, 4)
-script = ExtResource("7_vtle1")
-
-[node name="kick_area" type="Area2D" parent="kick_center"]
-position = Vector2(0, -2)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="kick_center/kick_area"]
-position = Vector2(-25, 2)
-shape = SubResource("RectangleShape2D_fhl08")
-
-[node name="ColorRect" type="ColorRect" parent="kick_center/kick_area"]
-visible = false
-offset_left = -41.0
-offset_top = -14.0
-offset_right = -9.0
-offset_bottom = 18.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="kick_center/kick_area"]
-visible = false
-position = Vector2(-25, 2)
-sprite_frames = SubResource("SpriteFrames_qemgg")
-frame = 1
-frame_progress = 1.0
 
 [node name="Panel" type="PanelContainer" parent="."]
 visible = false
