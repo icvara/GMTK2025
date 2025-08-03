@@ -316,7 +316,7 @@ rabbit = NodePath("../event_rabbit_red")
 position = Vector2(704, 607)
 TP = NodePath("../../lvl1/TP2")
 rabbit = NodePath("../event_rabbit_blue")
-computer = NodePath("../computer")
+computer = NodePath("../../RED_AREA/boss_room/computer")
 
 [node name="GREEN_AREA" type="Node2D" parent="."]
 

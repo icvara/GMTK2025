@@ -6,7 +6,7 @@ extends Area2D
 
 var story_started = false
 var activated = false
-
+var isfinished = false
 func _ready() -> void:
 	desactivate()
 
@@ -22,10 +22,9 @@ func activate():
 	modulate = Color(1,1,1)
 	activated = true
 
-
 func story():
 	story_started = true
-	await get_tree().create_timer(0).timeout
+	await get_tree().create_timer(10).timeout
 	rabbit.show()
 	await get_tree().create_timer(1.).timeout
 	rabbit.Say("No need to go out!")
@@ -35,12 +34,13 @@ func story():
 	rabbit.Say("let's do a nap")
 	await get_tree().create_timer(2.).timeout
 	activate()
+	isfinished = true
 
 
 
 
 func _process(delta: float) -> void:
-	if computer.activated == false and !story_started:
+	if computer.end_battle == true and !story_started and !isfinished:
 		story()
 
 

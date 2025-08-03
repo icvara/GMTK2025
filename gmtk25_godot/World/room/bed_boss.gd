@@ -32,7 +32,7 @@ func end_fight_event():
 
 func spawn_boss():
 	player.external_velocity.x = -500
-	$AnimatedSprite2D.show()
+	'$AnimatedSprite2D.show()
 	await get_tree().create_timer(0.1).timeout
 	$AnimatedSprite2D.hide()
 	await get_tree().create_timer(0.1).timeout
@@ -43,7 +43,7 @@ func spawn_boss():
 	$AnimatedSprite2D.show()
 	await get_tree().create_timer(0.1).timeout
 	$AnimatedSprite2D.hide()
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.1).timeout'
 	$TileMapLayer.hide()
 	boss = BOSS.instantiate()
 	boss.position = position - Vector2(-64,664)
