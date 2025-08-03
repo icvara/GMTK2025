@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://b1qd7t1dnl4ec"]
+[gd_scene load_steps=25 format=4 uid="uid://b1qd7t1dnl4ec"]
 
 [ext_resource type="TileSet" uid="uid://cq056g8hr5x86" path="res://Assets/tileset/room_tileset.tres" id="1_oumf0"]
 [ext_resource type="PackedScene" uid="uid://bvmwfn05o86yj" path="res://Player/player.tscn" id="2_wpcyh"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dpkps2b3ifaem" path="res://Player/ending.tscn" id="15_rhj6o"]
 [ext_resource type="PackedScene" uid="uid://c2xp7ogtrfnu4" path="res://World/room/green_room.tscn" id="15_vi4m0"]
 [ext_resource type="PackedScene" uid="uid://dtkkba3ywoo5w" path="res://World/room/bed_boss.tscn" id="16_yqtko"]
+[ext_resource type="PackedScene" uid="uid://tkrp2acr20ux" path="res://check_point.tscn" id="23_meaf0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g08tj"]
 size = Vector2(59, 98)
@@ -1260,9 +1261,8 @@ position = Vector2(-16, 0)
 [node name="Spike_ennemy" parent="Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy2/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy/Spike_ennemy3/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy/Spike_ennemy3/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy2/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy/Spike_ennemy3/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy/Spike_ennemy3/Spike_ennemy/Spike_ennemy" instance=ExtResource("8_4adwr")]
 position = Vector2(-16, 0)
 
-[node name="TP" parent="." node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
-position = Vector2(-1179, 1021)
-new_TP = NodePath("../RED_AREA/boss_room/TP4")
+[node name="CheckPoint" parent="." instance=ExtResource("23_meaf0")]
+position = Vector2(-618, 927)
 
 [connection signal="body_entered" from="Door_to_next_level" to="Door_to_next_level" method="_on_body_entered"]
 [connection signal="button_down" from="Door_to_next_level/VBoxContainer/Button" to="Door_to_next_level" method="_on_button_button_down"]
