@@ -98,9 +98,9 @@ func _on_area_2d_body_entered2(body: Node2D) -> void:
 	if animation_frame == 3 and body.is_in_group("player"):
 		print("I touched a player")
 		body.Kill()
-	if body.LP <= 0:
-		$damage_area/CollisionShape2D.disabled = true
-		HP = 100
-		$ProgressBar.value = HP
-		await get_tree().create_timer(0.5).timeout
-		$damage_area/CollisionShape2D.disabled = false
+		if body.LP <= 0:
+			$damage_area/CollisionShape2D.disabled = true
+			HP = 100
+			$ProgressBar.value = HP
+			await get_tree().create_timer(0.5).timeout
+			$damage_area/CollisionShape2D.disabled = false
