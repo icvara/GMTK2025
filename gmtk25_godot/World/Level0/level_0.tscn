@@ -255,10 +255,6 @@ rabbit_R = NodePath("../event_rabbit_red")
 rabbit_B = NodePath("../event_rabbit_blue")
 bed = NodePath("../../lvl1/bed_boss")
 
-[node name="TP4" parent="ROOM_AREA" instance=ExtResource("13_w4oqf")]
-position = Vector2(843, 1602)
-activated = false
-
 [node name="GREEN_AREA" type="Node2D" parent="."]
 
 [node name="lock_camera_holder" type="Node2D" parent="GREEN_AREA"]
@@ -1160,7 +1156,7 @@ bunny = NodePath("../event_rabbit_R")
 position = Vector2(-688, 5105)
 
 [node name="lock_camera" parent="GREEN_AREA" node_paths=PackedStringArray("player") instance=ExtResource("5_34f2h")]
-position = Vector2(799, 1569)
+position = Vector2(816, 1640)
 player = NodePath("../../Player")
 
 [node name="RED_AREA" type="Node2D" parent="."]
