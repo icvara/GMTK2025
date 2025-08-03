@@ -124,10 +124,10 @@ rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_ocnfb")
 frame_progress = 0.256957
 
-[node name="zap_sound" type="AudioStreamPlayer2D" parent="Light_attack"]
+[node name="zap_sound" type="AudioStreamPlayer2D" parent="Light_attack/Area2D"]
 stream = ExtResource("7_060ec")
 pitch_scale = 1.56
-max_distance = 600.0
+max_distance = 800.0
 attenuation = 0.31864
 
 [node name="pre_zap_sound" type="AudioStreamPlayer2D" parent="Light_attack"]
