@@ -70,13 +70,15 @@ texture = ExtResource("3_h66ku")
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Level_0"
+text = "Play"
 
 [node name="Button4" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Level_1"
 
 [node name="Button5" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Level_2"
 

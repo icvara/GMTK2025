@@ -325,9 +325,11 @@ TP = NodePath("../../lvl1/TP2")
 rabbit = NodePath("../event_rabbit_blue")
 computer = NodePath("../../RED_AREA/boss_room/computer")
 
-[node name="room_green" parent="ROOM_AREA" instance=ExtResource("15_vi4m0")]
+[node name="room_green" parent="ROOM_AREA" node_paths=PackedStringArray("rabbit", "bed") instance=ExtResource("15_vi4m0")]
 visible = false
 position = Vector2(781, 798)
+rabbit = NodePath("../event_rabbit_green")
+bed = NodePath("../../lvl1/bed_boss")
 
 [node name="GREEN_AREA" type="Node2D" parent="."]
 
