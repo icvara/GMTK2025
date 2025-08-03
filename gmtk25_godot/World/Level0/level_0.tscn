@@ -258,7 +258,6 @@ bed = NodePath("../../lvl1/bed_boss")
 [node name="GREEN_AREA" type="Node2D" parent="."]
 
 [node name="lock_camera_holder" type="Node2D" parent="GREEN_AREA"]
-visible = false
 
 [node name="lock_camera3" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
 position = Vector2(1568, 3154)
@@ -313,6 +312,141 @@ position = Vector2(-3232, 3730)
 
 [node name="lock_camera20" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
 position = Vector2(-3232, 4306)
+
+[node name="lock_camera21" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(1568, 4882)
+
+[node name="lock_camera22" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(1568, 5458)
+
+[node name="lock_camera23" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(1568, 6034)
+
+[node name="lock_camera39" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(2529, 3154)
+
+[node name="lock_camera40" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(2529, 3730)
+
+[node name="lock_camera41" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(2529, 4306)
+
+[node name="lock_camera42" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(2529, 4882)
+
+[node name="lock_camera43" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(2529, 5458)
+
+[node name="lock_camera44" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(2529, 6034)
+
+[node name="lock_camera24" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(608, 4882)
+
+[node name="lock_camera25" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(608, 5458)
+
+[node name="lock_camera26" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(608, 6034)
+
+[node name="lock_camera27" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-352, 4882)
+
+[node name="lock_camera28" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-352, 5458)
+
+[node name="lock_camera29" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-352, 6034)
+
+[node name="lock_camera30" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-1312, 4882)
+
+[node name="lock_camera31" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-1312, 5458)
+
+[node name="lock_camera32" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-1312, 6034)
+
+[node name="lock_camera33" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-2272, 4882)
+
+[node name="lock_camera34" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-2272, 5458)
+
+[node name="lock_camera35" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-2272, 6034)
+
+[node name="lock_camera36" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-3232, 4882)
+
+[node name="lock_camera37" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-3232, 5458)
+
+[node name="lock_camera38" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-3232, 6034)
+
+[node name="lock_camera23" parent="GREEN_AREA/lock_camera_holder/lock_camera38" instance=ExtResource("5_34f2h")]
+position = Vector2(1568, 6034)
+
+[node name="lock_camera44" parent="GREEN_AREA/lock_camera_holder/lock_camera38" instance=ExtResource("5_34f2h")]
+position = Vector2(2529, 6034)
+
+[node name="lock_camera26" parent="GREEN_AREA/lock_camera_holder/lock_camera38" instance=ExtResource("5_34f2h")]
+position = Vector2(608, 6034)
+
+[node name="lock_camera29" parent="GREEN_AREA/lock_camera_holder/lock_camera38" instance=ExtResource("5_34f2h")]
+position = Vector2(-352, 6034)
+
+[node name="lock_camera32" parent="GREEN_AREA/lock_camera_holder/lock_camera38" instance=ExtResource("5_34f2h")]
+position = Vector2(-1312, 6034)
+
+[node name="lock_camera35" parent="GREEN_AREA/lock_camera_holder/lock_camera38" instance=ExtResource("5_34f2h")]
+position = Vector2(-2272, 6034)
+
+[node name="lock_camera38" parent="GREEN_AREA/lock_camera_holder/lock_camera38" instance=ExtResource("5_34f2h")]
+position = Vector2(-3232, 6034)
+
+[node name="lock_camera45" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(1568, 6611)
+
+[node name="lock_camera46" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(2529, 6611)
+
+[node name="lock_camera47" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(608, 6611)
+
+[node name="lock_camera48" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-352, 6611)
+
+[node name="lock_camera49" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-1312, 6611)
+
+[node name="lock_camera50" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-2272, 6611)
+
+[node name="lock_camera51" parent="GREEN_AREA/lock_camera_holder" instance=ExtResource("5_34f2h")]
+position = Vector2(-3232, 6611)
+
+[node name="lock_camera23" parent="GREEN_AREA/lock_camera_holder/lock_camera51" instance=ExtResource("5_34f2h")]
+position = Vector2(1568, 6034)
+
+[node name="lock_camera44" parent="GREEN_AREA/lock_camera_holder/lock_camera51" instance=ExtResource("5_34f2h")]
+position = Vector2(2529, 6034)
+
+[node name="lock_camera26" parent="GREEN_AREA/lock_camera_holder/lock_camera51" instance=ExtResource("5_34f2h")]
+position = Vector2(608, 6034)
+
+[node name="lock_camera29" parent="GREEN_AREA/lock_camera_holder/lock_camera51" instance=ExtResource("5_34f2h")]
+position = Vector2(-352, 6034)
+
+[node name="lock_camera32" parent="GREEN_AREA/lock_camera_holder/lock_camera51" instance=ExtResource("5_34f2h")]
+position = Vector2(-1312, 6034)
+
+[node name="lock_camera35" parent="GREEN_AREA/lock_camera_holder/lock_camera51" instance=ExtResource("5_34f2h")]
+position = Vector2(-2272, 6034)
+
+[node name="lock_camera38" parent="GREEN_AREA/lock_camera_holder/lock_camera51" instance=ExtResource("5_34f2h")]
+position = Vector2(-3232, 6034)
 
 [node name="event_go_green_room" parent="GREEN_AREA" node_paths=PackedStringArray("TP") instance=ExtResource("12_3vqho")]
 position = Vector2(830, 1881)
@@ -1208,7 +1342,8 @@ position = Vector2(717, 759)
 new_TP = NodePath("../TP3")
 
 [node name="TP3" parent="lvl1" instance=ExtResource("13_w4oqf")]
-position = Vector2(4522, 738)
+position = Vector2(4444, 738)
+activated = false
 
 [node name="CheckPoint" parent="lvl1" instance=ExtResource("23_meaf0")]
 position = Vector2(2821, 1082)
