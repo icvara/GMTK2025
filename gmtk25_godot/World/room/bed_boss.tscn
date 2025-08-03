@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://utictj1f0nqc"]
+[gd_scene load_steps=8 format=4 uid="uid://dtkkba3ywoo5w"]
 
-[ext_resource type="Script" uid="uid://cfvolxcjq1wh7" path="res://World/room/computer_boss.gd" id="1_2kuk0"]
-[ext_resource type="TileSet" uid="uid://cq056g8hr5x86" path="res://Assets/tileset/room_tileset.tres" id="2_q74xd"]
-[ext_resource type="Texture2D" uid="uid://h053vk0xiocm" path="res://Assets/Prototype_art/boss_computer_anim-Sheet.png" id="3_q74xd"]
+[ext_resource type="Script" uid="uid://c4x850rv2prbf" path="res://World/room/bed_boss.gd" id="1_eufsy"]
+[ext_resource type="PackedScene" uid="uid://dnrl34q2ufynb" path="res://blue_boss.tscn" id="2_6pwi1"]
+[ext_resource type="TileSet" uid="uid://cq056g8hr5x86" path="res://Assets/tileset/room_tileset.tres" id="2_6yis4"]
+[ext_resource type="Texture2D" uid="uid://h053vk0xiocm" path="res://Assets/Prototype_art/boss_computer_anim-Sheet.png" id="3_6pwi1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb3ck"]
-size = Vector2(76, 93)
+size = Vector2(199, 69)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_51aqj"]
-atlas = ExtResource("3_q74xd")
+atlas = ExtResource("3_6pwi1")
 region = Rect2(0, 0, 281, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i54ei"]
@@ -22,30 +23,31 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="computer_boss" type="Area2D"]
+[node name="bed_boss" type="Area2D"]
 process_mode = 3
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_2kuk0")
+script = ExtResource("1_eufsy")
+BOSS = ExtResource("2_6pwi1")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(1.5, 1.5)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 1, 0, 4, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 4, 0, 2, 0, 0, 0, 0, 0, 1, 0, 1, 0, 4, 0, 4, 0, 0, 0, 0, 0)
-tile_set = ExtResource("2_q74xd")
+tile_map_data = PackedByteArray("AAAAAAEAAwAAAAIAAAAAAAAAAwAEAAIAAAABAAAAAwADAAIAAAABAAEAAwAEAAEAAAACAAEAAwADAAEAAAADAAEAAwACAAEAAAADAAAAAwABAAIAAAACAAAAAwAAAAAAAAA=")
+tile_set = ExtResource("2_6yis4")
 collision_enabled = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(38, 49.5)
+position = Vector2(85.5, 61.5)
 shape = SubResource("RectangleShape2D_xb3ck")
 
 [node name="Control" type="Control" parent="."]
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = -6.0
-offset_top = 8.0
-offset_right = 34.0
-offset_bottom = 48.0
+offset_left = -76.0
+offset_top = -12.0
+offset_right = -36.0
+offset_bottom = 28.0
 
 [node name="Panel" type="PanelContainer" parent="Control"]
 layout_mode = 1
@@ -71,7 +73,7 @@ offset_right = 144.0
 offset_bottom = -60.0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 20
-text = "Turn off computer?"
+text = "Waking up?"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="Control"]

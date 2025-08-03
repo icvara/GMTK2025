@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://b1qd7t1dnl4ec"]
+[gd_scene load_steps=20 format=4 uid="uid://b1qd7t1dnl4ec"]
 
 [ext_resource type="TileSet" uid="uid://cq056g8hr5x86" path="res://Assets/tileset/room_tileset.tres" id="1_oumf0"]
 [ext_resource type="PackedScene" uid="uid://bvmwfn05o86yj" path="res://Player/player.tscn" id="2_wpcyh"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://duefocxbcco85" path="res://World/room/event_TP.tscn" id="13_w4oqf"]
 [ext_resource type="PackedScene" uid="uid://bqcqiivip4o4l" path="res://World/room/event_rabbit_red_2.tscn" id="14_rrwil"]
 [ext_resource type="PackedScene" uid="uid://85owg1sna3vj" path="res://World/Level0/level_1.tscn" id="15_ij4hu"]
+[ext_resource type="PackedScene" uid="uid://dtkkba3ywoo5w" path="res://World/room/bed_boss.tscn" id="16_yqtko"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g08tj"]
 size = Vector2(59, 98)
@@ -636,15 +637,19 @@ position = Vector2(1532, 49)
 color = Color(1, 0, 0, 1)
 
 [node name="lvl1" parent="." instance=ExtResource("15_ij4hu")]
-position = Vector2(2426, 146)
+position = Vector2(2386, 145)
 
 [node name="TP2" parent="lvl1" instance=ExtResource("13_w4oqf")]
 visible = false
 position = Vector2(97, 138)
 activated = false
 
+[node name="bed_boss" parent="lvl1" node_paths=PackedStringArray("bed_room") instance=ExtResource("16_yqtko")]
+position = Vector2(5164, 685)
+bed_room = NodePath("../../ROOM_AREA/bed")
+
 [node name="Player" parent="." instance=ExtResource("2_wpcyh")]
-position = Vector2(749, 846)
+position = Vector2(719, 830)
 
 [node name="Spike_ennemy" parent="." instance=ExtResource("8_4adwr")]
 position = Vector2(-4072, 1669)

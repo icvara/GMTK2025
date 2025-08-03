@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://85owg1sna3vj"]
+[gd_scene load_steps=9 format=4 uid="uid://85owg1sna3vj"]
 
 [ext_resource type="TileSet" uid="uid://bcx1nxuurly25" path="res://Assets/tileset/protype_tileset.tres" id="1_mnwpk"]
 [ext_resource type="PackedScene" uid="uid://bdfg8dygjc5d1" path="res://Player/ui.tscn" id="3_67abc"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://etj0kdfj06ya" path="res://goal_for_blue_ball.tscn" id="6_2nd2f"]
 [ext_resource type="PackedScene" uid="uid://dsjc3u78xaqor" path="res://blue_ball.tscn" id="6_mnwpk"]
 [ext_resource type="AudioStream" uid="uid://bypqheuw6xnve" path="res://Audio/weepwipwoop.wav" id="7_2nd2f"]
-[ext_resource type="PackedScene" uid="uid://dnrl34q2ufynb" path="res://blue_boss.tscn" id="8_67abc"]
 [ext_resource type="PackedScene" uid="uid://b8owreyjwhjs2" path="res://enemies/spike_ennemy.tscn" id="9_vo1yx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g08tj"]
@@ -137,9 +136,6 @@ countdown_time = 2.0
 [node name="Blue_ball6" parent="." instance=ExtResource("6_mnwpk")]
 position = Vector2(4805, 620)
 countdown_time = 2.0
-
-[node name="Blue_boss" parent="." instance=ExtResource("8_67abc")]
-position = Vector2(5222, 14)
 
 [node name="Blue_ball7" parent="." instance=ExtResource("6_mnwpk")]
 position = Vector2(4992, 189)
