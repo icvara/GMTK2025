@@ -41,7 +41,7 @@ func _start_attack_cycle():
 	
 func spawn_attack():
 	# Pick a random Y offset
-	if player :
+	if player and alive == true :
 		var new_y = player.global_position.y-210
 		attack_area.position = Vector2(0,new_y)
 		
@@ -62,7 +62,7 @@ func _process(delta: float) -> void:
 	velocity.y += gravity *delta
 	#if $Light_attack/Area2D/AnimatedSprite2D.play() == 1:
 	animation_frame = $Light_attack/Area2D/AnimatedSprite2D.frame
-	if animation_frame == 3 and $Light_attack/Area2D/zap_sound.playing == false:
+	if animation_frame == 3 and $Light_attack/Area2D/zap_sound.playing == false and alive == true:
 		$Light_attack/Area2D/zap_sound.play()
 	#if animation_frame == 0 and $Light_attack/pre_zap_sound.playing == false:
 		#$Light_attack/pre_zap_sound.play()
