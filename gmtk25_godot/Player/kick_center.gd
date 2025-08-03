@@ -29,7 +29,7 @@ func kick():
 							i.external_velocity -= Vector2(direction.x * 700,direction.y * 200)
 						else :
 							pass
-		await get_tree().create_timer(1.).timeout
+		await get_tree().create_timer(.1).timeout
 		#get_parent().set_physics_process(true)
 
 		#$kick_area/ColorRect.hide()

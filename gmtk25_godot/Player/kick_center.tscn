@@ -25,7 +25,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [node name="kick_center" type="Node2D"]

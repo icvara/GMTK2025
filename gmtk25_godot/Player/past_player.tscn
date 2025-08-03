@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://jn18vmulh7f5"]
+[gd_scene load_steps=26 format=3 uid="uid://jn18vmulh7f5"]
 
 [ext_resource type="Script" uid="uid://darrtfc41r2ya" path="res://Player/past_player.gd" id="1_65lp3"]
 [ext_resource type="Texture2D" uid="uid://wbsm41042k22" path="res://Assets/Prototype_art/player_bloc2.png" id="2_wuc3v"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgkvb6fboy30c" path="res://Assets/player/bunny-Sheet.png" id="4_078cs"]
 [ext_resource type="Script" uid="uid://qorkesa8n76m" path="res://Player/kick_center2.gd" id="6_g63ky"]
 [ext_resource type="PackedScene" uid="uid://b2sxj7exvs8pm" path="res://Player/kick_center.tscn" id="6_k71j7"]
+[ext_resource type="Texture2D" uid="uid://c1ltd5g0y0yas" path="res://Assets/player/ressort-Sheet.png" id="6_y0qq2"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_078cs"]
 
@@ -117,8 +118,30 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4snu"]
+atlas = ExtResource("6_y0qq2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttqt5"]
+atlas = ExtResource("6_y0qq2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5jnvu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4snu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttqt5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yllah"]
-size = Vector2(25, 20)
+size = Vector2(32, 32)
 
 [node name="Past_Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(0, -4)
@@ -166,18 +189,25 @@ position = Vector2(0, -2)
 collision_layer = 0
 collision_mask = 2
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="kick_center2/kick_area"]
+visible = false
+modulate = Color(0, 0, 0.992157, 1)
+position = Vector2(-25, 4)
+sprite_frames = SubResource("SpriteFrames_5jnvu")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kick_center2/kick_area"]
-position = Vector2(-23, 2)
+position = Vector2(-25, 4)
 shape = SubResource("RectangleShape2D_yllah")
 
 [node name="ColorRect" type="ColorRect" parent="kick_center2/kick_area"]
 visible = false
-offset_left = -36.0
-offset_top = -8.0
-offset_right = -11.0
-offset_bottom = 12.0
+offset_left = -41.0
+offset_top = -12.0
+offset_right = -9.0
+offset_bottom = 20.0
 
 [node name="kick_center" parent="." instance=ExtResource("6_k71j7")]
+position = Vector2(0, 6)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bvmwfn05o86yj"]
+[gd_scene load_steps=38 format=3 uid="uid://bvmwfn05o86yj"]
 
 [ext_resource type="Script" uid="uid://db7xmfb528gh4" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://wbsm41042k22" path="res://Assets/Prototype_art/player_bloc2.png" id="1_l8h54"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b2sxj7exvs8pm" path="res://Player/kick_center.tscn" id="10_5htga"]
 [ext_resource type="AudioStream" uid="uid://btkd6x3xwsq1q" path="res://Audio/pouiiii.wav" id="11_5htga"]
 [ext_resource type="Script" uid="uid://qorkesa8n76m" path="res://Player/kick_center2.gd" id="11_apopc"]
+[ext_resource type="Texture2D" uid="uid://c1ltd5g0y0yas" path="res://Assets/player/ressort-Sheet.png" id="13_p5o4e"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_btcbx"]
 
@@ -173,6 +174,28 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
 size = Vector2(32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4snu"]
+atlas = ExtResource("13_p5o4e")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttqt5"]
+atlas = ExtResource("13_p5o4e")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dkpta"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4snu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttqt5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(0, -4)
 collision_layer = 2
@@ -238,6 +261,7 @@ wait_time = 0.1
 [node name="Pause" parent="." instance=ExtResource("9_5htga")]
 
 [node name="kick_center" parent="." instance=ExtResource("10_5htga")]
+position = Vector2(4, 4)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gu6f8")
@@ -264,7 +288,6 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="kick_center2" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, 4)
 script = ExtResource("11_apopc")
 
@@ -273,17 +296,23 @@ position = Vector2(0, -2)
 collision_layer = 0
 collision_mask = 2
 
+[node name="ColorRect" type="ColorRect" parent="kick_center2/kick_area"]
+visible = false
+offset_left = -38.0
+offset_top = -14.0
+offset_right = -6.0
+offset_bottom = 18.0
+metadata/_edit_use_anchors_ = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kick_center2/kick_area"]
 position = Vector2(-21.5, 2)
 shape = SubResource("RectangleShape2D_fhl08")
 
-[node name="ColorRect" type="ColorRect" parent="kick_center2/kick_area"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="kick_center2/kick_area"]
 visible = false
-offset_left = -34.0
-offset_top = -8.0
-offset_right = -9.0
-offset_bottom = 12.0
-metadata/_edit_use_anchors_ = true
+modulate = Color(0, 0, 0.992157, 1)
+position = Vector2(-25, 2)
+sprite_frames = SubResource("SpriteFrames_dkpta")
 
 [node name="transition_screen" type="ColorRect" parent="."]
 process_mode = 3
