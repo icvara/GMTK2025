@@ -1,16 +1,73 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkr23ytvjjaw7"]
+[gd_scene load_steps=10 format=3 uid="uid://dkr23ytvjjaw7"]
 
 [ext_resource type="Script" uid="uid://8ppvfkun2csk" path="res://Player/ui_life.gd" id="1_u6dy8"]
+[ext_resource type="Texture2D" uid="uid://if0gbxrjiewl" path="res://Assets/goal1.png" id="2_cla6p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiy84"]
+atlas = ExtResource("2_cla6p")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf1jl"]
+atlas = ExtResource("2_cla6p")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0csv"]
+atlas = ExtResource("2_cla6p")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eivr0"]
+atlas = ExtResource("2_cla6p")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8kj0"]
+atlas = ExtResource("2_cla6p")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqsmc"]
+atlas = ExtResource("2_cla6p")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fbdj0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eiy84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf1jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0csv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eivr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8kj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqsmc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="UI_LIFE" type="CanvasLayer"]
 script = ExtResource("1_u6dy8")
 
+[node name="Panel" type="Panel" parent="."]
+offset_right = 155.0
+offset_bottom = 40.0
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(1, 0.13, 0.13, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
 offset_left = 52.0
 offset_top = 1.0
 offset_right = 92.0
@@ -18,14 +75,37 @@ offset_bottom = 41.0
 color = Color(1, 0.21, 0.21, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="."]
+visible = false
 offset_left = 107.0
 offset_right = 147.0
 offset_bottom = 40.0
 color = Color(1, 0.11, 0.11, 1)
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = 47.0
 offset_top = 50.0
 offset_right = 87.0
 offset_bottom = 73.0
 text = "HP"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(20, 21)
+scale = Vector2(0.273438, 0.273438)
+sprite_frames = SubResource("SpriteFrames_fbdj0")
+autoplay = "default"
+frame_progress = 0.535739
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(72.25, 22.25)
+scale = Vector2(0.292969, 0.292969)
+sprite_frames = SubResource("SpriteFrames_fbdj0")
+autoplay = "default"
+frame_progress = 0.27245
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(129, 23)
+scale = Vector2(0.300781, 0.300781)
+sprite_frames = SubResource("SpriteFrames_fbdj0")
+autoplay = "default"
+frame_progress = 0.27245
