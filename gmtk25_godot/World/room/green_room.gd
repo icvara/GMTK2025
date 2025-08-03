@@ -13,7 +13,7 @@ var isfinished = false
 func _ready() -> void:
 	desactivate()
 	#story()
-	#activate()
+	activate()
 	
 
 func activate():
