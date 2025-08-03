@@ -13,7 +13,7 @@ extends CharacterBody2D
 var animation_frame = 0
 @export var interval: float = 3.0   # seconds between activations
 #@export var door2 : Node2D
-
+var player :Node2D
 #@export var player: Node2D
 var alive = true
 var starting_position = Vector2(0,0)
@@ -41,21 +41,22 @@ func _start_attack_cycle():
 	
 func spawn_attack():
 	# Pick a random Y offset
-	var new_y = randf_range(min_y, max_y)
-	attack_area.position = Vector2(0,new_y)
-	
-	# Show and enable the area
-	attack_area.visible = true
-	attack_area.monitoring = true
-	$Light_attack/Area2D/AnimatedSprite2D.frame = 0
-	$Light_attack/Area2D/AnimatedSprite2D.play()
-	
-	print("Area spawned at Y:", attack_area.position)
-	
-	# Hide again after 1 second
-	await get_tree().create_timer(2.0).timeout
-	attack_area.visible = false
-	attack_area.monitoring = false
+	if player :
+		var new_y = player.global_position.y-210
+		attack_area.position = Vector2(0,new_y)
+		
+		# Show and enable the area
+		attack_area.visible = true
+		attack_area.monitoring = true
+		$Light_attack/Area2D/AnimatedSprite2D.frame = 0
+		$Light_attack/Area2D/AnimatedSprite2D.play()
+		
+		print("Area spawned at Y:", attack_area.position)
+		
+		# Hide again after 1 second
+		await get_tree().create_timer(2.0).timeout
+		attack_area.visible = false
+		attack_area.monitoring = false
 
 func _process(delta: float) -> void:	
 	velocity.y += gravity *delta

@@ -53,6 +53,7 @@ func spawn_boss():
 	await get_tree().create_timer(0.1).timeout'
 	$TileMapLayer.hide()
 	boss = BOSS.instantiate()
+	boss.player = player
 	boss.door = door
 	player.starting_position = player.global_position
 	boss.position = position - Vector2(-64,664)
