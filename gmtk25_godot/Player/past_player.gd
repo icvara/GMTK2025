@@ -49,7 +49,9 @@ func _physics_process(delta: float) -> void:
 			if isdashing==false:
 
 				velocity.x = record_movement[time_frame][0].x
-				
+				if topview:
+					velocity.y = record_movement[time_frame][0].y
+
 				if velocity.x <0:
 					$AnimatedSprite2D.flip_h = false
 					last_dir = -1
