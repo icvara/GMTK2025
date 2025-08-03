@@ -1359,7 +1359,7 @@ activated = false
 position = Vector2(2821, 1082)
 
 [node name="CheckPoint2" parent="lvl1" instance=ExtResource("23_meaf0")]
-position = Vector2(4327, 742)
+position = Vector2(4618, 758)
 
 [node name="Door" parent="lvl1" instance=ExtResource("7_vk8vr")]
 position = Vector2(4533, 686)
