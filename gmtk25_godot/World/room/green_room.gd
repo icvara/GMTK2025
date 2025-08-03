@@ -1,7 +1,10 @@
 extends Area2D
 
 @export var TP : Node2D
-@export var rabbit: Node2D
+@export var rabbit_G: Node2D
+@export var rabbit_R: Node2D
+@export var rabbit_B: Node2D
+
 @export var bed: Node2D
 
 var story_started = false
@@ -25,18 +28,18 @@ func activate():
 func story():
 	story_started = true
 	await get_tree().create_timer(5).timeout
-	show()
-	rabbit.show()
+
 	await get_tree().create_timer(1.).timeout
-	rabbit.Say("blsblsbla")
+	rabbit_R.Say("Are we playing again?")
 	await get_tree().create_timer(2.).timeout
-	rabbit.Say("We are blsblsbla here!")
+	rabbit_R.Silence()
+	rabbit_B.Say("Maybe going back to sleep?")
 	await get_tree().create_timer(2.).timeout
 	rabbit.Say("lblsblsbla")
 	await get_tree().create_timer(2.).timeout
 	activate()
 	isfinished = true
-
+	show()
 
 
 

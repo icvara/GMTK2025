@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func story():
 	show()
-	await get_tree().create_timer(1.).timeout
+	await get_tree().create_timer(1.).timeou t
 	$Panel.show()
 	$Panel/Label.text = "Not bad!"
 	await get_tree().create_timer(1.).timeout
