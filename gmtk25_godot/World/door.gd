@@ -17,11 +17,11 @@ func close():
 	set_collision_layer_value(1,true)
 	isclose = true
 
-func _process(delta: float) -> void:
-	if isclose:
-		if player:
-			if player.LP <= 0:
-				open()
+#func _process(delta: float) -> void:
+	#if isclose:
+		#if player:
+			#if player.LP <= 0:
+				#open()
 	
 
 func _on_area_2d_body_exited(body: Node2D) -> void:

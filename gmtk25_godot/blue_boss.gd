@@ -76,7 +76,7 @@ func Kill():
 	alive = false
 	velocity = Vector2(0,0)
 	if door:
-		door.open()
+		door.close()
 	#modulate = Color(0,0,0,0.2)
 
 
@@ -101,6 +101,6 @@ func _on_area_2d_body_entered2(body: Node2D) -> void:
 		if body.name == "Player":
 			if body.LP <= 0:
 				if door: 
-					door.open()
+					door.close()
 				HP = 100
 				$ProgressBar.value = HP
