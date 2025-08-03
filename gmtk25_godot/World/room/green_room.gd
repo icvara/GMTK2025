@@ -35,7 +35,7 @@ func story():
 	rabbit_R.Silence()
 	rabbit_B.Say("Maybe going back to sleep?")
 	await get_tree().create_timer(2.).timeout
-	rabbit.Say("lblsblsbla")
+	#rabbit.Say("lblsblsbla")
 	await get_tree().create_timer(2.).timeout
 	activate()
 	isfinished = true

@@ -297,7 +297,6 @@ rabbit = NodePath("../event_rabbit_red")
 [node name="event_rabbit_blue" parent="ROOM_AREA" node_paths=PackedStringArray("door") instance=ExtResource("8_65a3r")]
 position = Vector2(779, 609)
 door = NodePath("../Door2")
-flip = null
 
 [node name="event_rabbit_red" parent="ROOM_AREA" node_paths=PackedStringArray("door") instance=ExtResource("8_65a3r")]
 position = Vector2(92, 659)
@@ -326,12 +325,11 @@ TP = NodePath("../../lvl1/TP2")
 rabbit = NodePath("../event_rabbit_blue")
 computer = NodePath("../../RED_AREA/boss_room/computer")
 
-[node name="room_green" parent="ROOM_AREA" node_paths=PackedStringArray("rabbit_G", "rabbit_R", "rabbit", "bed") instance=ExtResource("15_vi4m0")]
+[node name="room_green" parent="ROOM_AREA" node_paths=PackedStringArray("rabbit_G", "rabbit_R", "bed") instance=ExtResource("15_vi4m0")]
 visible = false
 position = Vector2(781, 798)
 rabbit_G = NodePath("../event_rabbit_green")
 rabbit_R = NodePath("../event_rabbit_red")
-rabbit = NodePath("../event_rabbit_blue")
 bed = NodePath("../../lvl1/bed_boss")
 
 [node name="GREEN_AREA" type="Node2D" parent="."]
@@ -650,7 +648,6 @@ TP = NodePath("../TP4")
 [node name="rabbit_boss_red" parent="RED_AREA/boss_room" instance=ExtResource("8_65a3r")]
 visible = true
 position = Vector2(1532, 49)
-flip = null
 color = Color(1, 0, 0, 1)
 
 [node name="lvl1" parent="." instance=ExtResource("15_ij4hu")]
