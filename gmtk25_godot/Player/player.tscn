@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b2sxj7exvs8pm" path="res://Player/kick_center.tscn" id="10_5htga"]
 [ext_resource type="AudioStream" uid="uid://btkd6x3xwsq1q" path="res://Audio/pouiiii.wav" id="11_5htga"]
 [ext_resource type="Script" uid="uid://qorkesa8n76m" path="res://Player/kick_center2.gd" id="11_apopc"]
-[ext_resource type="Texture2D" uid="uid://c1ltd5g0y0yas" path="res://Assets/player/ressort-Sheet.png" id="13_p5o4e"]
+[ext_resource type="Texture2D" uid="uid://dtmxdbp8jhn46" path="res://Assets/blue:ressort-Sheet-export.png" id="13_p5o4e"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_btcbx"]
 
@@ -174,22 +174,22 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
 size = Vector2(32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o4snu"]
-atlas = ExtResource("13_p5o4e")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ttqt5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpjlu"]
 atlas = ExtResource("13_p5o4e")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mwp6"]
+atlas = ExtResource("13_p5o4e")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dkpta"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o4snu")
+"texture": SubResource("AtlasTexture_gpjlu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ttqt5")
+"texture": SubResource("AtlasTexture_8mwp6")
 }],
 "loop": false,
 "name": &"default",
