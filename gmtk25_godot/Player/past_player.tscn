@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgkvb6fboy30c" path="res://Assets/player/bunny-Sheet.png" id="4_078cs"]
 [ext_resource type="Script" uid="uid://qorkesa8n76m" path="res://Player/kick_center2.gd" id="6_g63ky"]
 [ext_resource type="PackedScene" uid="uid://b2sxj7exvs8pm" path="res://Player/kick_center.tscn" id="6_k71j7"]
-[ext_resource type="Texture2D" uid="uid://c1ltd5g0y0yas" path="res://Assets/player/ressort-Sheet.png" id="6_y0qq2"]
+[ext_resource type="Texture2D" uid="uid://dtmxdbp8jhn46" path="res://Assets/blue:ressort-Sheet-export.png" id="6_y0qq2"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_078cs"]
 
@@ -118,11 +118,11 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o4snu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jnvu"]
 atlas = ExtResource("6_y0qq2")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ttqt5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_popvi"]
 atlas = ExtResource("6_y0qq2")
 region = Rect2(0, 0, 32, 32)
 
@@ -130,10 +130,10 @@ region = Rect2(0, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o4snu")
+"texture": SubResource("AtlasTexture_5jnvu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ttqt5")
+"texture": SubResource("AtlasTexture_popvi")
 }],
 "loop": false,
 "name": &"default",
