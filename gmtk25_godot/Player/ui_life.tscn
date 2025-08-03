@@ -94,7 +94,7 @@ position = Vector2(20, 21)
 scale = Vector2(0.273438, 0.273438)
 sprite_frames = SubResource("SpriteFrames_fbdj0")
 autoplay = "default"
-frame_progress = 0.535739
+frame_progress = 0.269731
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 position = Vector2(72.25, 22.25)
