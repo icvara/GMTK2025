@@ -1350,6 +1350,7 @@ door = NodePath("../Door")
 [node name="TP" parent="lvl1" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
 position = Vector2(717, 759)
 new_TP = NodePath("../TP3")
+activated = false
 
 [node name="TP3" parent="lvl1" instance=ExtResource("13_w4oqf")]
 position = Vector2(4444, 738)
