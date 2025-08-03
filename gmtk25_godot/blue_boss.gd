@@ -100,6 +100,11 @@ func _on_area_2d_body_entered2(body: Node2D) -> void:
 		body.Kill()
 		if body.name == "Player":
 			if body.LP <= 0:
+<<<<<<< Updated upstream
+=======
+				if door: 
+					door.close()
+>>>>>>> Stashed changes
 				$damage_area/CollisionShape2D.disabled = true
 				HP = 100
 				$ProgressBar.value = HP
