@@ -12,6 +12,7 @@ var activated = false
 var isfinished = false
 func _ready() -> void:
 	desactivate()
+	story()
 
 func activate():
 	modulate = Color(1,1,1)
@@ -28,18 +29,23 @@ func activate():
 func story():
 	story_started = true
 	await get_tree().create_timer(5).timeout
-
-	await get_tree().create_timer(1.).timeout
 	rabbit_R.Say("Are we playing again?")
 	await get_tree().create_timer(2.).timeout
 	rabbit_R.Silence()
 	rabbit_B.Say("Maybe going back to sleep?")
 	await get_tree().create_timer(2.).timeout
-	#rabbit.Say("lblsblsbla")
+	rabbit_B.Say("Outside world sucks anyway!")
+	await get_tree().create_timer(2.).timeout
+	rabbit_B.Silence()
+	rabbit_G.show()
+	show()
+	await get_tree().create_timer(2.).timeout
+	rabbit_G.Say("There is a lot of sadness outside")
+	await get_tree().create_timer(2.).timeout
+	rabbit_G.Say("Everything that live, die")
 	await get_tree().create_timer(2.).timeout
 	activate()
 	isfinished = true
-	show()
 
 
 
