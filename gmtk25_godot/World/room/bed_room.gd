@@ -9,7 +9,7 @@ var activated = false
 var isfinished = false
 func _ready() -> void:
 	desactivate()
-	activate()
+	#activate()
 
 
 func activate():

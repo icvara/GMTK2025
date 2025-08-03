@@ -8,7 +8,7 @@ var activated = false
 
 func _ready() -> void:
 	desactivate()
-	activate()
+	#activate()
 
 func activate():
 	modulate = Color(1,1,1)

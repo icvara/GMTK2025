@@ -369,6 +369,7 @@ func Kill():
 		position = starting_position#check_point
 		if LP <= 0 : 
 			position = check_point
+			LP = 3
 
 		$UI_LIFE.Update()
 	

@@ -151,6 +151,21 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Go down"
 
+[node name="avoid_these3" type="Label" parent="label_debug"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3223.0
+offset_top = 788.0
+offset_right = -3142.0
+offset_bottom = 821.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "check point"
+
 [node name="jump_tuto" type="Label" parent="label_debug"]
 layout_mode = 1
 anchors_preset = 3
@@ -1309,10 +1324,12 @@ activated = false
 single_use = true
 set_starting_pos = true
 
-[node name="event_back_room2" parent="RED_AREA/boss_room" node_paths=PackedStringArray("rabbit", "TP") instance=ExtResource("14_rrwil")]
+[node name="event_back_room2" parent="RED_AREA/boss_room" node_paths=PackedStringArray("rabbit", "TP", "checkpoint", "checkpoint2") instance=ExtResource("14_rrwil")]
 position = Vector2(1212, 124)
 rabbit = NodePath("../rabbit_boss_red")
 TP = NodePath("../TP4")
+checkpoint = NodePath("../../../CheckPoint")
+checkpoint2 = NodePath("../../../CheckPoint2")
 
 [node name="rabbit_boss_red" parent="RED_AREA/boss_room" instance=ExtResource("8_65a3r")]
 visible = true
@@ -1335,6 +1352,7 @@ door = NodePath("../Door")
 [node name="TP" parent="lvl1" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
 position = Vector2(717, 759)
 new_TP = NodePath("../TP3")
+activated = false
 
 [node name="TP3" parent="lvl1" instance=ExtResource("13_w4oqf")]
 position = Vector2(4444, 738)
@@ -1924,7 +1942,7 @@ position = Vector2(-16, 0)
 position = Vector2(-16, 0)
 
 [node name="CheckPoint" parent="." instance=ExtResource("23_meaf0")]
-position = Vector2(-618, 927)
+position = Vector2(-3127, 891)
 
 [node name="CheckPoint2" parent="." instance=ExtResource("23_meaf0")]
 position = Vector2(-4432, 901)
