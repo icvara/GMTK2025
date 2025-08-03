@@ -469,6 +469,7 @@ position = Vector2(830, 1881)
 TP = NodePath("../TP_all/TP197")
 
 [node name="TP_all" type="Node2D" parent="GREEN_AREA"]
+visible = false
 
 [node name="TP" parent="GREEN_AREA/TP_all" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
 position = Vector2(177, 3088)
