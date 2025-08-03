@@ -46,7 +46,7 @@ var external_velocity =Vector2(0,0)
 #monster intraction
 var alive = true
 var external_friction = 0.05
-
+var count_rabbit = 0
 var count = 0
 var room_position = Vector2(0,0)
 var topview = false
@@ -76,6 +76,7 @@ func _ready() -> void:
 
 func start_loop():
 		#position = starting_position
+		$Label.show()
 		$Timer.start(1.0)
 		$ProgressBar.show() 
 		starting_position = position
@@ -84,6 +85,7 @@ func start_loop():
 		#init_loop()
 
 func end_loop():
+	$Label.hide()
 	start_recording = false
 	time_frame = 0
 	external_velocity =Vector2(0,0)
@@ -282,8 +284,8 @@ func _physics_process(delta: float) -> void:
 			var col = get_slide_collision(c)
 			if col.get_collider().is_in_group("player"):
 				velocity.x = velocity.bounce(col.get_normal()).x * bounce_strength'
-		
-	velocity.y += gravity *delta
+	if !topview:
+		velocity.y += gravity *delta
 	external_velocity.x = lerp(external_velocity.x,0.0,external_friction)
 	external_velocity.y = lerp(external_velocity.y,0.0,external_friction)
 
@@ -329,7 +331,16 @@ func Spawn_Past_Player(record,i):
 		new_past_player.starting_position = starting_position
 		new_past_player.max_time =  time_past #- $ProgressBar.value - 1
 		new_past_player.projectile = projectile
-
+		if power_ID == 0:
+			new_past_player.get_node("AnimatedSprite2D").modulate = Color(1,0,0,0.7)
+		elif power_ID == 1:
+			new_past_player.get_node("AnimatedSprite2D").modulate = Color(0,0,1,0.7)
+		elif power_ID == 2:
+			new_past_player.get_node("AnimatedSprite2D").modulate = Color(0,1,0,0.7)
+			new_past_player.get_node("Label2").text = str(count_rabbit)
+			$Label.text = str(count_rabbit)
+			count_rabbit += 1
+			new_past_player.topview = topview
 		get_parent().add_child(new_past_player)
 		past_player_list.append(new_past_player)
 	#currently reinit the save to not have one ghost running trough 5 save 

@@ -15,3 +15,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.power_is_available = true
 		body.power_ID =2 
 		body.TRANSITION_SCREEN_OUT()
+ 

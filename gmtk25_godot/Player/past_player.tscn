@@ -209,5 +209,11 @@ offset_bottom = 20.0
 [node name="kick_center" parent="." instance=ExtResource("6_k71j7")]
 position = Vector2(0, 6)
 
+[node name="Label2" type="Label" parent="."]
+offset_left = -3.0
+offset_top = -37.0
+offset_right = 10.0
+offset_bottom = -14.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]

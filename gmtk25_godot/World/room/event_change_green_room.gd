@@ -25,9 +25,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			new_TP.isUsed = true
 			if body.name == "Player":
 				body.TRANSITION_SCREEN_IN()
-			body.global_position = new_TP.global_position
-			body.check_point = new_TP.global_position
-			body.starting_position = new_TP.global_position
+				
+				body.global_position = new_TP.global_position
+				body.check_point = new_TP.global_position
+				body.starting_position = new_TP.global_position
 
 			if body.name == "Player":
 				body.TRANSITION_SCREEN_OUT()

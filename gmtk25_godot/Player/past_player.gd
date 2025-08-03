@@ -27,6 +27,7 @@ var last_dir = 1
 var max_time = 5
 var starting_position = Vector2(0,0)
 var is_jumping_started =false
+var topview = false
 
 ##
 var count = 0
@@ -41,7 +42,8 @@ func _ready() -> void:
 
 	
 func _physics_process(delta: float) -> void:
-	velocity.y += gravity *delta
+	if !topview:
+		velocity.y += gravity *delta
 	if alive:
 		if time_frame < record_movement.size():
 			if isdashing==false:
@@ -54,12 +56,19 @@ func _physics_process(delta: float) -> void:
 				if velocity.x >0:
 					$AnimatedSprite2D.flip_h = true
 					last_dir = 1
-				if velocity.x == 0  and is_on_floor() and is_jumping_started ==false:
-					$AnimatedSprite2D.play("default")
-				elif is_on_floor() and is_jumping_started ==false:
-					$AnimatedSprite2D.play("walk")
+					
+				if !topview:
+					if velocity.x == 0  and is_on_floor() and is_jumping_started ==false:
+						$AnimatedSprite2D.play("default")
+					elif is_on_floor() and is_jumping_started ==false:
+						$AnimatedSprite2D.play("walk")
+				else:
+					if velocity.x == 0  and velocity.y == 0:
+						$AnimatedSprite2D.play("default")
+					else:
+						$AnimatedSprite2D.play("walk")
 				
-				if record_movement[time_frame][1]=="start_jump" and is_on_floor() and is_jumping_started ==false:
+				if record_movement[time_frame][1]=="start_jump" and is_on_floor() and is_jumping_started ==false and topview ==false:
 					is_jumping_started = true
 					velocity.x = 0
 					$AnimatedSprite2D.play("jump_0")
@@ -166,7 +175,7 @@ func Kill():
 	
 func init_past_loop():
 	alive = true
-	modulate = Color(1,1,1,0.8)
+	#modulate = Color(1,1,1,0.8)
 	external_velocity =Vector2(0,0)
 	time_frame = 0
 	$Timer.start(max_time)
