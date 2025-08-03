@@ -12,7 +12,7 @@ var activated = false
 var isfinished = false
 func _ready() -> void:
 	desactivate()
-	story()
+	#story()
 
 func activate():
 	modulate = Color(1,1,1)
