@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://b1qd7t1dnl4ec"]
+[gd_scene load_steps=21 format=4 uid="uid://b1qd7t1dnl4ec"]
 
 [ext_resource type="TileSet" uid="uid://cq056g8hr5x86" path="res://Assets/tileset/room_tileset.tres" id="1_oumf0"]
 [ext_resource type="PackedScene" uid="uid://bvmwfn05o86yj" path="res://Player/player.tscn" id="2_wpcyh"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://duefocxbcco85" path="res://World/room/event_TP.tscn" id="13_w4oqf"]
 [ext_resource type="PackedScene" uid="uid://bqcqiivip4o4l" path="res://World/room/event_rabbit_red_2.tscn" id="14_rrwil"]
 [ext_resource type="PackedScene" uid="uid://85owg1sna3vj" path="res://World/Level0/level_1.tscn" id="15_ij4hu"]
+[ext_resource type="PackedScene" uid="uid://c2xp7ogtrfnu4" path="res://World/room/green_room.tscn" id="15_vi4m0"]
 [ext_resource type="PackedScene" uid="uid://dtkkba3ywoo5w" path="res://World/room/bed_boss.tscn" id="16_yqtko"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g08tj"]
@@ -317,6 +318,9 @@ position = Vector2(704, 607)
 TP = NodePath("../../lvl1/TP2")
 rabbit = NodePath("../event_rabbit_blue")
 computer = NodePath("../../RED_AREA/boss_room/computer")
+
+[node name="room_green" parent="ROOM_AREA" instance=ExtResource("15_vi4m0")]
+position = Vector2(73, 800)
 
 [node name="GREEN_AREA" type="Node2D" parent="."]
 
