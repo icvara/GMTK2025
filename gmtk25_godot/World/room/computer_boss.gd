@@ -29,7 +29,7 @@ func end_fight_event():
 	player.global_position = player.room_position
 	player.starting_position = player.room_position
 	player.TRANSITION_SCREEN_OUT()
-	player.power_is_available = false
+	#player.power_is_available = false
 
 
 func spawn_boss():

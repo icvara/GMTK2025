@@ -25,7 +25,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="kick_center" type="Node2D"]
@@ -51,3 +51,5 @@ offset_bottom = 18.0
 visible = false
 position = Vector2(-25, 2)
 sprite_frames = SubResource("SpriteFrames_eeke1")
+frame = 1
+frame_progress = 1.0

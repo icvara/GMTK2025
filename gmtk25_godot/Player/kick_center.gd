@@ -12,8 +12,8 @@ var last_rotation = 0
 func kick():
 		$kick_area/AnimatedSprite2D.show()
 		$kick_area/AnimatedSprite2D.play("default")
-		get_parent().set_physics_process(false)
-		await get_tree().create_timer(1.0).timeout
+		#get_parent().set_physics_process(false)
+		#await get_tree().create_timer(1.0).timeout
 		
 		#$kick_area/ColorRect.show()
 		var direction = Vector2.RIGHT.rotated(rotation)
@@ -30,7 +30,7 @@ func kick():
 						else :
 							pass
 		await get_tree().create_timer(1.).timeout
-		get_parent().set_physics_process(true)
+		#get_parent().set_physics_process(true)
 
 		#$kick_area/ColorRect.hide()
 		#$kick_area/AnimatedSprite2D.show()

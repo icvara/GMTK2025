@@ -310,6 +310,10 @@ rabbit_R = NodePath("../event_rabbit_red")
 rabbit_B = NodePath("../event_rabbit_blue")
 bed = NodePath("../../lvl1/bed_boss")
 
+[node name="TP4" parent="ROOM_AREA" instance=ExtResource("13_w4oqf")]
+position = Vector2(843, 1602)
+activated = false
+
 [node name="GREEN_AREA" type="Node2D" parent="."]
 
 [node name="lock_camera_holder" type="Node2D" parent="GREEN_AREA"]
@@ -669,13 +673,19 @@ color = Color(1, 0, 0, 1)
 position = Vector2(2386, 145)
 
 [node name="TP2" parent="lvl1" instance=ExtResource("13_w4oqf")]
-visible = false
 position = Vector2(97, 138)
 activated = false
 
 [node name="bed_boss" parent="lvl1" node_paths=PackedStringArray("bed_room") instance=ExtResource("16_yqtko")]
 position = Vector2(5164, 685)
 bed_room = NodePath("../../ROOM_AREA/bed")
+
+[node name="TP" parent="lvl1" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
+position = Vector2(717, 759)
+new_TP = NodePath("../TP3")
+
+[node name="TP3" parent="lvl1" instance=ExtResource("13_w4oqf")]
+position = Vector2(4522, 738)
 
 [node name="Player" parent="." instance=ExtResource("2_wpcyh")]
 position = Vector2(719, 830)
@@ -1249,6 +1259,10 @@ position = Vector2(-16, 0)
 
 [node name="Spike_ennemy" parent="Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy2/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy/Spike_ennemy3/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy/Spike_ennemy3/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy2/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy/Spike_ennemy3/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy/Spike_ennemy2/Spike_ennemy/Spike_ennemy3/Spike_ennemy/Spike_ennemy" instance=ExtResource("8_4adwr")]
 position = Vector2(-16, 0)
+
+[node name="TP" parent="." node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
+position = Vector2(-1179, 1021)
+new_TP = NodePath("../RED_AREA/boss_room/TP4")
 
 [connection signal="body_entered" from="Door_to_next_level" to="Door_to_next_level" method="_on_body_entered"]
 [connection signal="button_down" from="Door_to_next_level/VBoxContainer/Button" to="Door_to_next_level" method="_on_button_button_down"]

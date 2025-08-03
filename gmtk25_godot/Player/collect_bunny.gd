@@ -9,7 +9,7 @@ var count = 0
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and count == 0:
-		body.color += bunny.color*0.5
+		body.color = bunny.color*0.5
 		body.get_node("AnimatedSprite2D").modulate = body.color
 		count += 1
 

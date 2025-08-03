@@ -13,6 +13,8 @@ var isfinished = false
 func _ready() -> void:
 	desactivate()
 	#story()
+	activate()
+	
 
 func activate():
 	modulate = Color(1,1,1)
