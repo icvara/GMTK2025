@@ -28,11 +28,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			if body.name == "Player":
 				body.TRANSITION_SCREEN_IN()
 				
-				body.global_position = new_TP.global_position
-				if set_starting_pos:
+			body.global_position = new_TP.global_position
+			if set_starting_pos:
 					body.check_point = new_TP.global_position
 					body.starting_position = new_TP.global_position
-
 			if body.name == "Player":
 				body.TRANSITION_SCREEN_OUT()
 			if single_use:
