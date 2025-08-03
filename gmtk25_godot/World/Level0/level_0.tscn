@@ -1198,9 +1198,10 @@ position = Vector2(2386, 145)
 position = Vector2(97, 138)
 activated = false
 
-[node name="bed_boss" parent="lvl1" node_paths=PackedStringArray("bed_room") instance=ExtResource("16_yqtko")]
+[node name="bed_boss" parent="lvl1" node_paths=PackedStringArray("bed_room", "door") instance=ExtResource("16_yqtko")]
 position = Vector2(5164, 685)
 bed_room = NodePath("../../ROOM_AREA/bed")
+door = NodePath("../Door")
 
 [node name="TP" parent="lvl1" node_paths=PackedStringArray("new_TP") instance=ExtResource("13_w4oqf")]
 position = Vector2(717, 759)
@@ -1213,7 +1214,11 @@ position = Vector2(4522, 738)
 position = Vector2(2821, 1082)
 
 [node name="CheckPoint2" parent="lvl1" instance=ExtResource("23_meaf0")]
-position = Vector2(3836, 747)
+position = Vector2(4327, 742)
+
+[node name="Door" parent="lvl1" instance=ExtResource("7_vk8vr")]
+position = Vector2(4533, 686)
+scale = Vector2(1.5, 1.5)
 
 [node name="Player" parent="." instance=ExtResource("2_wpcyh")]
 position = Vector2(719, 830)

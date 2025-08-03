@@ -3,6 +3,7 @@ extends Area2D
 
 @export var BOSS: PackedScene
 @export var bed_room :Node2D
+@export var door :Node2D
 
 var player : Node2D
 var boss :Node2D
@@ -52,6 +53,8 @@ func spawn_boss():
 	await get_tree().create_timer(0.1).timeout'
 	$TileMapLayer.hide()
 	boss = BOSS.instantiate()
+	boss.door = door
+	player.starting_position = player.global_position
 	boss.position = position - Vector2(-64,664)
 	get_parent().add_child(boss)
 	isfinshed =  true

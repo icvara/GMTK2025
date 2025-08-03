@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://hdwiww3bkfkc"]
+[gd_scene load_steps=7 format=3 uid="uid://hdwiww3bkfkc"]
 
 [ext_resource type="Script" uid="uid://bc6cltkjvrron" path="res://World/door.gd" id="1_3wo5c"]
 [ext_resource type="Texture2D" uid="uid://cuhxsdsope1gw" path="res://Assets/Prototype_art/prototype_tileset.png" id="1_xb3ck"]
@@ -9,6 +9,9 @@ atlas = ExtResource("1_xb3ck")
 region = Rect2(0, 191.75, 32, 128.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb3ck"]
+size = Vector2(32, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyo0w"]
 size = Vector2(32, 64)
 
 [node name="Door" type="StaticBody2D"]
@@ -26,3 +29,11 @@ tile_set = ExtResource("3_hyo0w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(16, 32)
 shape = SubResource("RectangleShape2D_xb3ck")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(16, 32)
+shape = SubResource("RectangleShape2D_hyo0w")
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

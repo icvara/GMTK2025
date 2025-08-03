@@ -26,6 +26,9 @@ func _ready() -> void:
 	
 	starting_position = position
 	var player = get_parent().get_node("Player")
+	if door:
+		door.close()
+	
 	#player.reset_loop.connect(on_reset_loop)
 
 func _start_attack_cycle():
@@ -96,5 +99,7 @@ func _on_area_2d_body_entered2(body: Node2D) -> void:
 		body.Kill()
 		if body.name == "Player":
 			if body.LP <= 0:
+				if door: 
+					door.open()
 				HP = 100
 				$ProgressBar.value = HP
