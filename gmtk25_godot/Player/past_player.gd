@@ -169,7 +169,8 @@ func Transform_in_rock():
 
 func Kill():
 	alive = false
-	modulate = Color(1,1,1,0.2)
+	$AnimatedSprite2D.play("dead")
+	#modulate = Color(1,1,1,0.2)
 	#set_collision_layer_value(1,false)
 	#set_collision_layer_value(2,false)
 	#$Timer.stop()

@@ -1,23 +1,25 @@
-[gd_scene load_steps=19 format=3 uid="uid://dnrl34q2ufynb"]
+[gd_scene load_steps=21 format=3 uid="uid://dnrl34q2ufynb"]
 
 [ext_resource type="Script" uid="uid://b2ls78053ob4k" path="res://blue_boss.gd" id="1_578fe"]
-[ext_resource type="Texture2D" uid="uid://bbrlcdtaxpi3q" path="res://Assets/Bed_boss1.png" id="2_4j0ju"]
 [ext_resource type="Texture2D" uid="uid://b28kn1n3kkvup" path="res://Assets/shapeboss_pre_lightning4.png" id="2_lbdhd"]
+[ext_resource type="Texture2D" uid="uid://jutwpc2f6iea" path="res://enemies/blueboss.png" id="2_wbhrl"]
 [ext_resource type="Texture2D" uid="uid://rknwfikvyh4t" path="res://Assets/shapeboss_pre_lightning3.png" id="3_vsj0w"]
 [ext_resource type="Texture2D" uid="uid://dkq3853qc388x" path="res://Assets/shapeboss_pre_lightning1.png" id="4_4j0ju"]
 [ext_resource type="Texture2D" uid="uid://ymneogw1yfp4" path="res://Assets/shapeboss_lightning1.png" id="5_060ec"]
 [ext_resource type="AudioStream" uid="uid://i37jho6m3ly1" path="res://Audio/golemsound3.wav" id="7_060ec"]
 [ext_resource type="AudioStream" uid="uid://hmeyg5vhvfxp" path="res://Audio/golemsound2.wav" id="8_wbhrl"]
+[ext_resource type="Texture2D" uid="uid://bjra8ioj1xunk" path="res://enemies/eye.png" id="9_jmi45"]
+[ext_resource type="Script" uid="uid://d12gy2b6vljsm" path="res://eye.gd" id="9_p83nv"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_060ec"]
-atlas = ExtResource("2_4j0ju")
-region = Rect2(0, 0, 128, 768)
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7d0w"]
+atlas = ExtResource("2_wbhrl")
+region = Rect2(0, 0, 196, 768)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wbhrl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_060ec")
+"texture": SubResource("AtlasTexture_v7d0w")
 }],
 "loop": true,
 "name": &"default",
@@ -181,6 +183,69 @@ visible = false
 offset_left = -640.0
 offset_top = 680.0
 offset_bottom = 765.0
+
+[node name="Node" type="Node2D" parent="."]
+position = Vector2(22, 657)
+script = ExtResource("9_p83nv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node"]
+modulate = Color(1, 1, 1, 0.545098)
+position = Vector2(-11, 0)
+texture = ExtResource("9_jmi45")
+
+[node name="Node2" type="Node2D" parent="."]
+position = Vector2(20, 582)
+script = ExtResource("9_p83nv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2"]
+modulate = Color(1, 1, 1, 0.545098)
+position = Vector2(-11, 0)
+texture = ExtResource("9_jmi45")
+
+[node name="Node3" type="Node2D" parent="."]
+position = Vector2(22, 499)
+script = ExtResource("9_p83nv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node3"]
+modulate = Color(1, 1, 1, 0.545098)
+position = Vector2(-11, 0)
+texture = ExtResource("9_jmi45")
+
+[node name="Node4" type="Node2D" parent="."]
+position = Vector2(20, 412)
+script = ExtResource("9_p83nv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node4"]
+modulate = Color(1, 1, 1, 0.545098)
+position = Vector2(-11, 0)
+texture = ExtResource("9_jmi45")
+
+[node name="Node5" type="Node2D" parent="."]
+position = Vector2(19, 321)
+script = ExtResource("9_p83nv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node5"]
+modulate = Color(1, 1, 1, 0.545098)
+position = Vector2(-11, 0)
+texture = ExtResource("9_jmi45")
+
+[node name="Node6" type="Node2D" parent="."]
+position = Vector2(11, 242)
+script = ExtResource("9_p83nv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node6"]
+modulate = Color(1, 1, 1, 0.545098)
+position = Vector2(-11, 0)
+texture = ExtResource("9_jmi45")
+
+[node name="Node7" type="Node2D" parent="."]
+position = Vector2(5, 120)
+script = ExtResource("9_p83nv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node7"]
+modulate = Color(1, 1, 1, 0.545098)
+position = Vector2(-11, 0)
+texture = ExtResource("9_jmi45")
 
 [connection signal="body_entered" from="damage_area" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Light_attack/Area2D" to="." method="_on_area_2d_body_entered2"]

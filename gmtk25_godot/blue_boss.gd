@@ -83,9 +83,7 @@ func Kill():
 func getDamage(value):
 	HP -= value
 	$ProgressBar.value = HP
-	if HP <= 0:
-		Kill()
-
+	
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Ball"):

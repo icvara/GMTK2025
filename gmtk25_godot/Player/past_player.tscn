@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://jn18vmulh7f5"]
+[gd_scene load_steps=32 format=3 uid="uid://jn18vmulh7f5"]
 
 [ext_resource type="Script" uid="uid://darrtfc41r2ya" path="res://Player/past_player.gd" id="1_65lp3"]
 [ext_resource type="Texture2D" uid="uid://wbsm41042k22" path="res://Assets/Prototype_art/player_bloc2.png" id="2_wuc3v"]
@@ -12,6 +12,30 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yllah"]
 radius = 12.3693
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k71j7"]
+atlas = ExtResource("4_078cs")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0qq2"]
+atlas = ExtResource("4_078cs")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upbtm"]
+atlas = ExtResource("4_078cs")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a67ja"]
+atlas = ExtResource("4_078cs")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3t0u"]
+atlas = ExtResource("4_078cs")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdmbo"]
+atlas = ExtResource("4_078cs")
+region = Rect2(160, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vtle1"]
 atlas = ExtResource("4_078cs")
@@ -59,6 +83,29 @@ region = Rect2(128, 64, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g63ky"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k71j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0qq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upbtm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a67ja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3t0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdmbo")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vtle1")
@@ -179,6 +226,7 @@ wait_time = 0.1
 modulate = Color(1, 0.21, 0.21, 1)
 self_modulate = Color(1, 1, 1, 0.678431)
 sprite_frames = SubResource("SpriteFrames_g63ky")
+animation = &"dead"
 
 [node name="kick_center2" type="Node2D" parent="."]
 position = Vector2(0, 4)
