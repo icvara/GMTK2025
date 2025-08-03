@@ -114,7 +114,7 @@ func add_new_record():
 		last_record_id = 0
 	else:
 		last_record_id += 1
-	$Label.text = str(last_record_id)
+	#$Label.text = str(last_record_id)
 
 func _physics_process(delta: float) -> void:
 	if alive:
