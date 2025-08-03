@@ -24,14 +24,15 @@ func activate():
 
 func story():
 	story_started = true
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(5).timeout
+	show()
 	rabbit.show()
 	await get_tree().create_timer(1.).timeout
-	rabbit.Say("No need to go out!")
+	rabbit.Say("blsblsbla")
 	await get_tree().create_timer(2.).timeout
-	rabbit.Say("We are comfortable here!")
+	rabbit.Say("We are blsblsbla here!")
 	await get_tree().create_timer(2.).timeout
-	rabbit.Say("let's do a nap")
+	rabbit.Say("lblsblsbla")
 	await get_tree().create_timer(2.).timeout
 	activate()
 	isfinished = true
@@ -52,7 +53,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if activated:
 		if body.name == "Player":
 			body.TRANSITION_SCREEN_IN()
-			body.room_position = body.position
+			get_tree().change_scene_to_file("res://Menus/endscreen.tscn")
+			'body.room_position = body.position
 			body.global_position = TP.global_position
 			body.TRANSITION_SCREEN_OUT()
-			rabbit.Silence()
+			rabbit.Silence()'

@@ -304,6 +304,12 @@ door = NodePath("../Door2")
 flip = true
 color = Color(1, 0, 0, 1)
 
+[node name="event_rabbit_green" parent="ROOM_AREA" node_paths=PackedStringArray("door") instance=ExtResource("8_65a3r")]
+position = Vector2(814, 779)
+door = NodePath("../Door2")
+flip = true
+color = Color(0, 1, 0, 1)
+
 [node name="Door2" parent="ROOM_AREA" instance=ExtResource("7_vk8vr")]
 visible = false
 position = Vector2(897, 608)
@@ -320,7 +326,8 @@ rabbit = NodePath("../event_rabbit_blue")
 computer = NodePath("../../RED_AREA/boss_room/computer")
 
 [node name="room_green" parent="ROOM_AREA" instance=ExtResource("15_vi4m0")]
-position = Vector2(73, 800)
+visible = false
+position = Vector2(781, 798)
 
 [node name="GREEN_AREA" type="Node2D" parent="."]
 
