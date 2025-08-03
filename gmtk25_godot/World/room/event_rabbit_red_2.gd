@@ -7,6 +7,8 @@ var story_started = false
 var isfinished = false
 var loop = true
 
+var player
+
 func story():
 	print("repeat")
 	story_started = true

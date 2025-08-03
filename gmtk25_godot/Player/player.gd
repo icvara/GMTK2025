@@ -55,6 +55,9 @@ var power_is_available = false
 var power_ID = 0
 
 
+var check_point = Vector2(0,0)
+
+
 func _ready() -> void:
 	$AnimatedSprite2D.modulate = color
 	$Camera2D.make_current()
@@ -94,6 +97,9 @@ func end_loop():
 	$ProgressBar.value = time_past
 	record_movement = []
 	alive =true
+	
+	
+
 
 
 func add_new_record():		
@@ -346,9 +352,12 @@ func Kill():
 		$Tweeeip.play()
 		await get_tree().create_timer(1.5).timeout
 		end_loop()
+		position = starting_position#check_point
+		if LP <= 0 : 
+			position = check_point
+
 		$UI_LIFE.Update()
-		if LP <= 0:
-			position = room_position
+	
 
 
 func _on_timer_timeout() -> void:

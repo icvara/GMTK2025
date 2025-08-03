@@ -35,6 +35,10 @@ func on_reset_loop():
 	position = starting_position
 	$Brain.on_child_transition($Brain.current_state, $Brain.initial_state.name)
 
+func reset():
+	HP = maxHP
+	$Health.play(str(10-HP))
+	
 
 func Kill():
 	alive = false

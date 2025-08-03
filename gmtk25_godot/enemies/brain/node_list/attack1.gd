@@ -46,3 +46,12 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 			brain_owner.get_node("Golemsound1").play()
 		
 			body.Kill()
+			if body.name == "Player":
+				if body.LP <= 0:
+					#body.TRANSITION_SCREEN_IN()
+					#body.restoreLife()
+					#body.check_point = body.room_position
+					#body.position = body.check_point
+					#body.restoreLife()
+					#body.TRANSITION_SCREEN_OUT()
+					brain_owner.reset()

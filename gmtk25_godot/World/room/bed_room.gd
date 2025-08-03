@@ -54,8 +54,11 @@ func _on_body_entered(body: Node2D) -> void:
 	if activated:
 		if body.name == "Player":
 			body.TRANSITION_SCREEN_IN()
-			body.room_position = body.position
+			#body.room_position = body.position
+			body.check_point =  body.position
 			body.global_position = TP.global_position
+			body.starting_position = TP.global_position
+
 			body.TRANSITION_SCREEN_OUT()
 			rabbit.Silence()
 			body.power_is_available = true

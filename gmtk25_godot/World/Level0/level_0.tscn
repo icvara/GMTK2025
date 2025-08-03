@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dpkps2b3ifaem" path="res://Player/ending.tscn" id="15_rhj6o"]
 [ext_resource type="PackedScene" uid="uid://c2xp7ogtrfnu4" path="res://World/room/green_room.tscn" id="15_vi4m0"]
 [ext_resource type="PackedScene" uid="uid://dtkkba3ywoo5w" path="res://World/room/bed_boss.tscn" id="16_yqtko"]
-[ext_resource type="PackedScene" path="res://check_point.tscn" id="23_meaf0"]
+[ext_resource type="PackedScene" uid="uid://tkrp2acr20ux" path="res://check_point.tscn" id="23_meaf0"]
 [ext_resource type="Script" uid="uid://dj1nbpdqkkl6c" path="res://World/Level0/tuto_red_bun.gd" id="24_rdw7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g08tj"]
@@ -158,13 +158,30 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1507.0
-offset_top = 931.0
-offset_right = -1266.0
-offset_bottom = 1110.0
+offset_left = -1542.0
+offset_top = 977.0
+offset_right = -1301.0
+offset_bottom = 1156.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "SPACE to JUMP!
+
+"
+
+[node name="jump_tuto2" type="Label" parent="label_debug"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1925.0
+offset_top = 858.0
+offset_right = -1684.0
+offset_bottom = 1037.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "
 
 Hold to JUMP higher
 
@@ -614,6 +631,12 @@ new_TP = NodePath("../TP3")
 
 [node name="TP3" parent="lvl1" instance=ExtResource("13_w4oqf")]
 position = Vector2(4522, 738)
+
+[node name="CheckPoint" parent="lvl1" instance=ExtResource("23_meaf0")]
+position = Vector2(2821, 1082)
+
+[node name="CheckPoint2" parent="lvl1" instance=ExtResource("23_meaf0")]
+position = Vector2(3836, 747)
 
 [node name="Player" parent="." instance=ExtResource("2_wpcyh")]
 position = Vector2(719, 830)
@@ -1190,6 +1213,9 @@ position = Vector2(-16, 0)
 
 [node name="CheckPoint" parent="." instance=ExtResource("23_meaf0")]
 position = Vector2(-618, 927)
+
+[node name="CheckPoint2" parent="." instance=ExtResource("23_meaf0")]
+position = Vector2(-4432, 901)
 
 [node name="event_rabbit" parent="." instance=ExtResource("8_65a3r")]
 visible = true

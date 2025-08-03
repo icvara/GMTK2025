@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bunfx6tl2smu1"]
+[gd_scene load_steps=6 format=3 uid="uid://bunfx6tl2smu1"]
 
 [ext_resource type="Script" uid="uid://ceqpkma3uvnw1" path="res://Menus/start_menu.gd" id="1_omtxr"]
 [ext_resource type="Texture2D" uid="uid://h0b10gbbd2dh" path="res://Assets/background_wood1.png" id="1_ylpl7"]
+[ext_resource type="Texture2D" uid="uid://cddh74qsu5oh2" path="res://Assets/player/Screenshot_20250803_142544.png" id="2_hsi7t"]
 [ext_resource type="Texture2D" uid="uid://c1jrsu7xydp0m" path="res://Assets/draft_bunbunleapou2.png" id="3_h66ku"]
 [ext_resource type="AudioStream" uid="uid://jdq62c0tpjcp" path="res://Audio/pickupCoin.wav" id="3_xgchj"]
 
@@ -14,7 +15,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_omtxr")
 
+[node name="Screenshot20250803142544" type="Sprite2D" parent="."]
+position = Vector2(485.649, 269.375)
+scale = Vector2(0.50509, 0.514597)
+texture = ExtResource("2_hsi7t")
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,8 +67,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DraftBunbunleapou2" type="Sprite2D" parent="."]
-position = Vector2(476, 168)
-scale = Vector2(0.55, 0.55)
+position = Vector2(464, 164)
+scale = Vector2(0.400926, 0.400926)
 texture = ExtResource("3_h66ku")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -71,30 +78,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.5
-offset_top = 48.0
-offset_right = 32.5
-offset_bottom = 219.0
+offset_left = -114.0
+offset_top = 47.0
+offset_right = 84.0
+offset_bottom = 113.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Play"
-
-[node name="Button4" type="Button" parent="VBoxContainer"]
-visible = false
-layout_mode = 2
-text = "Level_1"
-
-[node name="Button5" type="Button" parent="VBoxContainer"]
-visible = false
-layout_mode = 2
-text = "Level_2"
-
-[node name="Button2" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Credits"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -104,7 +97,15 @@ text = "Exit"
 stream = ExtResource("3_xgchj")
 volume_db = -10.0
 
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 437.0
+offset_right = 575.0
+offset_bottom = 486.0
+text = "Develloped by Kyunsei & Izva
+For GMTK 2025 - LOOP"
+horizontal_alignment = 1
+
 [connection signal="button_down" from="VBoxContainer/Button" to="." method="_on_button_button_down"]
-[connection signal="button_down" from="VBoxContainer/Button4" to="." method="_on_button_4_button_down"]
-[connection signal="button_down" from="VBoxContainer/Button5" to="." method="_on_button_5_button_down"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]

@@ -62,36 +62,11 @@ countdown_time = 2.0
 position = Vector2(853, 895)
 
 [node name="What_to_do" type="Label" parent="."]
-offset_left = 31.0
-offset_top = 215.0
-offset_right = 940.0
-offset_bottom = 914.0
-text = "RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
-RightMouseClick to Push the Ball to the Flag.RightMouseClick to Push the Ball to the Flag.RightMouseCli
+offset_left = 407.0
+offset_top = 804.0
+offset_right = 1316.0
+offset_bottom = 1503.0
+text = "RightMouseClick to Push the Ball to the Flag.
 "
 
 [node name="Goal_for_blue_ball2" parent="." instance=ExtResource("6_2nd2f")]
@@ -105,13 +80,13 @@ position = Vector2(1894, 1342)
 countdown_time = 3.0
 
 [node name="What_to_do2" type="Label" parent="."]
-offset_left = 1519.0
-offset_top = 928.0
-offset_right = 2285.0
-offset_bottom = 1627.0
-text = "Need Help?........
-use your past selves, 
-they can kick too you know......"
+offset_left = 1516.0
+offset_top = 892.0
+offset_right = 2282.0
+offset_bottom = 1591.0
+text = "Need Help?
+Use your inner thoughts, 
+They can push the ball"
 horizontal_alignment = 1
 vertical_alignment = 1
 

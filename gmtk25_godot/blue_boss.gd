@@ -94,3 +94,7 @@ func _on_area_2d_body_entered2(body: Node2D) -> void:
 	if animation_frame == 3 and body.is_in_group("player"):
 		print("I touched a player")
 		body.Kill()
+		if body.name == "Player":
+			if body.LP <= 0:
+				HP = 100
+				$ProgressBar.value = HP
