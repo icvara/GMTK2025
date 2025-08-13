@@ -70,7 +70,10 @@ func _process(delta: float) -> void:
 		if animation_frame == 3 and body.is_in_group("player"):
 			print("I touched a player")
 			body.Kill()
-
+			if body.name == "Player":
+				if body.LP <= 0:
+					HP = 100
+					$ProgressBar.value = HP
 
 func Kill():
 	alive = false
@@ -81,24 +84,26 @@ func Kill():
 
 
 func getDamage(value):
-	HP -= value
-	$ProgressBar.value = HP
-	
+
+			HP -= value
+			$ProgressBar.value = HP
+			
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Ball"):
-		getDamage(1)
-		print(HP)
+		if player:
+			if player.LP > 0:
+				getDamage(1)
+				print(HP)
 
 
 func _on_area_2d_body_entered2(body: Node2D) -> void:
-	print("Itouched"+str(body))
+	#print("Itouched"+str(body))
 	if animation_frame == 3 and body.is_in_group("player"):
-		print("I touched a player")
-		body.Kill()
+		#print("I touched a player")
 		if body.name == "Player":
+			print(body.LP)
 			if body.LP <= 0:
-
 				if door: 
 					door.close()
 				$damage_area/CollisionShape2D.disabled = true
@@ -106,3 +111,5 @@ func _on_area_2d_body_entered2(body: Node2D) -> void:
 				$ProgressBar.value = HP
 				await get_tree().create_timer(0.5).timeout
 				$damage_area/CollisionShape2D.disabled = false
+		body.Kill()
+		
