@@ -104,8 +104,6 @@ func _on_area_2d_body_entered2(body: Node2D) -> void:
 		if body.name == "Player":
 			print(body.LP)
 			if body.LP <= 0:
-				if door: 
-					door.close()
 				$damage_area/CollisionShape2D.disabled = true
 				HP = 100
 				$ProgressBar.value = HP
